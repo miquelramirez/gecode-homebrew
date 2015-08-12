@@ -11,7 +11,7 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2014-10-03 15:34:37 +0200 (Fri, 03 Oct 2014) $ by $Author: schulte $
+ *     $Date: 2014-10-03 23:34:37 +1000 (Fri, 03 Oct 2014) $ by $Author: schulte $
  *     $Revision: 14241 $
  *
  *  This file is part of Gecode, the generic constraint

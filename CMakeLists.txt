@@ -6,8 +6,8 @@
 #     Victor Zverovich, 2013
 #
 #  Last modified:
-#     $Date: 2014-10-28 11:03:22 +0100 (Tue, 28 Oct 2014) $ by $Author: tack $
-#     $Revision: 14281 $
+#     $Date: 2015-04-12 20:37:35 +1000 (Sun, 12 Apr 2015) $ by $Author: tack $
+#     $Revision: 14497 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -402,7 +402,7 @@ if (FLOATSRC)
 endif ()
 
 add_executable(gecode-test ${TESTSRC} ${TESTHDR})
-target_link_libraries(gecode-test gecodeminimodel)
+target_link_libraries(gecode-test gecodeflatzinc gecodeminimodel)
 
 add_executable(fzn-gecode ${FLATZINCEXESRC})
 target_link_libraries(fzn-gecode gecodeflatzinc gecodegist gecodeminimodel gecodedriver)

@@ -17,8 +17,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2015-01-16 14:10:48 +0100 (Fri, 16 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14362 $
+ *     $Date: 2015-06-30 21:51:51 +1000 (Tue, 30 Jun 2015) $ by $Author: schulte $
+ *     $Revision: 14645 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -2185,7 +2185,7 @@ namespace Gecode {
   max(Home home, const IntVarArgs& x, IntVar y,
       IntConLevel icl=ICL_DEF);
 
-  /** \brief Post propagator for \f$ \operatorname{argmin} x=y\f$
+  /** \brief Post propagator for \f$ \operatorname{argmin}(x)=y\f$
    *
    * In case of ties, the smallest value for \a y is chosen 
    * (provided \a tiebreak is true).
@@ -2197,7 +2197,19 @@ namespace Gecode {
   GECODE_INT_EXPORT void
   argmin(Home home, const IntVarArgs& x, IntVar y, bool tiebreak=true,
          IntConLevel icl=ICL_DEF);
-  /** \brief Post propagator for \f$ \operatorname{argmax} x=y\f$
+  /** \brief Post propagator for \f$ \operatorname{argmin}(x)-o=y\f$
+   *
+   * In case of ties, the smallest value for \a y is chosen 
+   * (provided \a tiebreak is true).
+   *
+   * If \a x is empty, an exception of type Int::TooFewArguments is thrown.
+   * If \a y occurs in \a x, an exception of type Int::ArgumentSame 
+   * is thrown.
+   */
+  GECODE_INT_EXPORT void
+  argmin(Home home, const IntVarArgs& x, int o, IntVar y, bool tiebreak=true,
+         IntConLevel icl=ICL_DEF);
+  /** \brief Post propagator for \f$ \operatorname{argmax}(x)=y\f$
    *
    * In case of ties, the smallest value for \a y is chosen
    * (provided \a tiebreak is true).
@@ -2208,6 +2220,18 @@ namespace Gecode {
    */
   GECODE_INT_EXPORT void
   argmax(Home home, const IntVarArgs& x, IntVar y, bool tiebreak=true,
+         IntConLevel icl=ICL_DEF);
+  /** \brief Post propagator for \f$ \operatorname{argmax}(x)-o=y\f$
+   *
+   * In case of ties, the smallest value for \a y is chosen
+   * (provided \a tiebreak is true).
+   *
+   * If \a x is empty, an exception of type Int::TooFewArguments is thrown.
+   * If \a y occurs in \a x, an exception of type Int::ArgumentSame 
+   * is thrown.
+   */
+  GECODE_INT_EXPORT void
+  argmax(Home home, const IntVarArgs& x, int o, IntVar y, bool tiebreak=true,
          IntConLevel icl=ICL_DEF);
 
   /** \brief Post propagator for \f$ |x_0|=x_1\f$
