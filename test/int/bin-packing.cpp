@@ -7,8 +7,8 @@
  *     Christian Schulte, 2010
  *
  *  Last modified:
- *     $Date: 2014-08-28 14:29:11 +0200 (Thu, 28 Aug 2014) $ by $Author: schulte $
- *     $Revision: 14203 $
+ *     $Date: 2015-08-11 19:23:22 +1000 (Tue, 11 Aug 2015) $ by $Author: schulte $
+ *     $Revision: 14648 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -170,6 +170,10 @@ namespace Test { namespace Int {
           l += x[j];
         if (l != t)
           return false;
+        // Check whether items are at possible bins
+        for (int j=m; j--; )
+          if ((x[m+j] < 0) || (x[m+j] >= m))
+            return false;
         // Compute whether items add up
         for (int j=m; j--; )
           il[j] = 0;
@@ -317,6 +321,7 @@ namespace Test { namespace Int {
         using namespace Gecode;
 
         {
+          IntArgs s0(4, 0,0,0,0);
           IntArgs s1(3, 2,1,1);
           IntArgs s2(4, 1,2,3,4);
           IntArgs s3(4, 4,3,2,1);
@@ -328,6 +333,7 @@ namespace Test { namespace Int {
           IntArgs s9(6, 1,2,4,8,16,32);
           
           for (int m=1; m<4; m++) {
+            (void) new BPT(m, s0);
             (void) new BPT(m, s1);
             (void) new BPT(m, s2);
             (void) new BPT(m, s3);

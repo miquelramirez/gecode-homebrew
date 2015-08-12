@@ -11,8 +11,8 @@
  *     Mikael Lagerkvist, 2009
  *
  *  Last modified:
- *     $Date: 2015-03-17 11:20:12 +0100 (Tue, 17 Mar 2015) $ by $Author: tack $
- *     $Revision: 14444 $
+ *     $Date: 2015-05-28 19:19:42 +1000 (Thu, 28 May 2015) $ by $Author: tack $
+ *     $Revision: 14583 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -952,15 +952,17 @@ namespace Gecode { namespace FlatZinc {
         iv1 << IntVar(s,0,iv0.size());
       }
       IntConLevel icl = s.ann2icl(ann);
+      if (icl==ICL_DEF)
+        icl=ICL_BND;
       if (icl==ICL_DOM) {
         IntVarArgs allvars = iv0+iv1;
         unshare(s, allvars);
         count(s, allvars.slice(0,1,iv0.size()), 
                  allvars.slice(iv0.size(),1,iv1.size()),
-                 cover, s.ann2icl(ann));
+                 cover, icl);
       } else {
         unshare(s, iv0);
-        count(s, iv0, iv1, cover, s.ann2icl(ann));
+        count(s, iv0, iv1, cover, icl);
       }
     }
 

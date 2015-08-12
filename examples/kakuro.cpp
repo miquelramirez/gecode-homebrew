@@ -11,7 +11,7 @@
  *     Mikael Lagerkivst, 2007
  *
  *  Last modified:
- *     $Date: 2015-03-17 16:09:39 +0100 (Tue, 17 Mar 2015) $ by $Author: schulte $
+ *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
  *     $Revision: 14447 $
  *
  *  This file is part of Gecode, the generic constraint

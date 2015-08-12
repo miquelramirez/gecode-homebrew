@@ -9,7 +9,7 @@
  *     Mikael Lagerkvist, 2006
  *
  *  Last modified:
- *     $Date: 2013-11-15 14:53:16 +0100 (Fri, 15 Nov 2013) $ by $Author: schulte $
+ *     $Date: 2013-11-16 00:53:16 +1100 (Sat, 16 Nov 2013) $ by $Author: schulte $
  *     $Revision: 14077 $
  *
  *  This file is part of Gecode, the generic constraint

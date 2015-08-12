@@ -9,7 +9,7 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2012-10-19 05:58:26 +0200 (Fri, 19 Oct 2012) $ by $Author: tack $
+ *     $Date: 2012-10-19 14:58:26 +1100 (Fri, 19 Oct 2012) $ by $Author: tack $
  *     $Revision: 13156 $
  *
  *  This file is part of Gecode, the generic constraint

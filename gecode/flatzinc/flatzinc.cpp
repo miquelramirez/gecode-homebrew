@@ -11,7 +11,7 @@
  *     Gabriel Hjort Blindell, 2012
  *
  *  Last modified:
- *     $Date: 2015-03-19 11:47:57 +0100 (Thu, 19 Mar 2015) $ by $Author: tack $
+ *     $Date: 2015-03-19 21:47:57 +1100 (Thu, 19 Mar 2015) $ by $Author: tack $
  *     $Revision: 14463 $
  *
  *  This file is part of Gecode, the generic constraint

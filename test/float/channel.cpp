@@ -9,7 +9,7 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-23 22:50:34 +0100 (Wed, 23 Jan 2013) $ by $Author: schulte $
+ *     $Date: 2013-01-24 08:50:34 +1100 (Thu, 24 Jan 2013) $ by $Author: schulte $
  *     $Revision: 13232 $
  *
  *  This file is part of Gecode, the generic constraint

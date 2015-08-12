@@ -7,7 +7,7 @@
  *     Gregory Crosswhite, 2011
  *
  *  Last modified:
- *     $Date: 2011-11-03 14:57:30 +0100 (Thu, 03 Nov 2011) $ by $Author: tack $
+ *     $Date: 2011-11-04 00:57:30 +1100 (Fri, 04 Nov 2011) $ by $Author: tack $
  *     $Revision: 12455 $
  *
  *  This file is part of Gecode, the generic constraint

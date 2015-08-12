@@ -7,7 +7,7 @@
  *     Christopher Mears, 2012
  *
  *  Last modified:
- *     $Date: 2013-05-20 13:21:09 +0200 (Mon, 20 May 2013) $ by $Author: schulte $
+ *     $Date: 2013-05-20 21:21:09 +1000 (Mon, 20 May 2013) $ by $Author: schulte $
  *     $Revision: 13644 $
  *
  *  This file is part of Gecode, the generic constraint

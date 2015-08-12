@@ -10,7 +10,7 @@
  *     David Rijsman <david.rijsman@quintiq.com>
  *
  *  Last modified:
- *     $Date: 2013-10-15 00:46:56 +0200 (Tue, 15 Oct 2013) $ by $Author: tack $
+ *     $Date: 2013-10-15 09:46:56 +1100 (Tue, 15 Oct 2013) $ by $Author: tack $
  *     $Revision: 14025 $
  *
  *  This file is part of Gecode, the generic constraint

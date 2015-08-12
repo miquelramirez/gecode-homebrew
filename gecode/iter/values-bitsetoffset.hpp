@@ -10,7 +10,7 @@
  *     Christopher Mears <chris.mears@monash.edu>
  *
  *  Last modified:
- *     $Date: 2013-03-07 02:18:29 +0100 (Thu, 07 Mar 2013) $ by $Author: mears $
+ *     $Date: 2013-03-07 12:18:29 +1100 (Thu, 07 Mar 2013) $ by $Author: mears $
  *     $Revision: 13455 $
  *
  *  This file is part of Gecode, the generic constraint

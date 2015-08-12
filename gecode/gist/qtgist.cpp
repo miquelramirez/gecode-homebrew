@@ -7,7 +7,7 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 09:04:26 +0200 (Mon, 06 May 2013) $ by $Author: tack $
+ *     $Date: 2013-05-06 17:04:26 +1000 (Mon, 06 May 2013) $ by $Author: tack $
  *     $Revision: 13614 $
  *
  *  This file is part of Gecode, the generic constraint

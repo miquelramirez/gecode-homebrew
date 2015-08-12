@@ -11,7 +11,7 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2015-03-17 11:15:59 +0100 (Tue, 17 Mar 2015) $ by $Author: tack $
+ *     $Date: 2015-03-17 21:15:59 +1100 (Tue, 17 Mar 2015) $ by $Author: tack $
  *     $Revision: 14442 $
  *
  *  This file is part of Gecode, the generic constraint

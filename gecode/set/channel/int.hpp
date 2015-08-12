@@ -11,7 +11,7 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2011-11-03 11:52:07 +0100 (Thu, 03 Nov 2011) $ by $Author: tack $
+ *     $Date: 2011-11-03 21:52:07 +1100 (Thu, 03 Nov 2011) $ by $Author: tack $
  *     $Revision: 12452 $
  *
  *  This file is part of Gecode, the generic constraint

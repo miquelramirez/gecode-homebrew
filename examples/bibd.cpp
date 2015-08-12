@@ -10,7 +10,7 @@
  *     Olof Sivertsson <olsi0767@student.uu.se>
  *
  *  Last modified:
- *     $Date: 2015-03-19 11:41:29 +0100 (Thu, 19 Mar 2015) $ by $Author: tack $
+ *     $Date: 2015-03-19 21:41:29 +1100 (Thu, 19 Mar 2015) $ by $Author: tack $
  *     $Revision: 14461 $
  *
  *  This file is part of Gecode, the generic constraint

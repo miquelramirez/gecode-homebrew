@@ -7,8 +7,8 @@
  *     Christian Schulte, 2010
  *
  *  Last modified:
- *     $Date: 2014-07-30 14:16:57 +0200 (Wed, 30 Jul 2014) $ by $Author: schulte $
- *     $Revision: 14181 $
+ *     $Date: 2015-08-11 19:23:22 +1000 (Tue, 11 Aug 2015) $ by $Author: schulte $
+ *     $Revision: 14648 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -358,10 +358,18 @@ namespace Gecode { namespace Int { namespace BinPacking {
   Pack::post(Home home, ViewArray<OffsetView>& l, ViewArray<Item>& bs) {
     // Sort according to size
     Support::quicksort(&bs[0], bs.size());
+    // Total size of items
+    int s = 0;
+    // Constrain bins 
+    for (int i=bs.size(); i--; ) {
+      s += bs[i].size();
+      GECODE_ME_CHECK(bs[i].bin().gq(home,0));
+      GECODE_ME_CHECK(bs[i].bin().le(home,l.size()));
+    }
     // Eliminate zero sized items (which are at the end as the size are sorted)
     {
       int n = bs.size();
-      while (bs[n-1].size() == 0)
+      while ((n > 0) && (bs[n-1].size() == 0))
         n--;
       bs.size(n);
     }
@@ -374,13 +382,6 @@ namespace Gecode { namespace Int { namespace BinPacking {
       // No bins available
       return ES_FAILED;
     } else {
-      int s = 0;
-      // Constrain bins 
-      for (int i=bs.size(); i--; ) {
-        s += bs[i].size();
-        GECODE_ME_CHECK(bs[i].bin().gq(home,0));
-        GECODE_ME_CHECK(bs[i].bin().le(home,l.size()));
-      }
       // Constrain load
       for (int j=l.size(); j--; ) {
         GECODE_ME_CHECK(l[j].gq(home,0));

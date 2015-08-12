@@ -7,8 +7,8 @@
  *     Christian Schulte, 2002
  *
  *  Last modified:
- *     $Date: 2015-01-16 14:10:48 +0100 (Fri, 16 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14362 $
+ *     $Date: 2015-06-30 21:51:51 +1000 (Tue, 30 Jun 2015) $ by $Author: schulte $
+ *     $Revision: 14645 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -137,6 +137,33 @@ namespace Gecode {
   }
 
   void
+  argmax(Home home, const IntVarArgs& x, int o, IntVar y, bool tiebreak,
+         IntConLevel) {
+    using namespace Int;
+    Limits::nonnegative(o,"Int::argmax");
+    if (x.size() == 0)
+      throw TooFewArguments("Int::argmax");
+    if (x.same(home,y))
+      throw ArgumentSame("Int::argmax");
+    if (home.failed()) return;
+    // Constrain y properly
+    OffsetView yv(y,-o);
+    GECODE_ME_FAIL(yv.gq(home,0));
+    GECODE_ME_FAIL(yv.le(home,x.size()));
+    // Construct index view array
+    IdxViewArray<IntView> ix(home,x.size());
+    for (int i=x.size(); i--; ) {
+      ix[i].idx=i; ix[i].view=x[i];
+    }
+    if (tiebreak)
+        GECODE_ES_FAIL((Arithmetic::ArgMax<IntView,OffsetView,true>
+                        ::post(home,ix,yv)));
+    else
+        GECODE_ES_FAIL((Arithmetic::ArgMax<IntView,OffsetView,false>
+                        ::post(home,ix,yv)));
+  }
+
+  void
   argmin(Home home, const IntVarArgs& x, IntVar y, bool tiebreak,
          IntConLevel) {
     using namespace Int;
@@ -159,6 +186,33 @@ namespace Gecode {
                         ::post(home,ix,yv)));
     else
         GECODE_ES_FAIL((Arithmetic::ArgMax<MinusView,IntView,false>
+                        ::post(home,ix,yv)));
+  }
+
+  void
+  argmin(Home home, const IntVarArgs& x, int o, IntVar y, bool tiebreak,
+         IntConLevel) {
+    using namespace Int;
+    Limits::nonnegative(o,"Int::argmin");
+    if (x.size() == 0)
+      throw TooFewArguments("Int::argmin");
+    if (x.same(home,y))
+      throw ArgumentSame("Int::argmin");
+    if (home.failed()) return;
+    // Constrain y properly
+    OffsetView yv(y,-o);
+    GECODE_ME_FAIL(yv.gq(home,0));
+    GECODE_ME_FAIL(yv.le(home,x.size()));
+    // Construct index view array
+    IdxViewArray<MinusView> ix(home,x.size());
+    for (int i=x.size(); i--; ) {
+      ix[i].idx=i; ix[i].view=MinusView(x[i]);
+    }
+    if (tiebreak)
+        GECODE_ES_FAIL((Arithmetic::ArgMax<MinusView,OffsetView,true>
+                        ::post(home,ix,yv)));
+    else
+        GECODE_ES_FAIL((Arithmetic::ArgMax<MinusView,OffsetView,false>
                         ::post(home,ix,yv)));
   }
 
