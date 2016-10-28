@@ -9,8 +9,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2015-01-18 16:50:03 +0100 (Sun, 18 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14365 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -48,18 +48,21 @@
 #include <gecode/set/rel-op.hh>
 
 namespace Gecode { namespace Int {
+
   /// VarArg type for %Set views
   template<>
   class ViewToVarArg<Gecode::Set::SetView> {
   public:
     typedef Gecode::SetVarArgs argtype;
   };
+
   /// VarArg type for singleton views
   template<>
   class ViewToVarArg<Gecode::Set::SingletonView> {
   public:
     typedef Gecode::IntVarArgs argtype;
   };
+
 }}
 
 namespace Gecode { namespace Set { namespace Element {
@@ -93,7 +96,10 @@ namespace Gecode { namespace Set { namespace Element {
   public:
     /// Copy propagator during cloning
     virtual Actor* copy(Space& home,bool);
+    /// Cost function
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation
@@ -129,7 +135,10 @@ namespace Gecode { namespace Set { namespace Element {
   public:
     /// Copy propagator during cloning
     virtual Actor* copy(Space& home,bool);
+    /// Cost function
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation
@@ -163,7 +172,10 @@ namespace Gecode { namespace Set { namespace Element {
   public:
     /// Copy propagator during cloning
     virtual Actor* copy(Space& home,bool);
+    /// Cost function
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation
@@ -197,7 +209,10 @@ namespace Gecode { namespace Set { namespace Element {
   public:
     /// Copy propagator during cloning
     virtual Actor*      copy(Space& home,bool);
+    /// Cost function
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation

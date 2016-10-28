@@ -11,8 +11,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2011-08-20 00:47:28 +1000 (Sat, 20 Aug 2011) $ by $Author: tack $
- *     $Revision: 12318 $
+ *     $Date: 2016-09-02 15:36:56 +0200 (Fri, 02 Sep 2016) $ by $Author: schulte $
+ *     $Revision: 15162 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -95,8 +95,8 @@ namespace Gecode { namespace Set {
   }
 
   forceinline unsigned int
-  SingletonView::glbSize(void) const { 
-    return x.assigned() ? 1U : 0U; 
+  SingletonView::glbSize(void) const {
+    return x.assigned() ? 1U : 0U;
   }
 
   forceinline unsigned int
@@ -234,6 +234,10 @@ namespace Gecode { namespace Set {
   forceinline void
   SingletonView::cancel(Space& home, Propagator& p, PropCond pc) {
     x.cancel(home,p,pc_settoint(pc));
+  }
+  forceinline void
+  SingletonView::reschedule(Space& home, Propagator& p, PropCond pc) {
+    x.reschedule(home,p,pc_settoint(pc));
   }
 
   forceinline void

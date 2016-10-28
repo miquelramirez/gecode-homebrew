@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:42:21 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13069 $
+ *     $Date: 2016-06-20 16:44:21 +0200 (Mon, 20 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15120 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -279,11 +279,11 @@ namespace Gecode { namespace Iter { namespace Ranges {
                            std::min(i.max(),j->max),f);
       *c = t; c = &t->next;
       if (i.max() < j->max) {
-        ++i; 
+        ++i;
       } else {
-        RangeList* t = j->next;
+        RangeList* tn = j->next;
         j->next = f; f = j;
-        j = t;
+        j = tn;
       }
     }
   done:

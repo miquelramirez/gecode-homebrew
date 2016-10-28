@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-30 03:43:05 +1100 (Wed, 30 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13241 $
+ *     $Date: 2016-06-27 13:33:30 +0200 (Mon, 27 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15126 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,7 +42,7 @@ namespace Gecode {
   class FloatVarArgs;
   class FloatVarArray;
   class FloatValArgs;
-  
+
   /// Traits of %FloatVarArgs
   template<>
   class ArrayTraits<VarArgArray<FloatVar> > {
@@ -63,10 +63,10 @@ namespace Gecode {
 
   /// Traits of %FloatValArgs
   template<>
-  class ArrayTraits<PrimArgArray<FloatVal> > {
+  class ArrayTraits<ArgArray<FloatVal> > {
   public:
     typedef FloatValArgs StorageType;
-    typedef FloatVal  ValueType;
+    typedef FloatVal     ValueType;
     typedef FloatValArgs ArgsType;
   };
 
@@ -78,7 +78,7 @@ namespace Gecode {
     typedef FloatVar       ValueType;
     typedef FloatVarArgs   ArgsType;
   };
-  
+
   /// Traits of %FloatVarArgs
   template<>
   class ArrayTraits<FloatVarArgs> {
@@ -93,10 +93,10 @@ namespace Gecode {
   class ArrayTraits<FloatValArgs> {
   public:
     typedef FloatValArgs StorageType;
-    typedef FloatVal  ValueType;
+    typedef FloatVal     ValueType;
     typedef FloatValArgs ArgsType;
   };
-  
+
 }
 
 // STATISTICS: float-other

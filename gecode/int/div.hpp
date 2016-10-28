@@ -7,8 +7,8 @@
  *     Christian Schulte, 2013
  *
  *  Last modified:
- *     $Date: 2013-02-20 01:42:19 +1100 (Wed, 20 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13315 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -56,26 +56,26 @@ namespace Gecode { namespace Int {
   }
 
   template<class IntType>
-  forceinline IntType 
+  forceinline IntType
   ceil_div_px(IntType x, IntType y) {
     assert(x >= 0);
     return (y >= 0) ? ceil_div_pp(x,y) : -floor_div_pp(x,-y);
   }
   template<class IntType>
-  forceinline IntType 
+  forceinline IntType
   floor_div_px(IntType x, IntType y) {
     assert(x >= 0);
     return (y >= 0) ? floor_div_pp(x,y) : -ceil_div_pp(x,-y);
   }
 
   template<class IntType>
-  forceinline IntType 
+  forceinline IntType
   ceil_div_xp(IntType x, IntType y) {
     assert(y >= 0);
     return (x >= 0) ? ceil_div_pp(x,y) : -floor_div_pp(-x,y);
   }
   template<class IntType>
-  forceinline IntType 
+  forceinline IntType
   floor_div_xp(IntType x, IntType y) {
     assert(y >= 0);
     return (x >= 0) ? floor_div_pp(x,y) : -ceil_div_pp(-x,y);

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2011-11-04 00:57:30 +1100 (Fri, 04 Nov 2011) $ by $Author: tack $
- *     $Revision: 12455 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -91,7 +91,7 @@ namespace Test {
       TestSpace* s[n];
       // How many spaces exist in s
       int n_s = 1;
-      
+
       for (int i=n; i--; )
         s[i] = NULL;
       s[0] = new TestSpace;
@@ -111,7 +111,7 @@ namespace Test {
             }
             int j = space(s);
             (void) s[j]->status();
-            s[i] = static_cast<TestSpace*>(s[j]->clone());
+            s[i] = static_cast<TestSpace*>(s[j]->clone(true,rand(5) != 0));
             n_s++;
           }
           break;

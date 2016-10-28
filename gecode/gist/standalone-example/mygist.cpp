@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2010-04-08 20:35:31 +1000 (Thu, 08 Apr 2010) $ by $Author: schulte $
- *     $Revision: 10684 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -53,8 +53,8 @@ public:
   TestSpace(bool share, TestSpace& t) : Space(share, t) {
     x.update(*this, share, t.x);
   }
-  virtual Space* copy(bool share) { 
-    return new TestSpace(share,*this); 
+  virtual Space* copy(bool share) {
+    return new TestSpace(share,*this);
   }
   virtual void print(std::ostream& os) const {
     os << x << std::endl;

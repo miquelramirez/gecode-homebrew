@@ -13,8 +13,8 @@
  *     Guido Tack, 2009
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -45,7 +45,7 @@ namespace Gecode { namespace Int { namespace GCC {
 
   /**
    * \defgroup GCCBndSup Support for GCC bounds propagation
-   * 
+   *
    * \ingroup FuncIntProp
    */
 
@@ -75,7 +75,7 @@ namespace Gecode { namespace Int { namespace GCC {
 
   template<class Card>
   ExecStatus
-  prop_card(Space& home, 
+  prop_card(Space& home,
             ViewArray<IntView>& x, ViewArray<Card>& k) {
     int n = x.size();
     int m = k.size();

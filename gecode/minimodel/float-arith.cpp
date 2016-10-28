@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-22 23:48:12 +1100 (Tue, 22 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13227 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -44,7 +44,7 @@
 namespace Gecode { namespace MiniModel {
 
   /// Non-linear float arithmetic expressions
-  class GECODE_MINIMODEL_EXPORT ArithNonLinFloatExpr : 
+  class GECODE_MINIMODEL_EXPORT ArithNonLinFloatExpr :
     public NonLinFloatExpr {
   public:
     /// The expression type
@@ -65,7 +65,7 @@ namespace Gecode { namespace MiniModel {
       ANLFE_COS,   ///< expression
       ANLFE_ATAN,  ///< expression
       ANLFE_TAN,   ///< expression
-#endif          
+#endif
       ANLFE_POW,   ///< Pow expression
       ANLFE_NROOT  ///< Nth root expression
     } t;
@@ -320,7 +320,7 @@ namespace Gecode { namespace MiniModel {
       dynamic_cast<ArithNonLinFloatExpr*>(e.nlfe()) != NULL &&
       dynamic_cast<ArithNonLinFloatExpr*>(e.nlfe())->t == t;
   }
-  
+
 }}
 
 namespace Gecode {

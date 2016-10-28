@@ -7,8 +7,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-30 20:22:34 +1100 (Wed, 30 Jan 2013) $ by $Author: vbarichard $
- *     $Revision: 13250 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -62,7 +62,7 @@ namespace Gecode { namespace Float { namespace Arithmetic {
       GECODE_ME_CHECK(x1.eq(home,0.0));
       return ES_OK;
     }
-    
+
     if ((n % 2) == 0)
     {
       if (x0.min() >= 0)
@@ -104,7 +104,7 @@ namespace Gecode { namespace Float { namespace Arithmetic {
       GECODE_ME_CHECK(x1.eq(home,0.0));
       return home.ES_SUBSUMED(*this);
     }
-    
+
     if ((m_n % 2) == 0)
     {
       if (x0.min() >= 0)

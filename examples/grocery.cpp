@@ -7,8 +7,8 @@
  *     Christian Schulte, 2001
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -67,15 +67,15 @@ protected:
   static const int p = 711 * 100 * 100 * 100;
 public:
   /// The actual model
-  Grocery(const Options& opt) 
+  Grocery(const Options& opt)
     : Script(opt), abcd(*this,4,0,s) {
     IntVar a(abcd[0]), b(abcd[1]), c(abcd[2]), d(abcd[3]);
 
     // The sum of all variables is s
-    rel(*this, a+b+c+d == s, opt.icl());
+    rel(*this, a+b+c+d == s, opt.ipl());
 
     // The product of all variables is s (corrected by scale factor)
-    rel(*this, (a*b)*(c*d) == p, opt.icl());
+    rel(*this, (a*b)*(c*d) == p, opt.ipl());
 
     // Break symmetries: order the variables
     rel(*this, abcd, IRT_LQ);

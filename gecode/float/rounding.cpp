@@ -11,8 +11,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-05 03:54:05 +1100 (Tue, 05 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13260 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -52,7 +52,7 @@ namespace Gecode { namespace Float {
   typedef int mpfr_func(mpfr_t, const __mpfr_struct*, mp_rnd_t);
 
   /// Routine to call mpfr function with proper rounding
-  forceinline double 
+  forceinline double
   invoke_mpfr(FloatNum x, mpfr_func f, mp_rnd_t r) {
     mpfr_t xx;
     mpfr_init_set_d(xx, x, GMP_RNDN);

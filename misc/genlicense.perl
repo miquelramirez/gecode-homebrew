@@ -7,8 +7,8 @@
 #     Christian Schulte, 2005
 #
 #  Last modified:
-#     $Date: 2013-03-08 17:29:13 +0100 (Fri, 08 Mar 2013) $ by $Author: schulte $
-#     $Revision: 13486 $
+#     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#     $Revision: 15073 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -35,7 +35,7 @@
 #
 #
 
-# 
+#
 # Get authors of all files
 #
 
@@ -59,7 +59,7 @@ print <<EOF
   \\page PageLic %Gecode license and authors
 
 \\section SectLicLic GECODE LICENSE AGREEMENT
-			 
+
 This software and its documentation are copyrighted by the
 individual authors as listed in each file. All files, unless explicitly disclaimed in individual files, may be used according to the terms of the
 <a href="http://www.opensource.org/licenses/mit-license.php">
@@ -112,7 +112,7 @@ foreach $n (sort(keys(%fix))) {
 
 print <<EOF
 
-We are also grateful for our users reporting bugs and suggesting 
+We are also grateful for our users reporting bugs and suggesting
 improvements.
 
 */

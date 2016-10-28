@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2010-08-12 17:48:30 +1000 (Thu, 12 Aug 2010) $ by $Author: tack $
- *     $Revision: 11345 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -53,7 +53,7 @@ namespace Gecode { namespace Gist {
     return (x + b.left > clippingRect.x() + clippingRect.width() ||
             x + b.right < clippingRect.x() ||
             y > clippingRect.y() + clippingRect.height() ||
-            y + (node()->getShape()->depth()+1) * Layout::dist_y < 
+            y + (node()->getShape()->depth()+1) * Layout::dist_y <
             clippingRect.y());
   }
 

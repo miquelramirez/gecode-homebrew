@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2014-05-27 22:57:59 +1000 (Tue, 27 May 2014) $ by $Author: schulte $
- *     $Revision: 14124 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -49,7 +49,7 @@ namespace Gecode {
       release();
     }
   }
-  
+
   Activity&
   Activity::operator =(const Activity& a) {
     if (storage != a.storage) {

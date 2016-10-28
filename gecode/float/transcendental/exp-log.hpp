@@ -7,8 +7,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2012-07-27 18:25:47 +1000 (Fri, 27 Jul 2012) $ by $Author: vbarichard $
- *     $Revision: 12971 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -55,7 +55,7 @@ namespace Gecode { namespace Float { namespace Transcendental {
     } else {
       GECODE_ME_CHECK(x1.gq(home,0.0));
     }
-    
+
     (void) new (home) Exp<A,B>(home,x0,x1);
     return ES_OK;
   }

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2015-01-09 01:07:24 +1100 (Fri, 09 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14341 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -46,7 +46,7 @@ namespace Gecode { namespace Search { namespace Parallel {
   /*
    * Statistics
    */
-  Statistics 
+  Statistics
   DFS::statistics(void) const {
     Statistics s;
     for (unsigned int i=0; i<workers(); i++)

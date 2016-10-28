@@ -7,8 +7,8 @@
  *     Christian Schulte, 2015
  *
  *  Last modified:
- *     $Date: 2015-03-12 02:24:08 +1100 (Thu, 12 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14436 $
+ *     $Date: 2015-09-27 19:00:38 +0200 (Sun, 27 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14762 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,14 +39,6 @@ namespace Gecode { namespace Search {
 
   forceinline
   Engine::~Engine(void) {}
-  forceinline void*
-  Engine::operator new(size_t s) {
-    return heap.ralloc(s);
-  }
-  forceinline void
-  Engine::operator delete(void* p) {
-    heap.rfree(p);
-  }
 
 }}
 

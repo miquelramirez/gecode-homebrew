@@ -13,8 +13,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2010-07-29 01:35:33 +1000 (Thu, 29 Jul 2010) $ by $Author: schulte $
- *     $Revision: 11294 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -516,6 +516,10 @@ namespace Gecode { namespace Set {
   forceinline void
   SetVarImp::cancel(Space& home, Propagator& p, PropCond pc) {
     SetVarImpBase::cancel(home,p,pc,assigned());
+  }
+  forceinline void
+  SetVarImp::reschedule(Space& home, Propagator& p, PropCond pc) {
+    SetVarImpBase::reschedule(home,p,pc,assigned());
   }
   forceinline void
   SetVarImp::subscribe(Space& home, Advisor& a) {

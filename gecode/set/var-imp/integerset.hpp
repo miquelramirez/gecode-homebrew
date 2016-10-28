@@ -11,8 +11,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2011-09-19 22:02:26 +1000 (Mon, 19 Sep 2011) $ by $Author: schulte $
- *     $Revision: 12400 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -113,9 +113,9 @@ namespace Gecode { namespace Set {
 
   forceinline int
   BndSet::max(void) const {
-    if (lst()==NULL) 
+    if (lst()==NULL)
       return MAX_OF_EMPTY;
-    else 
+    else
       return lst()->max();
   }
 

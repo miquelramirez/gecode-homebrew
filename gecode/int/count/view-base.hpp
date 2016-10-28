@@ -7,8 +7,8 @@
  *     Christian Schulte, 2003
  *
  *  Last modified:
- *     $Date: 2011-08-29 22:59:24 +1000 (Mon, 29 Aug 2011) $ by $Author: schulte $
- *     $Revision: 12359 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,7 +42,7 @@ namespace Gecode { namespace Int { namespace Count {
   ViewBase<VX,VY,VZ>::ViewBase(Home home,
                                ViewArray<VX>& x0, VY y0, VZ z0, int c0)
     : Propagator(home), x(x0), y(y0), z(z0), c(c0) {
-    if (vtd(y) == VTD_INTSET)
+    if (isintset(y))
       home.notice(*this,AP_DISPOSE);
     x.subscribe(home,*this,PC_INT_DOM);
     subscribe(home,*this,y);
@@ -65,9 +65,17 @@ namespace Gecode { namespace Int { namespace Count {
   }
 
   template<class VX, class VY, class VZ>
+  void
+  ViewBase<VX,VY,VZ>::reschedule(Space& home) {
+    x.reschedule(home,*this,PC_INT_DOM);
+    Gecode::Int::Count::reschedule(home,*this,y);
+    z.reschedule(home,*this,PC_INT_BND);
+  }
+
+  template<class VX, class VY, class VZ>
   forceinline size_t
   ViewBase<VX,VY,VZ>::dispose(Space& home) {
-    if (vtd(y) == VTD_INTSET)
+    if (isintset(y))
       home.ignore(*this,AP_DISPOSE);
     x.cancel(home,*this,PC_INT_DOM);
     cancel(home,*this,y);
@@ -116,7 +124,7 @@ namespace Gecode { namespace Int { namespace Count {
   }
   template<class VX, class VY, class VZ>
   forceinline bool
-  ViewBase<VX,VY,VZ>::sharing(const ViewArray<VX>& x, 
+  ViewBase<VX,VY,VZ>::sharing(const ViewArray<VX>& x,
                               const VY& y, const VZ& z) {
     if (shared(y,z))
       return true;

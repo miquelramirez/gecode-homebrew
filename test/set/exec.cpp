@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2010-04-08 20:35:31 +1000 (Thu, 08 Apr 2010) $ by $Author: schulte $
- *     $Revision: 10684 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -51,7 +51,7 @@ namespace Test { namespace Set {
      class Wait : public SetTest {
      public:
        /// Create and register test
-       Wait(int n) 
+       Wait(int n)
          : SetTest("Wait::"+str(n),n,Gecode::IntSet(0,n),false) {}
        /// Check whether \a x is solution
        virtual bool solution(const SetAssignment& x) const {

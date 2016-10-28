@@ -12,8 +12,8 @@
  *     Christian Schulte, 2009
  *     Guido Tack, 2009
  *
- *  Last modified: $Date: 2010-06-29 18:39:13 +1000 (Tue, 29 Jun 2010) $ by $Author: schulte $
- *  $Revision: 11118 $
+ *  Last modified: $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *  $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constrain
  *  development environment:
@@ -125,6 +125,8 @@ namespace Gecode { namespace Int { namespace GCC {
     void subscribe(Space& home, Propagator& p, PropCond pc, bool process=true);
     /// Cancel subscription of propagator \a p with propagation condition \a pc to view
     void cancel(Space& home, Propagator& p, PropCond pc);
+    /// Schedule propagator \a p
+    void reschedule(Space& home, Propagator& p, PropCond pc);
     ///@}
 
     /// \name Cloning
@@ -274,6 +276,8 @@ namespace Gecode { namespace Int { namespace GCC {
   CardConst::subscribe(Space&, Propagator&, PropCond, bool) {}
   forceinline void
   CardConst::cancel(Space&, Propagator&, PropCond) {}
+  forceinline void
+  CardConst::reschedule(Space&, Propagator&, PropCond) {}
 
   forceinline void
   CardConst::update(Space&, bool, CardConst& x) {

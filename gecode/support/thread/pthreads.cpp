@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2009-10-14 00:19:20 +1100 (Wed, 14 Oct 2009) $ by $Author: schulte $
- *     $Revision: 9887 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -58,7 +58,7 @@ namespace Gecode { namespace Support {
     if (pthread_create(&p_t, NULL, bootstrap, this) != 0)
       throw OperatingSystemError("Thread::run[pthread_create]");
   }
-  
+
 }}
 
 #endif

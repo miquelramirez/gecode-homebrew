@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-07-11 20:30:18 +1000 (Thu, 11 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13840 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -222,7 +222,7 @@ namespace Gecode { namespace Gist {
       setStatus(STOP);
     dirtyUp(na);
   }
-  
+
   void
   VisualNode::unstopAll(const NodeAllocator& na) {
     UnstopAllCursor c(this,na);
@@ -494,7 +494,7 @@ namespace Gecode { namespace Gist {
                              *nextShapeL, nextShapeL->depth());
         Layouter::merge<Extent*,Shape>(&currentShapeL[0],
                                        &currentShapeL[0], ldepth,
-                                       *nextShapeL, nextShapeL->depth(), 
+                                       *nextShapeL, nextShapeL->depth(),
                                        nextAlphaL);
         ldepth = std::max(ldepth,nextShapeL->depth());
         alpha[i].first = nextAlphaL - width;

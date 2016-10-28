@@ -12,8 +12,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2012-10-22 10:13:28 +1100 (Mon, 22 Oct 2012) $ by $Author: tack $
- *     $Revision: 13161 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -68,6 +68,14 @@ namespace Gecode { namespace Set { namespace Rel {
   }
 
   template<class View0, class View1, class CtrlView, ReifyMode rm>
+  void
+  ReEq<View0,View1,CtrlView,rm>::reschedule(Space& home) {
+    b.reschedule(home,*this, Gecode::Int::PC_INT_VAL);
+    x0.reschedule(home,*this, PC_SET_ANY);
+    x1.reschedule(home,*this, PC_SET_ANY);
+  }
+
+  template<class View0, class View1, class CtrlView, ReifyMode rm>
   forceinline size_t
   ReEq<View0,View1,CtrlView,rm>::dispose(Space& home) {
     b.cancel(home,*this, Gecode::Int::PC_INT_VAL);
@@ -102,7 +110,7 @@ namespace Gecode { namespace Set { namespace Rel {
     }
     if (b.zero()) {
       if (rm == RM_IMP)
-        return home.ES_SUBSUMED(*this);        
+        return home.ES_SUBSUMED(*this);
       GECODE_REWRITE(*this,(Distinct<View0,View1>::post(home(*this),x0,x1)));
     }
 

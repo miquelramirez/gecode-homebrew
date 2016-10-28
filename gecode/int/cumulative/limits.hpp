@@ -7,8 +7,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2013-03-11 16:26:07 +1100 (Mon, 11 Mar 2013) $ by $Author: tack $
- *     $Revision: 13487 $
+ *     $Date: 2015-09-15 14:13:28 +0200 (Tue, 15 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14678 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,15 +39,15 @@ namespace Gecode { namespace Int { namespace Cumulative {
 
   inline void
   mul_check(long long int x, long long int y) {
-    if (Int::Limits::overflow_mul(x,y))
-      throw OutOfLimits("Int::cumulative");
+    if (Limits::overflow_mul(x,y))
+      throw OutOfLimits("cumulative");
   }
 
   inline void
   mul_check(long long int x, long long int y, long long int z) {
-    if (Int::Limits::overflow_mul(x,y) ||
-        Int::Limits::overflow_mul(x*y,z))
-      throw OutOfLimits("Int::cumulative");
+    if (Limits::overflow_mul(x,y) ||
+        Limits::overflow_mul(x*y,z))
+      throw OutOfLimits("cumulative");
   }
 
 }}}

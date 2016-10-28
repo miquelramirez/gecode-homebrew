@@ -6,8 +6,8 @@
 #     Christian Schulte, 2005
 #
 #  Last modified:
-#     $Date: 2012-03-28 17:26:41 +0200 (Wed, 28 Mar 2012) $ by $Author: schulte $
-#     $Revision: 12649 $
+#     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#     $Revision: 15073 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -34,7 +34,7 @@
 #
 #
 
-# 
+#
 # Ultra-simplistic makedepend: Just find existing files
 # Relies on:
 #  - all filenames are relative to root directory, which is the first argument
@@ -52,7 +52,7 @@ while ($target = $ARGV[$i++]) {
   while ($f = pop @todo) {
     open FILE, "$root/$f" or
       open FILE, "$f" or die "File missing: $root/$f\n";
-    
+
     while ($l = <FILE>) {
       if ($l =~ /^\#include <(gecode\/.*)>/ || $l =~ /^\#include "(.*)"/) {
 	$g = $1;

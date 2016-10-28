@@ -7,8 +7,8 @@
  *     Guido Tack, 2011
  *
  *  Last modified:
- *     $Date: 2011-10-12 04:28:17 +1100 (Wed, 12 Oct 2011) $ by $Author: tack $
- *     $Revision: 12440 $
+ *     $Date: 2016-06-17 15:43:08 +0200 (Fri, 17 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15116 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -121,47 +121,47 @@ namespace Gecode {
 
   /** Read next element from \a e into \a i
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, unsigned int& i);
   /** Read next element from \a e into \a i
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, int& i);
   /** Read next element from \a e into \a i
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, unsigned short& i);
   /** Read next element from \a e into \a i
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, short& i);
   /** Read next element from \a e into \a i
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, unsigned char& i);
   /** Read next element from \a e into \a i
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, char& i);
   /** Read next element from \a e into \a i
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, bool& i);
   /** Read next element from \a e into \a d
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, float& d);
   /** Read next element from \a e into \a d
    * \relates Archive
-   */  
+   */
   Archive&
   operator >>(Archive& e, double& d);
 
@@ -179,10 +179,10 @@ namespace Gecode {
       resize(_n+1);
     _a[_n++] = i;
   }
-    
+
   forceinline int
   Archive::size(void) const { return _n; }
-  
+
   forceinline unsigned int
   Archive::operator [](int i) const {
     assert(i < _n);
@@ -275,7 +275,7 @@ namespace Gecode {
   }
   forceinline Archive&
   operator >>(Archive& e, bool& i) {
-    i = static_cast<bool>(e.get());
+    i = (e.get() != 0);
     return e;
   }
   forceinline Archive&

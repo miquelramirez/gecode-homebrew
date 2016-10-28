@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2012-09-19 23:14:28 +1000 (Wed, 19 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13103 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -37,15 +37,15 @@
 
 namespace Gecode {
 
-  forceinline 
+  forceinline
   SetValBranch::SetValBranch(Select s0)
     : s(s0) {}
 
-  forceinline 
+  forceinline
   SetValBranch::SetValBranch(Select s0, Rnd r)
     : ValBranch(r), s(s0) {}
 
-  forceinline 
+  forceinline
   SetValBranch::SetValBranch(VoidFunction v, VoidFunction c)
     : ValBranch(v,c), s(SEL_VAL_COMMIT) {}
 

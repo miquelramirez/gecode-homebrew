@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2015-01-09 01:07:24 +1100 (Fri, 09 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14341 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -46,12 +46,30 @@ namespace Gecode { namespace Search { namespace Parallel {
   /*
    * Statistics
    */
-  Statistics 
+  Statistics
   BAB::statistics(void) const {
     Statistics s;
     for (unsigned int i=0; i<workers(); i++)
       s += worker(i)->statistics();
     return s;
+  }
+
+  void
+  BAB::constrain(const Space& b) {
+    m_search.acquire();
+    if (best != NULL) {
+      best->constrain(b);
+      if (best->status() != SS_FAILED) {
+        m_search.release();
+        return;
+      }
+      delete best;
+    }
+    best = b.clone();
+    // Announce better solutions
+    for (unsigned int i=0; i<workers(); i++)
+      worker(i)->better(best);
+    m_search.release();
   }
 
   /*

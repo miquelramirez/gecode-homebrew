@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -100,7 +100,7 @@ namespace Gecode { namespace Int { namespace Element {
   ExecStatus
   Pair::propagate(Space& home, const ModEventDelta&) {
     Region r(home);
-    
+
     if (x0.assigned()) {
       // Bitset for supported div and mod values
       Support::BitSet<Region> d(r,static_cast<unsigned int>((x2.max() / w)+1));
@@ -111,11 +111,11 @@ namespace Gecode { namespace Int { namespace Element {
       GECODE_ME_CHECK(x1.inter_v(home,id,false));
     } else {
       // Bitset for supported div and mod values
-      Support::BitSet<Region> 
-        d(r,static_cast<unsigned int>((x2.max() / w)+1)), 
+      Support::BitSet<Region>
+        d(r,static_cast<unsigned int>((x2.max() / w)+1)),
         m(r,static_cast<unsigned int>(w));
       for (ViewValues<IntView> i(x2); i(); ++i) {
-        d.set(static_cast<unsigned int>(i.val() / w)); 
+        d.set(static_cast<unsigned int>(i.val() / w));
         m.set(static_cast<unsigned int>(i.val() % w));
       }
       Iter::Values::BitSet<Support::BitSet<Region> > im(m,x0.min(),x0.max());

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2010-07-29 01:35:33 +1000 (Thu, 29 Jul 2010) $ by $Author: schulte $
- *     $Revision: 11294 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -80,15 +80,15 @@ namespace Gecode { namespace Iter { namespace Values {
 
   template<class BS>
   forceinline
-  BitSet<BS>::BitSet(const BS& bs0) 
+  BitSet<BS>::BitSet(const BS& bs0)
     : bs(bs0), cur(bs.next(0)), limit(bs.size()) {
   }
 
   template<class BS>
   forceinline
-  BitSet<BS>::BitSet(const BS& bs0, int n, int m) 
-    : bs(bs0), 
-      cur(bs.next(static_cast<unsigned int>(n))), 
+  BitSet<BS>::BitSet(const BS& bs0, int n, int m)
+    : bs(bs0),
+      cur(bs.next(static_cast<unsigned int>(n))),
       limit(std::min(bs.size(),static_cast<unsigned int>(m)+1)) {
   }
 

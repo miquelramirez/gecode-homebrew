@@ -7,8 +7,8 @@
  *     Guido Tack, 2011
  *
  *  Last modified:
- *     $Date: 2011-05-02 08:24:42 +1000 (Mon, 02 May 2011) $ by $Author: tack $
- *     $Revision: 11973 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -54,9 +54,9 @@ namespace Gecode { namespace Iter { namespace Ranges {
     //@{
     /// Default constructor
     RangeList(void);
-    /// Initialize with BndSet \a s
+    /// Initialize with range list \a s
     RangeList(const Gecode::RangeList* s);
-    /// Initialize with BndSet \a s
+    /// Initialize with range list \a s
     void init(const Gecode::RangeList* s);
     //@}
 
@@ -78,6 +78,7 @@ namespace Gecode { namespace Iter { namespace Ranges {
     unsigned int width(void) const;
     //@}
   };
+
 
   forceinline
   RangeList::RangeList(void) {}
@@ -108,7 +109,6 @@ namespace Gecode { namespace Iter { namespace Ranges {
   RangeList::width(void) const {
     return c->width();
   }
-
 
 }}}
 

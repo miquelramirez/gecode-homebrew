@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -327,6 +327,24 @@ namespace Gecode { namespace Int { namespace Bool {
   }
 
   template<class VX, class VY>
+  void
+  Clause<VX,VY>::reschedule(Space& home) {
+    z.reschedule(home,*this,PC_BOOL_VAL);
+    if (n_zero == x.size() + y.size())
+      VX::schedule(home,*this,ME_BOOL_VAL);
+    for (int i=x.size(); i--; )
+      if (x[i].one()) {
+        VX::schedule(home,*this,ME_BOOL_VAL);
+        return;
+      }
+    for (int i=y.size(); i--; )
+      if (y[i].one()) {
+        VX::schedule(home,*this,ME_BOOL_VAL);
+        return;
+      }
+  }
+
+  template<class VX, class VY>
   ExecStatus
   Clause<VX,VY>::propagate(Space& home, const ModEventDelta&) {
     if (z.one())
@@ -341,7 +359,7 @@ namespace Gecode { namespace Int { namespace Bool {
       GECODE_ME_CHECK(z.zero_none(home));
       c.dispose(home);
     } else {
-      // There is exactly one view which is one
+      // There is at least one view which is one
       GECODE_ME_CHECK(z.one_none(home));
     }
     return home.ES_SUBSUMED(*this);

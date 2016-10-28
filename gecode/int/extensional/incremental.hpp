@@ -11,8 +11,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -296,6 +296,15 @@ namespace Gecode { namespace Int { namespace Extensional {
       for (ViewValues<View> vv(x[i]); vv(); ++vv)
         find_support(home, dom, i, vv.val());
 
+    // Work to be done or subsumption
+    if (!w_support.empty() || !w_remove.empty() || (unassigned == 0))
+      View::schedule(home,*this,
+                     (unassigned != x.size()) ? ME_INT_VAL : ME_INT_DOM);
+  }
+
+  template<class View>
+  void
+  Incremental<View>::reschedule(Space& home) {
     // Work to be done or subsumption
     if (!w_support.empty() || !w_remove.empty() || (unassigned == 0))
       View::schedule(home,*this,

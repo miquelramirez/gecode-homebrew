@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-30 03:43:05 +1100 (Wed, 30 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13241 $
+ *     $Date: 2016-06-27 14:37:04 +0200 (Mon, 27 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15129 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -45,39 +45,32 @@ namespace Gecode {
    */
 
   forceinline
-  FloatValArgs::FloatValArgs(void) : PrimArgArray<FloatVal>(0) {}
+  FloatValArgs::FloatValArgs(void) : ArgArray<FloatVal>(0) {}
 
   forceinline
-  FloatValArgs::FloatValArgs(int n) : PrimArgArray<FloatVal>(n) {}
-  
+  FloatValArgs::FloatValArgs(int n) : ArgArray<FloatVal>(n) {}
+
   forceinline
   FloatValArgs::FloatValArgs(const SharedArray<FloatVal>& x)
-    : PrimArgArray<FloatVal>(x.size()) {
+    : ArgArray<FloatVal>(x.size()) {
     for (int i=x.size(); i--;)
       a[i] = x[i];
   }
   forceinline
   FloatValArgs::FloatValArgs(const std::vector<FloatVal>& x)
-    : PrimArgArray<FloatVal>(x) {}
+    : ArgArray<FloatVal>(x) {}
   template<class InputIterator>
   forceinline
   FloatValArgs::FloatValArgs(InputIterator first, InputIterator last)
-    : PrimArgArray<FloatVal>(first,last) {}
-  
+    : ArgArray<FloatVal>(first,last) {}
+
   forceinline
   FloatValArgs::FloatValArgs(int n, const FloatVal* e)
-  : PrimArgArray<FloatVal>(n, e) {}
-  
-  forceinline
-  FloatValArgs::FloatValArgs(const PrimArgArray<FloatVal>& a) : PrimArgArray<FloatVal>(a) {}
+    : ArgArray<FloatVal>(n, e) {}
 
-  forceinline FloatValArgs
-  FloatValArgs::create(int n, FloatVal start, int inc) {
-    FloatValArgs r(n);
-    for (int i=0; i<n; i++, start+=inc)
-      r[i] = start;
-    return r;
-  }
+  forceinline
+  FloatValArgs::FloatValArgs(const ArgArray<FloatVal>& a)
+    : ArgArray<FloatVal>(a) {}
 
   forceinline
   FloatVarArray::FloatVarArray(void) {}

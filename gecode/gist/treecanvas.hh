@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 09:02:17 +0200 (Mon, 06 May 2013) $ by $Author: tack $
- *     $Revision: 13613 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -96,7 +96,7 @@ namespace Gecode {  namespace Gist {
 
   public:
     /// Constructor
-    TreeCanvas(Space* rootSpace, bool bab, QWidget* parent, 
+    TreeCanvas(Space* rootSpace, bool bab, QWidget* parent,
                const Options& opt);
     /// Destructor
     ~TreeCanvas(void);
@@ -192,7 +192,7 @@ namespace Gecode {  namespace Gist {
     void startCompareNodes(void);
     /// Wait for click on node to compare with current node before fixpoint
     void startCompareNodesBeforeFP(void);
-    
+
     /// Re-emit status change information for current node
     void emitStatusChanged(void);
 
@@ -308,7 +308,7 @@ namespace Gecode {  namespace Gist {
     bool smoothScrollAndZoom;
     /// Whether to move cursor during search
     bool moveDuringSearch;
-    
+
     /// The recomputation distance
     int c_d;
     /// The adaptive recomputation distance

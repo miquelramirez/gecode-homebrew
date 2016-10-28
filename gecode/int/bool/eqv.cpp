@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-10-07 20:28:27 +1100 (Fri, 07 Oct 2011) $ by $Author: schulte $
- *     $Revision: 12427 $
+ *     $Date: 2016-06-17 15:43:08 +0200 (Fri, 17 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15116 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -72,8 +72,8 @@ namespace Gecode { namespace Int { namespace Bool {
       if (pm2 == 1) {
         return Bool::Eq<BoolView,BoolView>::post(home,x[0],x[1]);
       } else {
-        NegBoolView n(x[1]);
-        return Bool::Eq<BoolView,NegBoolView>::post(home,x[0],n);
+        NegBoolView nx(x[1]);
+        return Bool::Eq<BoolView,NegBoolView>::post(home,x[0],nx);
       }
     }
     x.size(n);

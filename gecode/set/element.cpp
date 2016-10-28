@@ -9,8 +9,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2015-01-19 02:50:03 +1100 (Mon, 19 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14365 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -55,8 +55,8 @@ namespace Gecode {
   void
   element(Home home, SetOpType op, const SetVarArgs& x, SetVar y, SetVar z,
           const IntSet& universe) {
-    if (home.failed()) return;
-    
+    GECODE_POST;
+
     switch (op) {
     case SOT_DUNION:
       {
@@ -68,7 +68,7 @@ namespace Gecode {
       // fall through
     case SOT_UNION:
       {
-        Set::Element::ElementUnion<SetView,SetView,SetView>::IdxViewArray 
+        Set::Element::ElementUnion<SetView,SetView,SetView>::IdxViewArray
           iv(home, x);
         GECODE_ES_FAIL(
                        (Element::ElementUnion<SetView,SetView,SetView>::
@@ -95,12 +95,12 @@ namespace Gecode {
   void
   element(Home home, SetOpType op, const IntVarArgs& x, SetVar y, SetVar z,
           const IntSet& universe) {
-    if (home.failed()) return;
-    
+    GECODE_POST;
+
     switch (op) {
     case SOT_DUNION:
       {
-        Set::Element::ElementDisjoint<SingletonView,SetView>::IdxViewArray 
+        Set::Element::ElementDisjoint<SingletonView,SetView>::IdxViewArray
           iv(home, x);
         GECODE_ES_FAIL((Element::ElementDisjoint<SingletonView,SetView>
           ::post(home,iv,y)));
@@ -108,7 +108,7 @@ namespace Gecode {
       // fall through
     case SOT_UNION:
       {
-        Set::Element::ElementUnion<SingletonView,SetView,SetView>::IdxViewArray 
+        Set::Element::ElementUnion<SingletonView,SetView,SetView>::IdxViewArray
           iv(home, x);
         GECODE_ES_FAIL(
                        (Element::ElementUnion<SingletonView,SetView,SetView>::
@@ -135,7 +135,7 @@ namespace Gecode {
   void
   element(Home home, SetOpType op, const IntSetArgs& x, SetVar y, SetVar z,
     const IntSet& universe) {
-    if (home.failed()) return;
+    GECODE_POST;
 
     switch (op) {
     case SOT_DUNION:
@@ -174,9 +174,9 @@ namespace Gecode {
     default:
       throw UnknownOperation("Set::element");
     }
-    
+
   }
-  
+
   void
   element(Home home, SetOpType op, const IntArgs& x, SetVar y, SetVar z,
           const IntSet& universe) {
@@ -190,8 +190,8 @@ namespace Gecode {
   element(Home home, const SetVarArgs& x, IntVar y, SetVar z) {
     if (x.size() == 0)
       throw Set::TooFewArguments("Set::element");
-    if (home.failed()) return;
-    Set::Element::ElementUnion<SetView,SingletonView,SetView>::IdxViewArray 
+    GECODE_POST;
+    Set::Element::ElementUnion<SetView,SingletonView,SetView>::IdxViewArray
       iv(home, x);
     SetView zv(z);
 
@@ -207,7 +207,7 @@ namespace Gecode {
       throw Set::TooFewArguments("Set::element");
     for (int i=x.size(); i--;)
       Set::Limits::check(x[i], "Set::element");
-    if (home.failed()) return;
+    GECODE_POST;
     SetView zv(z);
 
     Int::IntView yv(y);
@@ -228,24 +228,24 @@ namespace Gecode {
   }
 
   void
-  element(Home home, const IntSetArgs& a, 
+  element(Home home, const IntSetArgs& a,
           IntVar x, int w, IntVar y, int h, SetVar z) {
     if (a.size() == 0)
       throw Set::TooFewArguments("Set::element");
     if (a.size() != w*h)
       throw Set::ArgumentSizeMismatch("Set::element");
-    if (home.failed()) return;
+    GECODE_POST;
     element(home, a, pair(home,x,w,y,h), z);
   }
 
   void
-  element(Home home, const SetVarArgs& a, 
+  element(Home home, const SetVarArgs& a,
           IntVar x, int w, IntVar y, int h, SetVar z) {
     if (a.size() == 0)
       throw Set::TooFewArguments("Set::element");
     if (a.size() != w*h)
       throw Set::ArgumentSizeMismatch("Set::element");
-    if (home.failed()) return;
+    GECODE_POST;
     element(home, a, pair(home,x,w,y,h), z);
   }
 

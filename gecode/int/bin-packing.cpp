@@ -9,8 +9,8 @@
  *     Christian Schulte, 2010
  *
  *  Last modified:
- *     $Date: 2014-07-30 22:16:57 +1000 (Wed, 30 Jul 2014) $ by $Author: schulte $
- *     $Revision: 14181 $
+ *     $Date: 2016-10-25 12:52:26 +0200 (Tue, 25 Oct 2016) $ by $Author: schulte $
+ *     $Revision: 15233 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,18 +42,18 @@
 namespace Gecode {
 
   void
-  binpacking(Home home, 
-             const IntVarArgs& l, 
+  binpacking(Home home,
+             const IntVarArgs& l,
              const IntVarArgs& b, const IntArgs& s,
-             IntConLevel) {
+             IntPropLevel) {
     using namespace Int;
     if (l.same(home,b))
       throw ArgumentSame("Int::binpacking");
     if (b.size() != s.size())
-      throw ArgumentSizeMismatch("Int::binpacking");      
+      throw ArgumentSizeMismatch("Int::binpacking");
     for (int i=s.size(); i--; )
       Limits::nonnegative(s[i],"Int::binpacking");
-    if (home.failed()) return;
+    GECODE_POST;
 
     ViewArray<OffsetView> lv(home,l.size());
     for (int i=l.size(); i--; )
@@ -68,9 +68,9 @@ namespace Gecode {
 
   IntSet
   binpacking(Home home, int d,
-             const IntVarArgs& l, const IntVarArgs& b, 
+             const IntVarArgs& l, const IntVarArgs& b,
              const IntArgs& s, const IntArgs& c,
-             IntConLevel) {
+             IntPropLevel) {
     using namespace Int;
 
     if (l.same(home,b))
@@ -83,14 +83,16 @@ namespace Gecode {
 
     // Check input sizes
     if ((n*d != s.size()) || (m*d != l.size()) || (d != c.size()))
-      throw ArgumentSizeMismatch("Int::binpacking");      
+      throw ArgumentSizeMismatch("Int::binpacking");
     for (int i=s.size(); i--; )
       Limits::nonnegative(s[i],"Int::binpacking");
     for (int i=c.size(); i--; )
       Limits::nonnegative(c[i],"Int::binpacking");
 
-    if (home.failed()) 
+    if (home.failed())
       return IntSet::empty;
+
+    PostInfo pi(home);
 
     // Capacity constraint for each dimension
     for (int k=d; k--; )
@@ -107,11 +109,11 @@ namespace Gecode {
       ViewArray<OffsetView> lv(home,m);
       for (int j=m; j--; )
         lv[j] = OffsetView(l[j*d+k],0);
-      
+
       ViewArray<BinPacking::Item> bv(home,n);
       for (int i=n; i--; )
         bv[i] = BinPacking::Item(b[i],s[i*d+k]);
-      
+
       if (Int::BinPacking::Pack::post(home,lv,bv) == ES_FAILED) {
         home.fail();
         return IntSet::empty;
@@ -157,7 +159,7 @@ namespace Gecode {
       return cg.maxclique();
     }
   }
-  
+
 }
 
 // STATISTICS: int-post

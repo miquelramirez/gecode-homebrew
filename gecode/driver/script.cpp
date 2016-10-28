@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2013-02-21 03:42:40 +1100 (Thu, 21 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13341 $
+ *     $Date: 2016-06-20 16:44:21 +0200 (Mon, 20 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15120 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -41,8 +41,8 @@
 #include <cmath>
 
 namespace Gecode { namespace Driver {
-    
-  void 
+
+  void
   stop(Support::Timer& timer, std::ostream& os) {
     double t = timer.stop();
     unsigned int sec = static_cast<unsigned int>(floor(t / 1000.0));
@@ -72,25 +72,25 @@ namespace Gecode { namespace Driver {
        << std::showpoint << std::fixed
        << std::setprecision(3) << t << " ms)";
   }
-  
-  
+
+
   double
-  am(double t[], int n) {
+  am(double t[], unsigned int n) {
     if (n < 1)
       return 0.0;
     double s = 0;
-    for (int i=n; i--; )
+    for (unsigned int i=0; i<n; i++)
       s += t[i];
     return s / n;
   }
-  
+
   double
-  dev(double t[], int n) {
+  dev(double t[], unsigned int n) {
     if (n < 2)
       return 0.0;
     double m = am(t,n);
     double s = 0.0;
-    for (int i=n; i--; ) {
+    for (unsigned int i=0; i<n; i++) {
       double d = t[i]-m;
       s += d*d;
     }

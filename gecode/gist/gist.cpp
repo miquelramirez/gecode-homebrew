@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2011-08-25 18:43:31 +1000 (Thu, 25 Aug 2011) $ by $Author: tack $
- *     $Revision: 12352 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -35,6 +35,7 @@
  *
  */
 
+#include <cstdlib>
 #include <QtGui>
 
 #include <gecode/gist.hh>
@@ -46,36 +47,36 @@ namespace Gecode { namespace Gist {
 
   std::string
   Inspector::name(void) { return "Inspector"; }
-  
+
   void
   Inspector::finalize(void) {}
-  
+
   Inspector::~Inspector(void) {}
 
   std::string
   Comparator::name(void) { return "Comparator"; }
-  
+
   void
   Comparator::finalize(void) {}
-  
+
   Comparator::~Comparator(void) {}
-    
+
   TextOutput::TextOutput(const std::string& name)
     : t(NULL), n(name) {}
-  
+
   void
   TextOutput::finalize(void) {
     delete t;
     t = NULL;
   }
-  
+
   TextOutput::~TextOutput(void) {
     delete t;
   }
 
   std::string
   TextOutput::name(void) { return n; }
-  
+
   void
   TextOutput::init(void) {
     if (t == NULL) {
@@ -88,24 +89,40 @@ namespace Gecode { namespace Gist {
   TextOutput::getStream(void) {
     return t->getStream();
   }
-  
+
   void
   TextOutput::flush(void) {
     t->flush();
   }
-  
+
   void
   TextOutput::addHtml(const char* s) {
     t->insertHtml(s);
   }
 
   const Options Options::def;
-  
+
   int
   explore(Space* root, bool bab, const Options& opt) {
+
+#ifdef _MSC_VER
+    // Set the plugin search path on Windows when in default installation
+    if (char* gd = getenv("GECODEDIR")) {
+      unsigned int gdl = static_cast<unsigned int>(strlen(gd) + 32U);
+      char* gdb = heap.alloc<char>(gdl);
+      strcpy(gdb, gd);
+      strcat(gdb, "/bin/");
+      QCoreApplication::addLibraryPath(gdb);
+      heap.free(gdb,gdl);
+    }
+#endif
+
     char argv0='\0'; char* argv1=&argv0;
     int argc=0;
+
+
     QApplication app(argc, &argv1);
+
     GistMainWindow mw(root, bab, opt);
     return app.exec();
   }

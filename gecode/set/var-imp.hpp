@@ -13,8 +13,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2011-09-06 18:22:20 +1000 (Tue, 06 Sep 2011) $ by $Author: tack $
- *     $Revision: 12392 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -590,6 +590,8 @@ namespace Gecode { namespace Set {
     void subscribe(Space& home, Propagator& p, PropCond pc, bool schedule=true);
     /// Cancel subscription of propagator \a p with propagation condition \a pc
     void cancel(Space& home, Propagator& p, PropCond pc);
+    /// Re-schedule propagator \a p with propagation condition \a pc
+    void reschedule(Space& home, Propagator& p, PropCond pc);
     /// Subscribe advisor \a a to variable
     void subscribe(Space& home, Advisor& a);
     /// Cancel subscription of advisor \a a

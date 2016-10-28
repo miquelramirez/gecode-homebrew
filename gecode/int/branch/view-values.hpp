@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2013-07-05 01:03:13 +1000 (Fri, 05 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13801 $
+ *     $Date: 2016-05-26 13:44:53 +0200 (Thu, 26 May 2016) $ by $Author: schulte $
+ *     $Revision: 15087 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -95,16 +95,16 @@ namespace Gecode { namespace Int { namespace Branch {
   forceinline
   ViewValuesBrancher<n,min>::
   ViewValuesBrancher(Home home, ViewArray<IntView>& x,
-                     ViewSel<IntView>* vs[n], 
+                     ViewSel<IntView>* vs[n],
                      BranchFilter bf, IntVarValPrint vvp0)
     : ViewBrancher<IntView,n>(home,x,vs,bf), vvp(vvp0) {}
 
   template<int n, bool min>
-  BrancherHandle
-  ViewValuesBrancher<n,min>::post(Home home, ViewArray<IntView>& x, 
+  void
+  ViewValuesBrancher<n,min>::post(Home home, ViewArray<IntView>& x,
                                   ViewSel<IntView>* vs[n],
                                   BranchFilter bf, IntVarValPrint vvp) {
-    return *new (home) ViewValuesBrancher<n,min>(home,x,vs,bf,vvp);
+    (void) new (home) ViewValuesBrancher<n,min>(home,x,vs,bf,vvp);
   }
 
   template<int n, bool min>
@@ -139,7 +139,7 @@ namespace Gecode { namespace Int { namespace Branch {
 
   template<int n, bool min>
   ExecStatus
-  ViewValuesBrancher<n,min>::commit(Space& home, const Choice& c, 
+  ViewValuesBrancher<n,min>::commit(Space& home, const Choice& c,
                                     unsigned int a) {
     const PosValuesChoice& pvc
       = static_cast<const PosValuesChoice&>(c);
@@ -150,7 +150,7 @@ namespace Gecode { namespace Int { namespace Branch {
 
   template<int n, bool min>
   NGL*
-  ViewValuesBrancher<n,min>::ngl(Space& home, const Choice& c, 
+  ViewValuesBrancher<n,min>::ngl(Space& home, const Choice& c,
                                  unsigned int a) const {
     const PosValuesChoice& pvc
       = static_cast<const PosValuesChoice&>(c);
@@ -161,7 +161,7 @@ namespace Gecode { namespace Int { namespace Branch {
 
   template<int n, bool min>
   void
-  ViewValuesBrancher<n,min>::print(const Space& home, const Choice& c, 
+  ViewValuesBrancher<n,min>::print(const Space& home, const Choice& c,
                                    unsigned int a, std::ostream& o) const {
     const PosValuesChoice& pvc
       = static_cast<const PosValuesChoice&>(c);

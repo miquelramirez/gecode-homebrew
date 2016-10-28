@@ -7,8 +7,8 @@
  *     Vincent Barichard, 2013
  *
  *  Last modified:
- *     $Date: 2014-09-30 10:03:16 +0200 (Tue, 30 Sep 2014) $ by $Author: vbarichard $
- *     $Revision: 14233 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Quacode:
  *     http://quacode.barichard.com
@@ -160,19 +160,19 @@ namespace Gecode { namespace Support {
   DynamicList<T,A>::size(void) const {
     return _size;
   }
- 
+
   template<class T, class A>
   forceinline bool
   DynamicList<T,A>::empty(void) const {
     return fst == NULL;
   }
- 
+
   template<class T, class A>
   forceinline bool
   DynamicList<T,A>::end(void) const {
     return cur == NULL;
   }
- 
+
   template<class T, class A>
   forceinline T
   DynamicList<T,A>::operator ()(void) {

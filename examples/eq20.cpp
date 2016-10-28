@@ -7,8 +7,8 @@
  *     Christian Schulte, 2001
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -87,7 +87,7 @@ public:
     for (int i = e_n; i--; ) {
       IntArgs c(x_n, eqs[i][1],eqs[i][2],eqs[i][3],eqs[i][4],
                      eqs[i][5],eqs[i][6],eqs[i][7]);
-      linear(*this, c, x, IRT_EQ, eqs[i][0], opt.icl());
+      linear(*this, c, x, IRT_EQ, eqs[i][0], opt.ipl());
     }
     branch(*this, x, INT_VAR_NONE(), INT_VAL_MIN());
   }

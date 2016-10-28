@@ -7,8 +7,8 @@
  *     Christian Schulte, 2002
  *
  *  Last modified:
- *     $Date: 2013-02-15 02:29:11 +1100 (Fri, 15 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13292 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -136,27 +136,27 @@ namespace Gecode { namespace Int {
   template<class Val, class UnsVal>
   forceinline ModEvent
   ScaleView<Val,UnsVal>::lq(Space& home, Val n) {
-    return (n >= max()) ? ME_INT_NONE : 
+    return (n >= max()) ? ME_INT_NONE :
       x.lq(home,floor_div_xp(n,static_cast<Val>(a)));
   }
 
   template<class Val, class UnsVal>
   forceinline ModEvent
   ScaleView<Val,UnsVal>::le(Space& home, Val n) {
-    return (n > max()) ? ME_INT_NONE : 
+    return (n > max()) ? ME_INT_NONE :
       x.le(home,floor_div_xp(n,static_cast<Val>(a)));
   }
 
   template<class Val, class UnsVal>
   forceinline ModEvent
   ScaleView<Val,UnsVal>::gq(Space& home, Val n) {
-    return (n <= min()) ? ME_INT_NONE : 
+    return (n <= min()) ? ME_INT_NONE :
       x.gq(home,ceil_div_xp(n,static_cast<Val>(a)));
   }
   template<class Val, class UnsVal>
   forceinline ModEvent
   ScaleView<Val,UnsVal>::gr(Space& home, Val n) {
-    return (n < min()) ? ME_INT_NONE : 
+    return (n < min()) ? ME_INT_NONE :
       x.gr(home,ceil_div_xp(n,static_cast<Val>(a)));
   }
 

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-19 23:26:08 +1100 (Tue, 19 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13313 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -37,31 +37,31 @@
 
 namespace Gecode {
 
-  forceinline 
+  forceinline
   IntVarBranch::IntVarBranch(void)
     : VarBranch(NULL), s(SEL_NONE) {}
 
-  forceinline 
+  forceinline
   IntVarBranch::IntVarBranch(Select s0, BranchTbl t)
     : VarBranch(t), s(s0) {}
 
-  forceinline 
+  forceinline
   IntVarBranch::IntVarBranch(Rnd r)
     : VarBranch(r), s(SEL_RND) {}
 
-  forceinline 
+  forceinline
   IntVarBranch::IntVarBranch(Select s0, double d, BranchTbl t)
     : VarBranch(d,t), s(s0) {}
 
-  forceinline 
+  forceinline
   IntVarBranch::IntVarBranch(Select s0, AFC a, BranchTbl t)
     : VarBranch(a,t), s(s0) {}
 
-  forceinline 
+  forceinline
   IntVarBranch::IntVarBranch(Select s0, Activity a, BranchTbl t)
     : VarBranch(a,t), s(s0) {}
 
-  forceinline 
+  forceinline
   IntVarBranch::IntVarBranch(Select s0, VoidFunction mf, BranchTbl t)
     : VarBranch(mf,t), s(s0) {}
 

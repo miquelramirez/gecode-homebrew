@@ -11,8 +11,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2013-02-15 02:29:11 +1100 (Fri, 15 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13292 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -699,7 +699,7 @@ namespace Gecode { namespace Int {
 
     if ((i_min > dom.min()) && (i_max >= dom.max()))
       return lq(home,i_min-1);
-    
+
     if ((i_min <= dom.min()) && (i_max < dom.max()) &&
         (!i() || (i.min() > dom.max())))
       return gq(home,i_max+1);
@@ -1005,6 +1005,11 @@ namespace Gecode { namespace Int {
   forceinline void
   IntVarImp::cancel(Space& home, Propagator& p, PropCond pc) {
     IntVarImpBase::cancel(home,p,pc,dom.min()==dom.max());
+  }
+
+  forceinline void
+  IntVarImp::reschedule(Space& home, Propagator& p, PropCond pc) {
+    IntVarImpBase::reschedule(home,p,pc,dom.min()==dom.max());
   }
 
   forceinline void

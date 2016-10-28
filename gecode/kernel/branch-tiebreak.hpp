@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-09 02:47:00 +1100 (Sat, 09 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13278 $
+ *     $Date: 2016-06-20 16:49:28 +0200 (Mon, 20 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15121 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -50,9 +50,9 @@ namespace Gecode {
              VarBranch d0 = VarBranch());
   };
 
-  /** 
+  /**
    * \defgroup TaskModelBranchTieBreak Tie-breaking for variable selection
-   * 
+   *
    * \ingroup TaskModelBranch
    */
   //@{
@@ -80,21 +80,21 @@ namespace Gecode {
     : a(a0), b(b0), c(c0), d(d0) {}
 
   template<class VarBranch>
-  forceinline TieBreak<VarBranch>
+  TieBreak<VarBranch>
   tiebreak(VarBranch a, VarBranch b) {
     TieBreak<VarBranch> ab(a,b);
     return ab;
   }
 
   template<class VarBranch>
-  forceinline TieBreak<VarBranch>
+  TieBreak<VarBranch>
   tiebreak(VarBranch a, VarBranch b, VarBranch c) {
     TieBreak<VarBranch> abc(a,b,c);
     return abc;
   }
 
   template<class VarBranch>
-  forceinline TieBreak<VarBranch>
+  TieBreak<VarBranch>
   tiebreak(VarBranch a, VarBranch b, VarBranch c, VarBranch d) {
     TieBreak<VarBranch> abcd(a,b,c,d);
     return abcd;

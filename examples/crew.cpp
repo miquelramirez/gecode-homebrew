@@ -9,8 +9,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -97,7 +97,7 @@ public:
   SetVarArray flight;
 
   /// The actual model
-  Crew(const Options& opt) 
+  Crew(const Options& opt)
     : Script(opt), flight(*this,noOfFlights,IntSet::empty,0,noOfEmployees-1) {
     IntSet stewardsDS(stewards,noOfStewards);
     IntSet hostessesDS(hostesses,noOfHostesses);
@@ -110,7 +110,7 @@ public:
       rel(*this, cardinality(flight[i]) == requiredCrew[i].staff);
 
       // Enough members of different categories are on board
-      rel(*this, cardinality(flight[i] & stewardsDS) >= 
+      rel(*this, cardinality(flight[i] & stewardsDS) >=
           requiredCrew[i].stewards);
       rel(*this, cardinality(flight[i] & hostessesDS) >=
           requiredCrew[i].hostesses);

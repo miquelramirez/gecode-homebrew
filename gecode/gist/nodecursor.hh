@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 09:02:17 +0200 (Mon, 06 May 2013) $ by $Author: tack $
- *     $Revision: 13613 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -178,7 +178,7 @@ namespace Gecode { namespace Gist {
     /// Constructor
     StatCursor(VisualNode* theNode,
                const VisualNode::NodeAllocator& na);
-    
+
     /// \name Cursor interface
     //@{
     /// Collect statistics
@@ -188,7 +188,7 @@ namespace Gecode { namespace Gist {
     /// Move cursor to the parent node
     void moveUpwards(void);
     //@}
-    
+
   };
 
   /// \brief A cursor that labels branches
@@ -221,13 +221,13 @@ namespace Gecode { namespace Gist {
     /// Constructor
     DisposeCursor(VisualNode* theNode,
                   const VisualNode::NodeAllocator& na);
-    
+
     /// \name Cursor interface
     //@{
     /// Dispose node
     void processCurrentNode(void);
     //@}
-    
+
   };
 
 }}

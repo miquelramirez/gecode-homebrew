@@ -7,8 +7,8 @@
  *     Christian Schulte, 2002
  *
  *  Last modified:
- *     $Date: 2010-10-04 19:01:21 +1100 (Mon, 04 Oct 2010) $ by $Author: schulte $
- *     $Revision: 11440 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -47,7 +47,7 @@ namespace Gecode {
       a[i] = va_arg(args,int);
     va_end(args);
   }
-  
+
   IntVarArray::IntVarArray(Space& home, int n, int min, int max)
     : VarArray<IntVar>(home,n) {
     Int::Limits::check(min,"IntVarArray::IntVarArray");

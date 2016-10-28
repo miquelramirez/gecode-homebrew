@@ -7,8 +7,8 @@
  *     Patrick Pekczynski, 2004
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -41,14 +41,14 @@ namespace Gecode {
 
   void
   sorted(Home home, const IntVarArgs& x, const IntVarArgs& y,
-         const IntVarArgs& z, IntConLevel) {
+         const IntVarArgs& z, IntPropLevel) {
     using namespace Int;
     if ((x.size() != y.size()) || (x.size() != z.size()))
       throw ArgumentSizeMismatch("Int::Sorted");
     if (x.same(home,y) || x.same(home,z) || y.same(home,z))
       throw ArgumentSame("Int::Sorted");
 
-    if (home.failed()) return;
+    GECODE_POST;
 
     if (x.size()==0) return;
 
@@ -60,14 +60,14 @@ namespace Gecode {
 
   void
   sorted(Home home, const IntVarArgs& x, const IntVarArgs& y,
-         IntConLevel) {
+         IntPropLevel) {
     using namespace Int;
     if (x.size() != y.size())
       throw ArgumentSizeMismatch("Int::Sorted");
     if (x.same(home,y))
       throw ArgumentSame("Int::Sorted");
 
-    if (home.failed()) return;
+    GECODE_POST;
 
     if (x.size()==0) return;
 

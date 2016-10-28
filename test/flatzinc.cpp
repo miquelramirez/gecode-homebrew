@@ -7,8 +7,8 @@
  *     Guido Tack, 2014
  *
  *  Last modified:
- *     $Date: 2014-11-04 23:28:32 +1100 (Tue, 04 Nov 2014) $ by $Author: schulte $
- *     $Revision: 14287 $
+ *     $Date: 2016-09-01 18:41:55 +0200 (Thu, 01 Sep 2016) $ by $Author: tack $
+ *     $Revision: 15159 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -58,22 +58,22 @@ namespace Test { namespace FlatZinc {
       fg = Gecode::FlatZinc::parse(ss, p, olog);
 
       if (fg) {
-        fg->createBranchers(fg->solveAnnotations(), fznopt.seed(), fznopt.decay(),
+        fg->createBranchers(p, fg->solveAnnotations(), fznopt.seed(), fznopt.decay(),
                             false, olog);
         fg->shrinkArrays(p);
         std::ostringstream os;
         fg->run(os, p, fznopt, t_total);
-        
+
         if (_expected == os.str()) {
           return true;
         } else {
           if (opt.log)
-            olog << "FlatZinc produced the following output:\n" << os.str() << "\n";          
+            olog << "FlatZinc produced the following output:\n" << os.str() << "\n";
           return false;
         }
       } else {
         if (opt.log)
-          olog << "Could not parse input\n";          
+          olog << "Could not parse input\n";
         return false;
       }
       delete fg;
@@ -82,7 +82,7 @@ namespace Test { namespace FlatZinc {
         olog << ind(2) << "FlatZinc error : " << e.toString() << std::endl;
       return false;
     }
-    
+
   }
 
 }}

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2013-02-15 02:29:11 +1100 (Fri, 15 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13292 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,14 +42,14 @@ namespace Gecode {
 
   void
   nvalues(Home home, const IntVarArgs& x, IntRelType irt, int y,
-          IntConLevel) {
+          IntPropLevel) {
     using namespace Int;
     Limits::check(y,"Int::nvalues");
     // Due to the quadratic Boolean matrix used in propagation
     long long int n = x.size();
     Limits::check(n*n,"Int::nvalues");
 
-    if (home.failed()) return;
+    GECODE_POST;
 
     ViewArray<IntView> xv(home,x);
 
@@ -92,13 +92,13 @@ namespace Gecode {
 
   void
   nvalues(Home home, const IntVarArgs& x, IntRelType irt, IntVar y,
-          IntConLevel) {
+          IntPropLevel) {
     using namespace Int;
     // Due to the quadratic Boolean matrix used in propagation
     long long int n = x.size();
     Limits::check(n*n,"Int::nvalues");
 
-    if (home.failed()) return;
+    GECODE_POST;
 
     if (y.assigned()) {
       nvalues(home, x, irt, y.val());
@@ -143,11 +143,11 @@ namespace Gecode {
 
   void
   nvalues(Home home, const BoolVarArgs& x, IntRelType irt, int y,
-          IntConLevel) {
+          IntPropLevel) {
     using namespace Int;
     Limits::check(y,"Int::nvalues");
 
-    if (home.failed()) return;
+    GECODE_POST;
 
     Region region(home);
     ViewArray<BoolView> xv(region,x);
@@ -191,10 +191,10 @@ namespace Gecode {
 
   void
   nvalues(Home home, const BoolVarArgs& x, IntRelType irt, IntVar y,
-          IntConLevel) {
+          IntPropLevel) {
     using namespace Int;
 
-    if (home.failed()) return;
+    GECODE_POST;
 
     if (y.assigned()) {
       nvalues(home, x, irt, y.val());

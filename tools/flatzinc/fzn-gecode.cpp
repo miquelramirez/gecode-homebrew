@@ -7,8 +7,8 @@
  *     Guido Tack, 2007
  *
  *  Last modified:
- *     $Date: 2015-01-05 17:33:06 +1100 (Mon, 05 Jan 2015) $ by $Author: tack $
- *     $Revision: 14337 $
+ *     $Date: 2016-08-26 02:45:29 +0200 (Fri, 26 Aug 2016) $ by $Author: tack $
+ *     $Revision: 15155 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -43,21 +43,21 @@ using namespace std;
 using namespace Gecode;
 
 int main(int argc, char** argv) {
-  
+
   Support::Timer t_total;
   t_total.start();
   FlatZinc::FlatZincOptions opt("Gecode/FlatZinc");
   opt.parse(argc, argv);
-  
+
   if (argc!=2) {
     cerr << "Usage: " << argv[0] << " [options] <file>" << endl;
     cerr << "       " << argv[0] << " -help for more information" << endl;
     exit(EXIT_FAILURE);
   }
-  
+
   const char* filename = argv[1];
   opt.name(filename);
-  
+
   FlatZinc::Printer p;
   FlatZinc::FlatZincSpace* fg = NULL;
   FlatZinc::FznRnd rnd(opt.seed());
@@ -69,8 +69,8 @@ int main(int argc, char** argv) {
     }
 
     if (fg) {
-    
-      fg->createBranchers(fg->solveAnnotations(), opt.seed(), opt.decay(),
+
+      fg->createBranchers(p, fg->solveAnnotations(), opt.seed(), opt.decay(),
                           false, std::cerr);
       fg->shrinkArrays(p);
       if (opt.output()) {
@@ -79,21 +79,21 @@ int main(int argc, char** argv) {
           std::cerr << "Could not open file " << opt.output() << " for output."
                     << std::endl;
           exit(EXIT_FAILURE);
-        }      
+        }
         fg->run(os, p, opt, t_total);
         os.close();
       } else {
         fg->run(std::cout, p, opt, t_total);
       }
     } else {
-      exit(EXIT_FAILURE);    
+      exit(EXIT_FAILURE);
     }
     delete fg;
   } catch (FlatZinc::Error& e) {
     std::cerr << "Error: " << e.toString() << std::endl;
     return 1;
   }
-  
+
   return 0;
 }
 

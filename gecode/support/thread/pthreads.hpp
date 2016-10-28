@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2013-07-01 15:36:45 +1000 (Mon, 01 Jul 2013) $ by $Author: tack $
- *     $Revision: 13741 $
+ *     $Date: 2015-08-18 09:57:34 +0200 (Tue, 18 Aug 2015) $ by $Author: schulte $
+ *     $Revision: 14653 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,6 +39,8 @@
 #include <unistd.h>
 #endif
 
+#include <exception>
+
 namespace Gecode { namespace Support {
 
   /*
@@ -65,8 +67,11 @@ namespace Gecode { namespace Support {
   }
   forceinline
   Mutex::~Mutex(void) {
-    if (pthread_mutex_destroy(&p_m) != 0)
-      throw OperatingSystemError("Mutex::~Mutex[pthread_mutex_destroy]");
+    if (pthread_mutex_destroy(&p_m) != 0) {
+      std::cerr << "Operating system error: "
+                << "Mutex::~Mutex[pthread_mutex_destroy]";
+      std::terminate();
+    }
   }
 
 #ifdef GECODE_THREADS_OSX
@@ -119,9 +124,11 @@ namespace Gecode { namespace Support {
   }
   forceinline
   FastMutex::~FastMutex(void) {
-    if (pthread_spin_destroy(&p_s) != 0)
-      throw OperatingSystemError(
-        "FastMutex::~FastMutex[pthread_spin_destroy]");
+    if (pthread_spin_destroy(&p_s) != 0) {
+      std::cerr << "Operating system error: "
+                << "FastMutex::~FastMutex[pthread_spin_destroy]";
+      std::terminate();
+    }
   }
 
 #endif
@@ -161,10 +168,16 @@ namespace Gecode { namespace Support {
   }
   forceinline
   Event::~Event(void) {
-    if (pthread_cond_destroy(&p_c) != 0)
-      throw OperatingSystemError("Event::~Event[pthread_cond_destroy]");
-    if (pthread_mutex_destroy(&p_m) != 0)
-      throw OperatingSystemError("Event::~Event[pthread_mutex_destroy]");
+    if (pthread_cond_destroy(&p_c) != 0) {
+      std::cerr << "Operating system error: "
+                << "Event::~Event[pthread_cond_destroy]";
+      std::terminate();
+    }
+    if (pthread_mutex_destroy(&p_m) != 0) {
+      std::cerr << "Operating system error: "
+                << "Event::~Event[pthread_mutex_destroy]";
+      std::terminate();
+    }
   }
 
 

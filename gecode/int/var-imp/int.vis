@@ -6,8 +6,8 @@
 #     Christian Schulte, 2006
 #
 #  Last modified:
-#     $Date: 2010-06-29 18:42:27 +1000 (Tue, 29 Jun 2010) $ by $Author: schulte $
-#     $Revision: 11119 $
+#     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#     $Revision: 15073 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -58,7 +58,7 @@ Combine:        VAL=VAL, BND=VAL, DOM=VAL
 [ModEvent]
 Name:           BND=SUBSCRIBE
 Combine:        VAL=VAL, BND=BND, DOM=BND
-  /** 
+  /**
    * \brief Domain operation has changed the minimum or maximum of the domain
    *
    * Note that this implies that the domain has not resulted in a value.
@@ -69,7 +69,7 @@ Combine:        VAL=VAL, BND=BND, DOM=BND
 [ModEvent]
 Name:           DOM
 Combine:        VAL=VAL, BND=BND, DOM=DOM
-  /** 
+  /**
    * \brief Domain operation has changed the domain
    *
    * Note that this implies that the domain has not resulted in a value

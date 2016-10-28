@@ -11,8 +11,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2011-11-03 21:52:07 +1100 (Thu, 03 Nov 2011) $ by $Author: tack $
- *     $Revision: 12452 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -96,6 +96,13 @@ namespace Gecode { namespace Set { namespace Channel {
   PropCost
   ChannelInt<View>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::quadratic(PropCost::LO, xs.size()+ys.size());
+  }
+
+  template<class View>
+  void
+  ChannelInt<View>::reschedule(Space& home) {
+    xs.reschedule(home,*this, Gecode::Int::PC_INT_DOM);
+    ys.reschedule(home,*this, PC_SET_ANY);
   }
 
   template<class View>

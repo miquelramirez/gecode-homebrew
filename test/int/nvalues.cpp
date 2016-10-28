@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-08-18 06:25:49 +1000 (Thu, 18 Aug 2011) $ by $Author: schulte $
- *     $Revision: 12308 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -59,7 +59,7 @@ namespace Test { namespace Int {
        /// Create and register test
        IntInt(int n, int m0, Gecode::IntRelType irt0)
          : Test("NValues::Int::Int::"+str(irt0)+"::"+str(n)+"::"+str(m0),
-                n,0,n), 
+                n,0,n),
            irt(irt0), m(m0) {
          testfix = false;
          if (arity > 5)
@@ -101,7 +101,7 @@ namespace Test { namespace Int {
      public:
        /// Create and register test
        IntVar(int n, Gecode::IntRelType irt0)
-         : Test("NValues::Int::Var::"+str(irt0)+"::"+str(n),n+1,0,n), 
+         : Test("NValues::Int::Var::"+str(irt0)+"::"+str(n),n+1,0,n),
            irt(irt0) {
          testfix = false;
        }
@@ -141,7 +141,7 @@ namespace Test { namespace Int {
        /// Create and register test
        BoolInt(int n, int m0, Gecode::IntRelType irt0)
          : Test("NValues::Bool::Int::"+str(irt0)+"::"+str(n)+"::"+str(m0),
-                n,0,2), 
+                n,0,2),
            irt(irt0), m(m0) {}
        /// %Test whether \a x is solution
        virtual bool solution(const Assignment& x) const {
@@ -179,7 +179,7 @@ namespace Test { namespace Int {
      public:
        /// Create and register test
        BoolVar(int n, Gecode::IntRelType irt0)
-         : Test("NValues::Bool::Var::"+str(irt0)+"::"+str(n),n+1,0,2), 
+         : Test("NValues::Bool::Var::"+str(irt0)+"::"+str(n),n+1,0,2),
            irt(irt0) {}
        /// %Test whether \a x is solution
        virtual bool solution(const Assignment& x) const {

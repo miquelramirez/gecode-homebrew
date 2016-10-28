@@ -13,8 +13,8 @@
  *     Guido Tack, 2011
  *
  *  Last modified:
- *     $Date: 2012-11-21 23:28:07 +1100 (Wed, 21 Nov 2012) $ by $Author: schulte $
- *     $Revision: 13181 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -50,7 +50,7 @@ namespace Gecode {
     using namespace Set;
     Limits::check(s,"Set::precede");
     Limits::check(t,"Set::precede");
-    if (home.failed()) return;
+    GECODE_POST;
 
     ViewArray<SetView> y(home, x);
     GECODE_ES_FAIL(Precede::Single<SetView>::post(home, y, s, t));
@@ -63,7 +63,7 @@ namespace Gecode {
       return;
     for (int i=c.size(); i--; )
       Limits::check(c[i],"Set::precede");
-    if (home.failed()) return;
+    GECODE_POST;
 
     for (int i=c.size()-1; i--; ) {
       ViewArray<SetView> y(home, x);

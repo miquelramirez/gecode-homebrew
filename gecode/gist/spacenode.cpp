@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 17:02:17 +1000 (Mon, 06 May 2013) $ by $Author: tack $
- *     $Revision: 13613 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -92,7 +92,7 @@ namespace Gecode { namespace Gist {
         idx = parentIdx;
         rdist++;
       }
-      
+
       Space* curSpace;
       if (Support::marked(curNode->copy)) {
         curSpace = static_cast<Space*>(Support::unmark(curNode->copy));
@@ -136,7 +136,7 @@ namespace Gecode { namespace Gist {
             ownBestSpace = Gecode::dfs(ownBestSpace);
             if (Support::marked(b.ownBest->copy)) {
               delete static_cast<Space*>(Support::unmark(b.ownBest->copy));
-              b.ownBest->copy = 
+              b.ownBest->copy =
                 static_cast<Space*>(Support::mark(ownBestSpace));
             } else {
               delete b.ownBest->copy;
@@ -170,7 +170,7 @@ namespace Gecode { namespace Gist {
     }
     SpaceNode* ownBest = na.best(idx);
 
-    if (copy == NULL && p != NULL && p->copy != NULL && 
+    if (copy == NULL && p != NULL && p->copy != NULL &&
         Support::marked(p->copy)) {
       // If parent has a working space, steal it
       copy = p->copy;
@@ -181,7 +181,7 @@ namespace Gecode { namespace Gist {
 
       if (ownBest != NULL) {
         ownBest->acquireSpace(na,curBest, c_d, a_d);
-        Space* ownBestSpace = 
+        Space* ownBestSpace =
           static_cast<Space*>(Support::funmark(ownBest->copy));
         if (ownBestSpace->status() != SS_SOLVED) {
           // in the presence of weakly monotonic propagators, we may have to
@@ -257,7 +257,7 @@ namespace Gecode { namespace Gist {
         p->closeChild(na, hasFailedChildren(), hasSolvedChildren());
       }
     } else {
-      
+
       if (hadSolutions) {
         setHasSolvedChildren(true);
         SpaceNode* p = getParent(na);
@@ -271,7 +271,7 @@ namespace Gecode { namespace Gist {
         while (p != NULL && !p->hasFailedChildren()) {
           p->setHasFailedChildren(true);
           p = p->getParent(na);
-        }        
+        }
       }
     }
 

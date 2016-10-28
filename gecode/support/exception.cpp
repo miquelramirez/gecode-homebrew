@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2008-09-03 22:14:11 +1000 (Wed, 03 Sep 2008) $ by $Author: tack $
- *     $Revision: 7787 $
+ *     $Date: 2015-10-29 14:09:11 +0100 (Thu, 29 Oct 2015) $ by $Author: schulte $
+ *     $Revision: 14818 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -59,6 +59,19 @@ namespace Gecode {
   Exception::what(void) const throw() {
     return &li[0];
   }
+
+  /*
+   * Classes for exceptions
+   *
+   */
+  MemoryExhausted::MemoryExhausted(void)
+    : Exception("Memory","Heap memory exhausted") {}
+
+  DynamicCastFailed::DynamicCastFailed(const char* l)
+    : Exception(l,"Attempt to perform dynamic_cast failed") {}
+
+  OperatingSystemError::OperatingSystemError(const char* l)
+    : Exception(l,"Operating system error") {}
 
 }
 

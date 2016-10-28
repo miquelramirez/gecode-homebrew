@@ -7,8 +7,8 @@
  *     Christian Schulte, 2007
  *
  *  Last modified:
- *     $Date: 2013-07-15 10:49:56 +1000 (Mon, 15 Jul 2013) $ by $Author: tack $
- *     $Revision: 13879 $
+ *     $Date: 2016-04-19 14:28:31 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14964 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -103,6 +103,7 @@
 #include <gecode/support/exception.hpp>
 #include <gecode/support/cast.hpp>
 #include <gecode/support/thread.hpp>
+#include <gecode/support/allocator.hpp>
 #include <gecode/support/heap.hpp>
 #include <gecode/support/marked-pointer.hpp>
 #include <gecode/support/int-type.hpp>

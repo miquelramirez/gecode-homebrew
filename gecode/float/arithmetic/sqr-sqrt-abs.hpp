@@ -11,8 +11,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-05 07:28:39 +1100 (Tue, 05 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13262 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -172,7 +172,7 @@ namespace Gecode { namespace Float { namespace Arithmetic {
   template<class A, class B>
   ExecStatus
   Sqrt<A,B>::post(Home home, A x0, B x1) {
-    GECODE_ME_CHECK(x0.gq(home,0));    
+    GECODE_ME_CHECK(x0.gq(home,0));
     if (same(x0,x1)) {
       if (x0.assigned())
         return ((x0.val() == 0) || (x0.val() == 1))? ES_OK : ES_FAILED;
@@ -209,7 +209,7 @@ namespace Gecode { namespace Float { namespace Arithmetic {
       GECODE_ME_CHECK(x1.eq(home,sqrt(x0.val())));
       if (x0.assigned() || x1.assigned()) return home.ES_SUBSUMED(*this);
     }
-    
+
     return ES_FIX;
   }
 

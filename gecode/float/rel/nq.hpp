@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-25 05:28:06 +1100 (Fri, 25 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13235 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -78,7 +78,7 @@ namespace Gecode { namespace Float { namespace Rel {
   Nq<View0,View1>::propagate(Space& home, const ModEventDelta&) {
     if (x0.assigned() && x1.assigned()) {
       return overlap(x0.val(),x1.val()) ? ES_FAILED : home.ES_SUBSUMED(*this);
-    } 
+    }
     return ES_FIX;
   }
 
@@ -119,7 +119,7 @@ namespace Gecode { namespace Float { namespace Rel {
   NqFloat<View>::propagate(Space& home, const ModEventDelta&) {
     if (x0.assigned()) {
       return (overlap(x0.val(),c)) ? ES_FAILED : home.ES_SUBSUMED(*this);
-    } 
+    }
     return ES_FIX;
   }
 

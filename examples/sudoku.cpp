@@ -11,8 +11,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -84,7 +84,7 @@ public:
   };
 
   /// Constructor
-  Sudoku(const SizeOptions& opt) 
+  Sudoku(const SizeOptions& opt)
     : Script(opt),
       n(example_size(examples[opt.size()])) {}
 
@@ -118,14 +118,14 @@ public:
 
     // Constraints for rows and columns
     for (int i=0; i<nn; i++) {
-      distinct(*this, m.row(i), opt.icl());
-      distinct(*this, m.col(i), opt.icl());
+      distinct(*this, m.row(i), opt.ipl());
+      distinct(*this, m.col(i), opt.ipl());
     }
 
     // Constraints for squares
     for (int i=0; i<nn; i+=n) {
       for (int j=0; j<nn; j+=n) {
-        distinct(*this, m.slice(i, i+n, j, j+n), opt.icl());
+        distinct(*this, m.slice(i, i+n, j, j+n), opt.ipl());
       }
     }
 
@@ -386,7 +386,7 @@ public:
     IntArgs values(nn);
     for (int i=nn; i--;)
       values[i] = i+1;
-    count(*this, x, IntSet(nn,nn), values, ICL_DOM);
+    count(*this, x, IntSet(nn,nn), values, IPL_DOM);
   }
 
   /// Constructor for cloning \a s
@@ -413,7 +413,7 @@ int
 main(int argc, char* argv[]) {
   SizeOptions opt("Sudoku");
   opt.size(0);
-  opt.icl(ICL_DOM);
+  opt.ipl(IPL_DOM);
   opt.solutions(1);
 #ifdef GECODE_HAS_SET_VARS
   opt.model(Sudoku::MODEL_INT);

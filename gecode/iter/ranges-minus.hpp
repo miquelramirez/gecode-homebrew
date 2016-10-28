@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:42:21 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13069 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -43,7 +43,7 @@ namespace Gecode { namespace Iter { namespace Ranges {
    * This iterator in effect changes the order of how ranges
    * are iterated: the first range of the input iterator defines
    * the last range of the Minus iterator. Upon initialization
-   * all ranges of the input iterator are stored 
+   * all ranges of the input iterator are stored
    * which later allows iteration in inverse direction.
    *
    * \ingroup FuncIterRanges
@@ -72,7 +72,7 @@ namespace Gecode { namespace Iter { namespace Ranges {
   Minus::Minus(void) {}
 
   forceinline
-  Minus::Minus(const Minus& m) 
+  Minus::Minus(const Minus& m)
     : RangeListIter(m) {}
 
   template<class I>

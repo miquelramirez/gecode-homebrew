@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-07-14 02:55:08 +1000 (Thu, 14 Jul 2011) $ by $Author: schulte $
- *     $Revision: 12194 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,25 +42,25 @@ namespace Gecode { namespace Int { namespace NoOverlap {
    *
    */
   forceinline
-  FixDim::FixDim(void) 
+  FixDim::FixDim(void)
     : s(0) {}
   forceinline
   FixDim::FixDim(IntView c0, int s0)
     : c(c0), s(s0) {}
 
-  forceinline int 
+  forceinline int
   FixDim::ssc(void) const {
     return c.min();
   }
-  forceinline int 
+  forceinline int
   FixDim::lsc(void) const {
     return c.max();
   }
-  forceinline int 
+  forceinline int
   FixDim::sec(void) const {
     return c.min() + s;
   }
-  forceinline int 
+  forceinline int
   FixDim::lec(void) const {
     return c.max() + s;
   }
@@ -109,6 +109,10 @@ namespace Gecode { namespace Int { namespace NoOverlap {
   FixDim::cancel(Space& home, Propagator& p) {
     c.cancel(home,p,PC_INT_DOM);
   }
+  forceinline void
+  FixDim::reschedule(Space& home, Propagator& p) {
+    c.reschedule(home,p,PC_INT_DOM);
+  }
 
 
   /*
@@ -121,19 +125,19 @@ namespace Gecode { namespace Int { namespace NoOverlap {
   FlexDim::FlexDim(IntView c00, IntView s0, IntView c10)
     : c0(c00), s(s0), c1(c10) {}
 
-  forceinline int 
+  forceinline int
   FlexDim::ssc(void) const {
     return c0.min();
   }
-  forceinline int 
+  forceinline int
   FlexDim::lsc(void) const {
     return c0.max();
   }
-  forceinline int 
+  forceinline int
   FlexDim::sec(void) const {
     return c1.min();
   }
-  forceinline int 
+  forceinline int
   FlexDim::lec(void) const {
     return c1.max();
   }
@@ -189,6 +193,12 @@ namespace Gecode { namespace Int { namespace NoOverlap {
     c0.cancel(home,p,PC_INT_DOM);
     s.cancel(home,p,PC_INT_BND);
     c1.cancel(home,p,PC_INT_DOM);
+  }
+  forceinline void
+  FlexDim::reschedule(Space& home, Propagator& p) {
+    c0.reschedule(home,p,PC_INT_DOM);
+    s.reschedule(home,p,PC_INT_BND);
+    c1.reschedule(home,p,PC_INT_DOM);
   }
 
 }}}

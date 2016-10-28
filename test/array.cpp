@@ -7,8 +7,8 @@
  *     Gregory Crosswhite, 2011
  *
  *  Last modified:
- *     $Date: 2011-11-04 00:57:30 +1100 (Fri, 04 Nov 2011) $ by $Author: tack $
- *     $Revision: 12455 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -56,7 +56,7 @@ if (!(T)) {                                                     \
   }                                                             \
   test = (T);
 
-namespace Test { 
+namespace Test {
 
   /// Tests for arrays
   namespace Array {

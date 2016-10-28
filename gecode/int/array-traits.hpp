@@ -7,8 +7,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2010-05-16 00:19:43 +1000 (Sun, 16 May 2010) $ by $Author: schulte $
- *     $Revision: 10954 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,7 +42,7 @@ namespace Gecode {
   class BoolVarArgs;
   class BoolVarArray;
   class IntArgs;
-  
+
   /// Traits of %IntVarArgs
   template<>
   class ArrayTraits<VarArgArray<IntVar> > {
@@ -105,7 +105,7 @@ namespace Gecode {
     typedef IntVar       ValueType;
     typedef IntVarArgs   ArgsType;
   };
-  
+
   /// Traits of %IntVarArgs
   template<>
   class ArrayTraits<IntVarArgs> {
@@ -123,7 +123,7 @@ namespace Gecode {
     typedef int     ValueType;
     typedef IntArgs ArgsType;
   };
-  
+
   /// Traits of %BoolVarArray
   template<>
   class ArrayTraits<BoolVarArray> {
@@ -132,7 +132,7 @@ namespace Gecode {
     typedef BoolVar       ValueType;
     typedef BoolVarArgs   ArgsType;
   };
-  
+
   /// Traits of %BoolVarArgs
   template<>
   class ArrayTraits<BoolVarArgs> {

@@ -6,8 +6,8 @@
 #    Vincent Barichard, 2013
 #
 # Last modified:
-#    $Date: 2014-09-26 16:25:13 +0200 (Fri, 26 Sep 2014) $ by $Author: vbarichard $
-#    $Revision: 14229 $
+#    $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#    $Revision: 15073 $
 #
 # This file is part of Quacode:
 #    http://quacode.barichard.com
@@ -39,7 +39,7 @@ FILE(STRINGS ${GECODE_BIN}/config.status GECODE_DLL_ARCH LIMIT_COUNT 1 REGEX "S\
 STRING(REGEX MATCH "=\"[^\"]*" GECODE_DLL_ARCH "${GECODE_DLL_ARCH}")
 STRING(SUBSTRING "${GECODE_DLL_ARCH}" 2 -1 GECODE_DLL_ARCH)
 
-FIND_LIBRARY(GECODE_KERNEL_LIBRARIES gecodekernel${GECODE_DLL_ARCH} ${GECODE_SEARCH_PATH}) 
+FIND_LIBRARY(GECODE_KERNEL_LIBRARIES gecodekernel${GECODE_DLL_ARCH} ${GECODE_SEARCH_PATH})
 
 IF(GECODE_KERNEL_LIBRARIES)
   SET(GECODE_FOUND TRUE)

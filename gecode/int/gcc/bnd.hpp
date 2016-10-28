@@ -13,8 +13,8 @@
  *     Guido Tack, 2009
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -91,6 +91,13 @@ namespace Gecode { namespace Int { namespace GCC {
       return PropCost::quadratic(PropCost::LO, x.size() + n_k);
   }
 
+
+  template<class Card>
+  void
+  Bnd<Card>::reschedule(Space& home) {
+    y.reschedule(home, *this, PC_INT_BND);
+    k.reschedule(home, *this, PC_INT_BND);
+  }
 
   template<class Card>
   forceinline ExecStatus
@@ -464,7 +471,7 @@ namespace Gecode { namespace Int { namespace GCC {
        */
       if (hall[z].d < ups.sumup(hall[y].bounds, hall[z].bounds - 1))
         return ES_FAILED;
-      
+
       /* UPDATING LOWER BOUND:
        *   If the lower bound min_i lies inside a Hall interval [a,b]
        *   i.e. a <= min_i <=b <= max_i
@@ -511,7 +518,7 @@ namespace Gecode { namespace Int { namespace GCC {
       hall[i].h = hall[i].t = i+1;
       hall[i].d = ups.sumup(hall[i].bounds, hall[i+1].bounds - 1);
     }
-        
+
     for (int i = n; i--; ) {
       // visit intervals in decreasing min order
       int x0 = rank[nu[i]].max;
@@ -519,7 +526,7 @@ namespace Gecode { namespace Int { namespace GCC {
       int y = rank[nu[i]].min;
       int z = pathmin_t(hall, pred);
       int j = hall[z].t;
-    
+
       // DOMINATION:
       if (--hall[z].d == 0) {
         hall[z].t = z - 1;
@@ -527,11 +534,11 @@ namespace Gecode { namespace Int { namespace GCC {
         hall[z].t = j;
       }
       pathset_t(hall, pred, z, z);
-    
+
       // NEGATIVE CAPACITY:
       if (hall[z].d < ups.sumup(hall[z].bounds,hall[y].bounds-1))
         return ES_FAILED;
-    
+
       /* UPDATING UPPER BOUND:
        *   If the upper bound max_i lies inside a Hall interval [a,b]
        *   i.e. min_i <= a <= max_i < b
@@ -559,7 +566,7 @@ namespace Gecode { namespace Int { namespace GCC {
   Bnd<Card>::pruneCards(Space& home) {
     // Remove all values with 0 max occurrence
     // and remove corresponding occurrence variables from k
-    
+
     // The number of zeroes
     int n_z = 0;
     for (int i=k.size(); i--;)
@@ -573,7 +580,7 @@ namespace Gecode { namespace Int { namespace GCC {
       int n_k = 0;
       for (int i=0; i<k.size(); i++)
         if (k[i].max() == 0) {
-          z[n_z++] = k[i].card();            
+          z[n_z++] = k[i].card();
         } else {
           k[n_k++] = k[i];
         }

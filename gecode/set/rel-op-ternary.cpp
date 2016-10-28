@@ -10,8 +10,8 @@
  *     Guido Tack, 2004, 2005
  *
  *  Last modified:
- *     $Date: 2009-11-04 01:25:25 +1100 (Wed, 04 Nov 2009) $ by $Author: schulte $
- *     $Revision: 10030 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -47,7 +47,7 @@ namespace Gecode {
 
   void
   rel(Home home, SetVar x, SetOpType op, SetVar y, SetRelType r, SetVar z) {
-    if (home.failed()) return;
+    GECODE_POST;
     if (r == SRT_CMPL) {
       post_compl(home, x, op, y, z);
     } else {

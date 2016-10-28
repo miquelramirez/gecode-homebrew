@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -79,7 +79,7 @@ namespace Gecode { namespace Int { namespace NValues {
       ViewArray<BoolView> xc(home,x);
       return Bool::NaryEq<BoolView>::post(home,xc);
     }
-    
+
     if (y.min() == 2) {
       assert(y.assigned());
       ViewArray<BoolView> xc(home,x);
@@ -104,7 +104,7 @@ namespace Gecode { namespace Int { namespace NValues {
         x[i] = x[--n];
         status |= VS_ONE;
       }
-    
+
     assert(status != (VS_ZERO | VS_ONE));
     if (n == 0) {
       assert(status != 0);

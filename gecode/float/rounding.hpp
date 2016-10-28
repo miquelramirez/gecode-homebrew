@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-13 19:12:37 +1100 (Wed, 13 Feb 2013) $ by $Author: vbarichard $
- *     $Revision: 13285 $
+ *     $Date: 2016-08-11 16:02:23 +0200 (Thu, 11 Aug 2016) $ by $Author: schulte $
+ *     $Revision: 15143 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -38,23 +38,25 @@
 namespace Gecode { namespace Float {
 
   forceinline
-  Rounding::Rounding(void) { Base::init(); }
+  Rounding::Rounding(void) {
+    RoundingBase::init();
+  }
   forceinline
   Rounding::~Rounding(void) {}
 
   forceinline FloatNum
   Rounding::median(FloatNum x, FloatNum y) {
-    return Base::median(x,y);
+    return RoundingBase::median(x,y);
   }
 
-#define GECODE_ROUND_OP(name)                           \
-  forceinline FloatNum                                  \
-  Rounding::name##_down(FloatNum x, FloatNum y) {   \
-    return Base::name##_down(x,y);                      \
-  }                                                     \
-  forceinline FloatNum                                  \
-  Rounding::name##_up(FloatNum x, FloatNum y) {     \
-    return Base::name##_up(x,y);                        \
+#define GECODE_ROUND_OP(name) \
+  forceinline FloatNum                            \
+  Rounding::name##_down(FloatNum x, FloatNum y) { \
+    return RoundingBase::name##_down(x,y);        \
+  }                                               \
+  forceinline FloatNum                            \
+  Rounding::name##_up(FloatNum x, FloatNum y) {   \
+    return RoundingBase::name##_up(x,y);          \
   }
 
   GECODE_ROUND_OP(add)
@@ -64,14 +66,14 @@ namespace Gecode { namespace Float {
 
 #undef GECODE_ROUND_OP
 
-#define GECODE_ROUND_FUN(name)                  \
-  forceinline FloatNum                          \
-  Rounding::name##_down(FloatNum x) {       \
-    return Base::name##_down(x);                \
-  }                                             \
-  forceinline FloatNum                          \
-  Rounding::name##_up(FloatNum x) {         \
-    return Base::name##_up(x);                  \
+#define GECODE_ROUND_FUN(name) \
+  forceinline FloatNum                   \
+  Rounding::name##_down(FloatNum x) {    \
+    return RoundingBase::name##_down(x); \
+  }                                      \
+  forceinline FloatNum                   \
+  Rounding::name##_up(FloatNum x) {      \
+    return RoundingBase::name##_up(x);   \
   }
 
   GECODE_ROUND_FUN(sqrt)

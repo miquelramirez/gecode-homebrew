@@ -7,8 +7,8 @@
 #     Christian Schulte, 2010
 #
 #  Last modified:
-#     $Date: 2013-03-27 14:22:50 +0100 (Wed, 27 Mar 2013) $ by $Author: schulte $
-#     $Revision: 13558 $
+#     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#     $Revision: 15073 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -67,7 +67,7 @@ if (open (INMANIFEST, "<", $file)) {
   while ($l = <INMANIFEST>) {
     print OUTMANIFEST $l;
     if ($l =~ /\<assembly /) {
-      print OUTMANIFEST "  <assemblyIdentity type=\"win32\"\n"; 
+      print OUTMANIFEST "  <assemblyIdentity type=\"win32\"\n";
       print OUTMANIFEST "                    name=\"Gecode.$type.$name\"\n";
       print OUTMANIFEST "                    version=\"$revx.$revy.$revz.0\"\n";
       print OUTMANIFEST "                    processorArchitecture=\"$arch\"\n";

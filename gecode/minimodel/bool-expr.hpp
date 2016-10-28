@@ -7,8 +7,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2011-11-09 20:41:02 +1100 (Wed, 09 Nov 2011) $ by $Author: tack $
- *     $Revision: 12460 $
+ *     $Date: 2016-04-25 14:27:08 +0200 (Mon, 25 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14983 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,14 +42,8 @@ namespace Gecode {
    *
    */
 
-  forceinline void*
-  BoolExpr::MiscExpr::operator new(size_t size) {
-    return heap.ralloc(size);
-  }
-  forceinline void
-  BoolExpr::MiscExpr::operator delete(void* p, size_t) {
-    heap.rfree(p);
-  }
+  forceinline
+  BoolExpr::Misc::Misc(void) {}
 
 }
 

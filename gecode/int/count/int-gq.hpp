@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2011-08-29 22:59:24 +1000 (Mon, 29 Aug 2011) $ by $Author: schulte $
- *     $Revision: 12359 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -123,7 +123,7 @@ namespace Gecode { namespace Int { namespace Count {
       return home.ES_SUBSUMED(*this);
     if (c == n_x) {
       // All views must be equal
-      GECODE_ES_CHECK(post_true(home,x,y)); 
+      GECODE_ES_CHECK(post_true(home,x,y));
       return home.ES_SUBSUMED(*this);
     }
     // Now, there must be new subscriptions from x[n_s] up to x[c+1]

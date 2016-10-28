@@ -7,8 +7,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2012-03-30 10:56:07 +1100 (Fri, 30 Mar 2012) $ by $Author: tack $
- *     $Revision: 12663 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -47,7 +47,7 @@ namespace Gecode {
 
   forceinline
   IntArgs::IntArgs(int n) : PrimArgArray<int>(n) {}
-  
+
   forceinline
   IntArgs::IntArgs(const SharedArray<int>& x)
     : PrimArgArray<int>(x.size()) {
@@ -61,10 +61,10 @@ namespace Gecode {
   forceinline
   IntArgs::IntArgs(InputIterator first, InputIterator last)
   : PrimArgArray<int>(first,last) {}
-  
+
   forceinline
   IntArgs::IntArgs(int n, const int* e) : PrimArgArray<int>(n, e) {}
-  
+
   forceinline
   IntArgs::IntArgs(const PrimArgArray<int>& a) : PrimArgArray<int>(a) {}
 

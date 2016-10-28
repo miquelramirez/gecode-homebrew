@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2013-07-11 12:30:18 +0200 (Thu, 11 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13840 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -61,6 +61,8 @@ namespace Gecode { namespace Search {
     virtual Search::Statistics statistics(void) const;
     /// Check whether engine has been stopped
     virtual bool stopped(void) const;
+    /// Constrain future solutions to be better than \a b
+    virtual void constrain(const Space& b);
     /// Reset engine to restart at space \a s
     virtual void reset(Space* s);
     /// Return no-goods
@@ -74,22 +76,22 @@ namespace Gecode { namespace Search {
     return o.clone ? s->clone(share) : s;
   }
 
-  
+
   template<class Worker>
-  WorkerToEngine<Worker>::WorkerToEngine(Space* s, const Options& o) 
+  WorkerToEngine<Worker>::WorkerToEngine(Space* s, const Options& o)
     : w(s,o) {}
   template<class Worker>
-  Space* 
+  Space*
   WorkerToEngine<Worker>::next(void) {
     return w.next();
   }
   template<class Worker>
-  Search::Statistics 
+  Search::Statistics
   WorkerToEngine<Worker>::statistics(void) const {
     return w.statistics();
   }
   template<class Worker>
-  bool 
+  bool
   WorkerToEngine<Worker>::stopped(void) const {
     return w.stopped();
   }
@@ -98,7 +100,11 @@ namespace Gecode { namespace Search {
   WorkerToEngine<Worker>::reset(Space* s) {
     w.reset(s);
   }
-
+  template<class Worker>
+  void
+  WorkerToEngine<Worker>::constrain(const Space& b) {
+    w.constrain(b);
+  }
   template<class Worker>
   NoGoods&
   WorkerToEngine<Worker>::nogoods(void) {

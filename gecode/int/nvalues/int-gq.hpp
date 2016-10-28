@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -69,7 +69,7 @@ namespace Gecode { namespace Int { namespace NValues {
       assert(y.assigned());
       return Distinct::Dom<IntView>::post(home,x);
     }
-    
+
     // Eliminate assigned views and store them into the value set
     ValSet vs;
     int n = x.size();
@@ -91,7 +91,7 @@ namespace Gecode { namespace Int { namespace NValues {
     (void) new (home) GqInt<VY>(home, vs, x, y);
     return ES_OK;
   }
-    
+
   template<class VY>
   forceinline
   GqInt<VY>::GqInt(Space& home, bool share, GqInt<VY>& p)
@@ -119,12 +119,12 @@ namespace Gecode { namespace Int { namespace NValues {
 
     if (vs.size() >= y.max())
       return home.ES_SUBSUMED(*this);
-      
+
     GECODE_ES_CHECK(prune_upper(home,g));
 
     return ES_NOFIX;
   }
-  
+
 }}}
 
 // STATISTICS: int-prop

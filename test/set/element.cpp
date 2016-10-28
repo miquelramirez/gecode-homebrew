@@ -7,8 +7,8 @@
  *     Guido Tack, 2005
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-10-24 01:28:34 +0200 (Mon, 24 Oct 2016) $ by $Author: tack $
+ *     $Revision: 15224 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -78,13 +78,13 @@ namespace Test { namespace Set {
           }
           sel[i].init(x.lub, x[selector.val()]);
         }
-        
+
         FakeSpace* fs = new FakeSpace;
         bool ret;
         {
           Region r(*fs);
           Iter::Ranges::NaryUnion u(r, sel, selected);
-          
+
           CountableSetRanges z(x.lub, x[4]);
           ret = Iter::Ranges::equal(u, z);
         }
@@ -227,7 +227,7 @@ namespace Test { namespace Set {
         {
           Region r(*fs);
           Iter::Ranges::NaryInter u(r,sel, selected);
-          
+
           CountableSetRanges z(x.lub, x[4]);
           ret = Iter::Ranges::equal(u, z);
         }
@@ -240,7 +240,7 @@ namespace Test { namespace Set {
         SetVarArgs xs(x.size()-2);
         for (int i=x.size()-2; i--;)
           xs[i]=x[i];
-        Gecode::element(home, SOT_INTER, xs, x[x.size()-2], x[x.size()-1], 
+        Gecode::element(home, SOT_INTER, xs, x[x.size()-2], x[x.size()-1],
           ds_12);
       }
     };
@@ -275,7 +275,7 @@ namespace Test { namespace Set {
           CountableSetRanges xicard(x.lub, x[selector.val()]);
           cardsum += Iter::Ranges::size(xicard);
         }
-        
+
         bool ret;
         FakeSpace* fs = new FakeSpace;
         {
@@ -360,7 +360,7 @@ namespace Test { namespace Set {
      public:
        /// Create and register test
        MatrixIntSet(void)
-         : SetTest("Element::Matrix::IntSet",1,IntSet(0,3),false,2), 
+         : SetTest("Element::Matrix::IntSet",1,IntSet(0,3),false,2),
            tm(4) {
          tm[0]=IntSet(0,0); tm[1]=IntSet(1,1);
          tm[2]=IntSet(2,2); tm[3]=IntSet(3,3);

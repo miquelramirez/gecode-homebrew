@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2015-01-21 06:48:23 +1100 (Wed, 21 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14369 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -105,7 +105,7 @@ namespace Test { namespace Float {
        FloatVarXX(Gecode::FloatRelType frt0, Gecode::FloatNum st)
          : Test("Rel::Float::Var::XX::"+str(frt0),
                 1,-3,3,st,CPLT_ASSIGNMENT,true),
-           frt(frt0) { 
+           frt(frt0) {
          testsubsumed = false;
        }
        /// %Test whether \a x is solution
@@ -132,7 +132,7 @@ namespace Test { namespace Float {
        Gecode::FloatVal c;
      public:
        /// Create and register test
-       FloatFloat(Gecode::FloatRelType frt0, int n, Gecode::FloatNum c0, 
+       FloatFloat(Gecode::FloatRelType frt0, int n, Gecode::FloatNum c0,
                   Gecode::FloatNum st)
          : Test("Rel::Float::Float::"+str(frt0)+"::"+str(n)+"::"+str(c0),
                 n,-3,3,st,CPLT_ASSIGNMENT,n==1),

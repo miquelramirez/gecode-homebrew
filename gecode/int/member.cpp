@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-11-19 02:02:48 +1100 (Sat, 19 Nov 2011) $ by $Author: schulte $
- *     $Revision: 12472 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -41,9 +41,9 @@ namespace Gecode {
 
   void
   member(Home home, const IntVarArgs& x, IntVar y,
-         IntConLevel) {
+         IntPropLevel) {
     using namespace Int;
-    if (home.failed()) return;
+    GECODE_POST;
 
     ViewArray<IntView> xv(home,x);
     GECODE_ES_FAIL(Member::Prop<IntView>::post(home,xv,y));
@@ -51,9 +51,9 @@ namespace Gecode {
 
   void
   member(Home home, const BoolVarArgs& x, BoolVar y,
-         IntConLevel) {
+         IntPropLevel) {
     using namespace Int;
-    if (home.failed()) return;
+    GECODE_POST;
 
     ViewArray<BoolView> xv(home,x);
     GECODE_ES_FAIL(Member::Prop<BoolView>::post(home,xv,y));
@@ -61,16 +61,16 @@ namespace Gecode {
 
   void
   member(Home home, const IntVarArgs& x, IntVar y, Reify r,
-         IntConLevel) {
+         IntPropLevel) {
     using namespace Int;
-    if (home.failed()) return;
+    GECODE_POST;
 
     ViewArray<IntView> xv(home,x);
 
     switch (r.mode()) {
     case RM_EQV:
       GECODE_ES_FAIL((Member::ReProp<IntView,RM_EQV>
-                      ::post(home,xv,y,r.var()))); 
+                      ::post(home,xv,y,r.var())));
       break;
     case RM_IMP:
       GECODE_ES_FAIL((Member::ReProp<IntView,RM_IMP>
@@ -86,16 +86,16 @@ namespace Gecode {
 
   void
   member(Home home, const BoolVarArgs& x, BoolVar y, Reify r,
-         IntConLevel) {
+         IntPropLevel) {
     using namespace Int;
-    if (home.failed()) return;
+    GECODE_POST;
 
     ViewArray<BoolView> xv(home,x);
 
     switch (r.mode()) {
     case RM_EQV:
       GECODE_ES_FAIL((Member::ReProp<BoolView,RM_EQV>
-                      ::post(home,xv,y,r.var()))); 
+                      ::post(home,xv,y,r.var())));
       break;
     case RM_IMP:
       GECODE_ES_FAIL((Member::ReProp<BoolView,RM_IMP>

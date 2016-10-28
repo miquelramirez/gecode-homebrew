@@ -7,8 +7,8 @@
  *     Christian Schulte, 2001
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -94,7 +94,7 @@ public:
         rel(*this, d[k] = expr(*this, m[j]-m[i]),
                    IRT_GQ, (j-i)*(j-i+1)/2);
 
-    distinct(*this, d, opt.icl());
+    distinct(*this, d, opt.ipl());
 
     // Symmetry breaking
     if (n > 2)
@@ -134,7 +134,7 @@ main(int argc, char* argv[]) {
   SizeOptions opt("GolombRuler");
   opt.solutions(0);
   opt.size(10);
-  opt.icl(ICL_BND);
+  opt.ipl(IPL_BND);
   opt.parse(argc,argv);
   if (opt.size() > 0)
     IntMinimizeScript::run<GolombRuler,BAB,SizeOptions>(opt);

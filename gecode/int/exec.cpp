@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:40:32 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10365 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,30 +42,30 @@ namespace Gecode {
 
   void
   wait(Home home, IntVar x, void (*c)(Space& home),
-       IntConLevel) {
-    if (home.failed()) return;
+       IntPropLevel) {
+    GECODE_POST;
     GECODE_ES_FAIL(Kernel::UnaryWait<Int::IntView>::post(home,x,c));
   }
 
   void
   wait(Home home, BoolVar x, void (*c)(Space& home),
-       IntConLevel) {
-    if (home.failed()) return;
+       IntPropLevel) {
+    GECODE_POST;
     GECODE_ES_FAIL(Kernel::UnaryWait<Int::BoolView>::post(home,x,c));
   }
 
   void
   wait(Home home, const IntVarArgs& x, void (*c)(Space& home),
-       IntConLevel) {
-    if (home.failed()) return;
+       IntPropLevel) {
+    GECODE_POST;
     ViewArray<Int::IntView> xv(home,x);
     GECODE_ES_FAIL(Kernel::NaryWait<Int::IntView>::post(home,xv,c));
   }
 
   void
   wait(Home home, const BoolVarArgs& x, void (*c)(Space& home),
-       IntConLevel) {
-    if (home.failed()) return;
+       IntPropLevel) {
+    GECODE_POST;
     ViewArray<Int::BoolView> xv(home,x);
     GECODE_ES_FAIL(Kernel::NaryWait<Int::BoolView>::post(home,xv,c));
   }
@@ -73,8 +73,8 @@ namespace Gecode {
   void
   when(Home home, BoolVar x,
        void (*t)(Space& home), void (*e)(Space& home),
-       IntConLevel) {
-    if (home.failed()) return;
+       IntPropLevel) {
+    GECODE_POST;
     GECODE_ES_FAIL(Int::Exec::When::post(home,x,t,e));
   }
 

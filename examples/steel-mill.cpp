@@ -7,8 +7,8 @@
  *     Mikael Lagerkvist, 2008
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-05-26 13:44:53 +0200 (Thu, 26 May 2016) $ by $Author: schulte $
+ *     $Revision: 15087 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -227,7 +227,7 @@ public:
     }
     // Redundant packing constraint
     int totalweight = 0;
-    for (unsigned int i = norders; i-- ; ) 
+    for (unsigned int i = norders; i-- ; )
        totalweight += orders[i][order_weight] ;
     linear(*this, slabload, IRT_EQ, totalweight);
 
@@ -409,7 +409,7 @@ public:
       unsigned int pos = start;
       for (unsigned int i = start; i<sm.norders; ++i) {
         if (!sm.slab[i].assigned()) {
-          if (sm.slab[i].size() == size && 
+          if (sm.slab[i].size() == size &&
               sm.orders[i][order_weight] > weight) {
             weight = sm.orders[i][order_weight];
             pos = i;
@@ -447,7 +447,7 @@ public:
           ? ES_FAILED : ES_OK;
     }
     /// Print explanation
-    virtual void print(const Space&, const Gecode::Choice& _c, 
+    virtual void print(const Space&, const Gecode::Choice& _c,
                        unsigned int a,
                        std::ostream& o) const {
       const Choice& c = static_cast<const Choice&>(_c);
@@ -460,8 +460,8 @@ public:
       return new (home) SteelMillBranch(home, share, *this);
     }
     /// Post brancher
-    static BrancherHandle post(Home home) {
-      return *new (home) SteelMillBranch(home);
+    static void post(Home home) {
+      (void) new (home) SteelMillBranch(home);
     }
     /// Delete brancher and return its size
     virtual size_t dispose(Space&) {

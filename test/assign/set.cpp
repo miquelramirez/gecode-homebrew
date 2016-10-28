@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2010-04-08 20:35:31 +1000 (Thu, 08 Apr 2010) $ by $Author: schulte $
- *     $Revision: 10684 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -55,7 +55,7 @@ namespace Test { namespace Assign {
       Gecode::rel(home, Gecode::SOT_UNION, y, x[x.size()-1]);
     }
   };
-    
+
   namespace {
     Gecode::IntArgs s(5, -100,-10,0,10,100);
     Set d_3("Dense::3",Gecode::IntSet(-2,2),3);

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-05-23 00:48:57 +1000 (Thu, 23 May 2013) $ by $Author: schulte $
- *     $Revision: 13654 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -72,7 +72,7 @@ namespace Gecode {
   /**
    * \brief Generic brancher by view selection
    *
-   * Defined for views of type \a View and \a n view selectors for 
+   * Defined for views of type \a View and \a n view selectors for
    * tie-breaking.
    */
   template<class View, int n>

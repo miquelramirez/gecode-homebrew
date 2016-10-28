@@ -7,8 +7,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-05 07:28:39 +1100 (Tue, 05 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13262 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -51,7 +51,7 @@ void aSinProject(Rounding& r, const V& aSinIv, FloatNum& iv_min, FloatNum& iv_ma
   #define POS(X) ((I0__PI_2I.in(X))?0: (IPI_2__PII.in(X))?1: (IPI__3PI_2I.in(X))?2: 3 )
   #define ASININF_DOWN r.asin_down(aSinIv.min())
   #define ASINSUP_UP r.asin_up(aSinIv.max())
-  
+
   // 0 <=> in [0;PI/2]
   // 1 <=> in [PI/2;PI]
   // 2 <=> in [PI;3*PI/2]
@@ -134,7 +134,7 @@ void aSinProject(Rounding& r, const V& aSinIv, FloatNum& iv_min, FloatNum& iv_ma
       GECODE_ME_CHECK(x1.lq(home,1.0));
       (void) new (home) Sin<A,B>(home,x0,x1);
     }
-    
+
     return ES_OK;
   }
 

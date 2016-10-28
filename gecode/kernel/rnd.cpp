@@ -9,8 +9,8 @@
  *     Mikael Lagerkvist, 2008
  *
  *  Last modified:
- *     $Date: 2012-09-07 19:29:57 +1000 (Fri, 07 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13061 $
+ *     $Date: 2016-06-19 22:08:39 +0200 (Sun, 19 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15119 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -41,16 +41,19 @@
 
 namespace Gecode {
 
+  forceinline
+  Rnd::IMP::IMP(unsigned int s)
+    : rg(s) {}
+
+  Rnd::IMP::~IMP(void) {}
+
   SharedHandle::Object*
   Rnd::IMP::copy(void) const {
     return new IMP(rg.seed());
   }
 
-  Rnd::Rnd(unsigned int s) {
-    object(new IMP(s));
-  }
-  void
-  Rnd::seed(unsigned int s) {
+  forceinline void
+  Rnd::_seed(unsigned int s) {
     if (object() == NULL) {
       object(new IMP(s));
     } else {
@@ -58,6 +61,31 @@ namespace Gecode {
     }
   }
 
+  Rnd::Rnd(void) {}
+  Rnd::Rnd(unsigned int s) {
+    object(new IMP(s));
+  }
+  Rnd::Rnd(const Rnd& r)
+    : SharedHandle(r) {}
+  Rnd&
+  Rnd::operator =(const Rnd& r) {
+    (void) SharedHandle::operator =(r);
+    return *this;
+  }
+  Rnd::~Rnd(void) {}
+
+  void
+  Rnd::seed(unsigned int s) {
+    _seed(s);
+  }
+  void
+  Rnd::time(void) {
+    _seed(static_cast<unsigned int>(::time(NULL)));
+  }
+  void
+  Rnd::hw(void) {
+    seed(Support::hwrnd());
+  }
 }
 
 // STATISTICS: kernel-other

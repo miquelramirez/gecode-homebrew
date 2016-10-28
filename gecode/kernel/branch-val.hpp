@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2012-09-19 23:14:28 +1000 (Wed, 19 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13103 $
+ *     $Date: 2016-06-19 22:08:39 +0200 (Sun, 19 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15119 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -65,22 +65,22 @@ namespace Gecode {
   };
 
 
-  forceinline 
-  ValBranch::ValBranch(void) 
+  forceinline
+  ValBranch::ValBranch(void)
     : vf(NULL), cf(NULL) {}
-  
-  forceinline 
+
+  forceinline
   ValBranch::ValBranch(Rnd r0)
     : r(r0), vf(NULL), cf(NULL) {
     if (!r.initialized())
       throw UninitializedRnd("ValBranch::ValBranch");
   }
 
-  forceinline 
+  forceinline
   ValBranch::ValBranch(VoidFunction v, VoidFunction c)
     : vf(v), cf(c) {}
 
-  forceinline Rnd
+  inline Rnd
   ValBranch::rnd(void) const {
     return r;
   }

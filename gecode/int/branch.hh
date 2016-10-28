@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-07-08 19:23:25 +0200 (Mon, 08 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13827 $
+ *     $Date: 2016-05-26 13:44:53 +0200 (Thu, 26 May 2016) $ by $Author: schulte $
+ *     $Revision: 15087 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -54,7 +54,7 @@ namespace Gecode { namespace Int { namespace Branch {
    * views that can be used together with the generic view/value
    * brancher classes.
    *
-   * All merit-based view selection classes require 
+   * All merit-based view selection classes require
    * \code #include <gecode/int/branch.hh> \endcode
    * \ingroup Other
    */
@@ -233,7 +233,7 @@ namespace Gecode { namespace Int { namespace Branch {
    * views that can be used together with the generic view/value
    * branchers.
    *
-   * All value selection classes require 
+   * All value selection classes require
    * \code #include <gecode/int/branch.hh> \endcode
    * \ingroup Other
    */
@@ -501,7 +501,7 @@ namespace Gecode { namespace Int { namespace Branch {
    * views that can be used together with the generic view/value
    * branchers.
    *
-   * All value commit classes require 
+   * All value commit classes require
    * \code #include <gecode/int/branch.hh> \endcode
    * \ingroup Other
    */
@@ -602,22 +602,22 @@ namespace Gecode { namespace Int { namespace Branch {
 
   /// Return value and commit for integer views
   GECODE_INT_EXPORT
-  ValSelCommitBase<IntView,int>* 
+  ValSelCommitBase<IntView,int>*
   valselcommitint(Space& home, int n, const IntValBranch& ivb);
 
   /// Return value and commit for Boolean views
   GECODE_INT_EXPORT
-  ValSelCommitBase<BoolView,int>* 
+  ValSelCommitBase<BoolView,int>*
   valselcommitbool(Space& home, int n, const IntValBranch& ivb);
 
   /// Return value and commit for integer views
   GECODE_INT_EXPORT
-  ValSelCommitBase<IntView,int>* 
+  ValSelCommitBase<IntView,int>*
   valselcommitint(Space& home, const IntAssign& ia);
 
   /// Return value and commit for Boolean views
   GECODE_INT_EXPORT
-  ValSelCommitBase<BoolView,int>* 
+  ValSelCommitBase<BoolView,int>*
   valselcommitbool(Space& home, const IntAssign& ia);
 
 }}}
@@ -639,7 +639,7 @@ namespace Gecode { namespace Int { namespace Branch {
     ViewValuesBrancher(Space& home, bool shared, ViewValuesBrancher& b);
     /// Constructor for creation
     ViewValuesBrancher(Home home, ViewArray<IntView>& x,
-                       ViewSel<IntView>* vs[n], 
+                       ViewSel<IntView>* vs[n],
                        BranchFilter bf, IntVarValPrint vvp);
   public:
     /// Return choice
@@ -662,9 +662,9 @@ namespace Gecode { namespace Int { namespace Branch {
     /// Perform cloning
     virtual Actor* copy(Space& home, bool share);
     /// Constructor for creation
-    static BrancherHandle post(Home home, ViewArray<IntView>& x,
-                               ViewSel<IntView>* vs[n], 
-                               BranchFilter bf, IntVarValPrint vvp);
+    static void post(Home home, ViewArray<IntView>& x,
+                     ViewSel<IntView>* vs[n],
+                     BranchFilter bf, IntVarValPrint vvp);
   };
 
 }}}

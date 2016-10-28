@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2010-04-08 20:35:31 +1000 (Thu, 08 Apr 2010) $ by $Author: schulte $
- *     $Revision: 10684 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -53,7 +53,7 @@ namespace Test { namespace Int {
      class IntWait : public Test {
      public:
        /// Create and register test
-       IntWait(int n) 
+       IntWait(int n)
          : Test("Wait::Int::"+str(n),n,0,n,false) {}
        /// Check whether \a x is solution
        virtual bool solution(const Assignment& x) const {
@@ -84,7 +84,7 @@ namespace Test { namespace Int {
      class BoolWait : public Test {
      public:
        /// Create and register test
-       BoolWait(int n) 
+       BoolWait(int n)
          : Test("Wait::Bool::"+str(n),n,0,1,false) {}
        /// Check whether \a x is solution
        virtual bool solution(const Assignment& x) const {

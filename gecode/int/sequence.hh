@@ -7,8 +7,8 @@
  *     David Rijsman, 2009
  *
  *  Last modified:
- *     $Date: 2010-04-08 12:35:31 +0200 (Thu, 08 Apr 2010) $
- *     $Revision: 10684 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -50,15 +50,15 @@ namespace Gecode { namespace Int { namespace Sequence {
    * This namespace contains a propagator for the
    * cumulatives constraint as presented in
    * Willem Jan van Hoeve, Gilles Pesant, Louis-Martin Rousseau, and
-   * Ashish Sabharwal, New filtering algorithms for combinations of 
+   * Ashish Sabharwal, New filtering algorithms for combinations of
    * among constraints. Constraints, 14(2), 273-292, 2009.
    *
    */
 
-  template<class View> 
+  template<class View>
   class SupportAdvisor;
 
-  template<class View,class Val,bool iss> 
+  template<class View,class Val,bool iss>
   class ViewValSupport;
 
   /**
@@ -113,13 +113,15 @@ namespace Gecode { namespace Int { namespace Sequence {
     virtual Actor* copy(Space& home, bool share);
     /// Advise function
     ExecStatus advise(Space& home, Advisor& _a, const Delta& d);
-    /// Cost function 
+    /// Cost function
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Perform propagation
     virtual ExecStatus propagate(Space& home, const ModEventDelta& med);
-    /// Post propagator for 
+    /// Post propagator for
     static  ExecStatus post(Home home, ViewArray<View>& x, Val s, int q, int l, int u);
-    /// Check for consistency 
+    /// Check for consistency
     static  ExecStatus check(Space& home, ViewArray<View>& x, Val s, int q, int l, int u);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
@@ -140,6 +142,8 @@ namespace Gecode { namespace Int { namespace Sequence {
     ViewValSupportArray<View,Val,false> vvsamin;
     /// Council for advisors
     Council<SupportAdvisor<View> > ac;
+    /// Whether to fail when being rescheduled
+    bool tofail;
   };
 
 }}}

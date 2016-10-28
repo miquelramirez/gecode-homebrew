@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2013-02-15 02:29:11 +1100 (Fri, 15 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13292 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -416,6 +416,11 @@ namespace Gecode { namespace Int {
   BoolVarImp::schedule(Space& home, Propagator& p, ModEvent me) {
     if (me == ME_GEN_ASSIGNED)
       BoolVarImpBase::schedule(home,p,me);
+  }
+
+  forceinline void
+  BoolVarImp::reschedule(Space& home, Propagator& p, PropCond) {
+    BoolVarImpBase::reschedule(home,p,PC_BOOL_VAL,assigned());
   }
 
   forceinline ModEventDelta

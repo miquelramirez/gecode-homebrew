@@ -7,8 +7,8 @@
  *     Guido Tack, 2007
  *
  *  Last modified:
- *     $Date: 2014-08-07 05:31:59 +0200 (Thu, 07 Aug 2014) $ by $Author: tack $
- *     $Revision: 14189 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -60,7 +60,7 @@ namespace Gecode { namespace FlatZinc {
     /// The actual registry
     std::map<std::string,poster> r;
   };
-  
+
   /// Return global registry object
   GECODE_FLATZINC_EXPORT Registry& registry(void);
 

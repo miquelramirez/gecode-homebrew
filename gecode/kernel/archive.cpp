@@ -7,8 +7,8 @@
  *     Guido Tack, 2011
  *
  *  Last modified:
- *     $Date: 2011-05-11 20:44:17 +1000 (Wed, 11 May 2011) $ by $Author: tack $
- *     $Revision: 12001 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -45,12 +45,12 @@ namespace Gecode {
     _a = heap.realloc<unsigned int>(_a,_n,m);
     _size = m;
   }
-  
+
   Archive::Archive(const Archive& e) : _size(e._n), _n(e._n), _pos(e._pos) {
     _a = heap.alloc<unsigned int>(_n);
     heap.copy<unsigned int>(_a,e._a,_n);
   }
-  
+
   Archive&
   Archive::operator =(const Archive& e) {
     if (this!=&e) {
@@ -60,7 +60,7 @@ namespace Gecode {
     }
     return *this;
   }
-  
+
   Archive::~Archive(void) {
     heap.free<unsigned int>(_a,_size);
   }

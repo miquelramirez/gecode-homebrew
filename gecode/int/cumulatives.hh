@@ -7,8 +7,8 @@
  *     Mikael Lagerkvist, 2005
  *
  *  Last modified:
- *     $Date: 2011-07-13 14:17:55 +0200 (Wed, 13 Jul 2011) $ by $Author: tack $
- *     $Revision: 12188 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -111,6 +111,8 @@ namespace Gecode { namespace Int { namespace Cumulatives {
     virtual Actor* copy(Space& home, bool share);
     /// Cost function (defined as low quadratic)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Perform propagation
     virtual ExecStatus propagate(Space& home, const ModEventDelta& med);
     /// Post propagator

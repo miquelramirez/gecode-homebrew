@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-08-11 19:59:30 +1000 (Thu, 11 Aug 2011) $ by $Author: schulte $
- *     $Revision: 12270 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,7 +39,7 @@ namespace Gecode { namespace Int { namespace NValues {
 
   template<class VY>
   forceinline
-  BoolBase<VY>::BoolBase(Home home, 
+  BoolBase<VY>::BoolBase(Home home,
                          int status0, ViewArray<BoolView>& x, VY y0)
     : Propagator(home), status(status0), c(home), y(y0) {
     y.subscribe(home,*this,PC_INT_BND);
@@ -61,6 +61,12 @@ namespace Gecode { namespace Int { namespace NValues {
   PropCost
   BoolBase<VY>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::unary(PropCost::LO);
+  }
+
+  template<class VY>
+  void
+  BoolBase<VY>::reschedule(Space& home) {
+    y.reschedule(home,*this,PC_INT_BND);
   }
 
   template<class VY>

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -297,11 +297,11 @@ namespace Gecode { namespace Int { namespace Arithmetic {
     Iter::Ranges::Union<ViewRanges<View>,ViewRanges<View> > u(r0,r1);
     GECODE_ME_CHECK(x2.inter_r(home,u,false));
     if (rtest_nq_dom(x0,x2) == RT_TRUE) {
-      GECODE_ES_CHECK(Rel::Lq<View>::post(home,x0,x2));
+      GECODE_ES_CHECK(Rel::Lq<View>::post(Home(home),x0,x2));
       GECODE_REWRITE(*this,(Rel::EqDom<View,View>::post(home(*this),x1,x2)));
     }
     if (rtest_nq_dom(x1,x2) == RT_TRUE) {
-      GECODE_ES_CHECK(Rel::Lq<View>::post(home,x1,x2));
+      GECODE_ES_CHECK(Rel::Lq<View>::post(Home(home),x1,x2));
       GECODE_REWRITE(*this,(Rel::EqDom<View,View>::post(home(*this),x0,x2)));
     }
     return ES_FIX;
@@ -387,7 +387,7 @@ namespace Gecode { namespace Int { namespace Arithmetic {
     GECODE_ME_CHECK(y.inter_r(home,u,false));
     for (int i = x.size(); i--; )
       if (rtest_nq_dom(x[i],y) == RT_TRUE) {
-        GECODE_ES_CHECK(Rel::Lq<View>::post(home,x[i],y));
+        GECODE_ES_CHECK(Rel::Lq<View>::post(Home(home),x[i],y));
         x.move_lst(i,home,*this,PC_INT_DOM);
       }
     assert(x.size() > 0);

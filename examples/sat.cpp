@@ -9,8 +9,8 @@
  *     Guido Tack, 2008
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -118,7 +118,7 @@ private:
   BoolVarArray x;
 public:
   /// The actual problem
-  Sat(const SatOptions& opt) 
+  Sat(const SatOptions& opt)
     : Script(opt) {
     parseDIMACS(opt.filename.c_str());
     branch(*this, x, INT_VAR_NONE(), INT_VAL_MIN());

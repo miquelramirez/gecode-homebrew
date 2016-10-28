@@ -7,8 +7,8 @@
  *     Guido Tack, 2007
  *
  *  Last modified:
- *     $Date: 2012-03-30 05:58:02 +0200 (Fri, 30 Mar 2012) $ by $Author: tack $
- *     $Revision: 12665 $
+ *     $Date: 2016-08-26 02:40:17 +0200 (Fri, 26 Aug 2016) $ by $Author: tack $
+ *     $Revision: 15154 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -85,7 +85,7 @@ namespace Gecode { namespace FlatZinc {
     }
     IntVarSpec(int i0, bool introduced, bool funcDep)
     : VarSpec(introduced,funcDep) {
-      alias = false; assigned = true; i = i0;
+      alias = false; assigned = true; i = i0; domain = Option<AST::SetLit* >::none();
     }
     IntVarSpec(const Alias& eq, bool introduced, bool funcDep)
     : VarSpec(introduced,funcDep) {
@@ -107,7 +107,7 @@ namespace Gecode { namespace FlatZinc {
     }
     BoolVarSpec(bool b, bool introduced, bool funcDep)
     : VarSpec(introduced,funcDep) {
-      alias = false; assigned = true; i = b;
+      alias = false; assigned = true; i = b; domain = Option<AST::SetLit* >::none();
     }
     BoolVarSpec(const Alias& eq, bool introduced, bool funcDep)
     : VarSpec(introduced,funcDep) {

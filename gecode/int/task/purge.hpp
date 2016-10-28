@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2011-07-13 02:03:22 +1000 (Wed, 13 Jul 2011) $ by $Author: tack $
- *     $Revision: 12176 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -37,26 +37,26 @@
 
 namespace Gecode { namespace Int {
 
-  template<class OptTask, PropCond pc>
+  template<class OptTask, class PL>
   ExecStatus
   purge(Space& home, Propagator& p, TaskArray<OptTask>& t) {
     int n=t.size();
     for (int i=n; i--; )
       if (t[i].excluded()) {
-        t[i].cancel(home,p,pc); t[i]=t[--n];
+        t[i].cancel(home,p,PL::pc); t[i]=t[--n];
       }
     t.size(n);
 
     return (t.size() < 2) ? home.ES_SUBSUMED(p) : ES_OK;
   }
 
-  template<class OptTask, PropCond pc, class Cap>
+  template<class OptTask, class PL, class Cap>
   ExecStatus
   purge(Space& home, Propagator& p, TaskArray<OptTask>& t, Cap c) {
     int n=t.size();
     for (int i=n; i--; )
       if (t[i].excluded()) {
-        t[i].cancel(home,p,pc); t[i]=t[--n];
+        t[i].cancel(home,p,PL::pc); t[i]=t[--n];
       }
     t.size(n);
     if (t.size() == 1) {
@@ -68,7 +68,7 @@ namespace Gecode { namespace Int {
 
     return (t.size() < 2) ? home.ES_SUBSUMED(p) : ES_OK;
   }
-  
+
 }}
 
 // STATISTICS: int-prop

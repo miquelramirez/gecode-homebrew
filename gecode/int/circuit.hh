@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2011-05-25 16:56:41 +0200 (Wed, 25 May 2011) $ by $Author: schulte $
- *     $Revision: 12022 $
+ *     $Date: 2016-08-26 11:14:49 +0200 (Fri, 26 Aug 2016) $ by $Author: schulte $
+ *     $Revision: 15156 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -59,6 +59,8 @@ namespace Gecode { namespace Int { namespace Circuit {
   class Base : public NaryPropagator<View,Int::PC_INT_DOM> {
   protected:
     using NaryPropagator<View,Int::PC_INT_DOM>::x;
+    /// Remember where to start the next time the propagator runs
+    int start;
     /// Array for performing value propagation for distinct
     ViewArray<View> y;
     /// Offset transformation
@@ -69,7 +71,7 @@ namespace Gecode { namespace Int { namespace Circuit {
     Base(Home home, ViewArray<View>& x, Offset& o);
     /// Check whether the view value graph is strongly connected
     ExecStatus connected(Space& home);
-    /// Ensure path property: prune edges that could give to small cycles
+    /// Ensure path property: prune edges that could give too small cycles
     ExecStatus path(Space& home);
   public:
     /// Delete propagator and return its size
@@ -143,6 +145,8 @@ namespace Gecode { namespace Int { namespace Circuit {
      * low linear. Otherwise it is high quadratic.
      */
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Perform propagation
     virtual ExecStatus propagate(Space& home, const ModEventDelta& med);
     /// Post propagator for circuit on \a x

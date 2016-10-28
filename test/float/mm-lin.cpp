@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-07 01:10:02 +1100 (Thu, 07 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13270 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -103,7 +103,7 @@ namespace Test { namespace Float {
      public:
        /// Create and register test
        LinExpr(const LinInstr* lis0, const std::string& s)
-         : Test("Float::","MiniModel::LinExpr::"+s,4,-3,3), 
+         : Test("Float::","MiniModel::LinExpr::"+s,4,-3,3),
            lis(lis0) {
          testfix = false;
        }
@@ -151,12 +151,12 @@ namespace Test { namespace Float {
          int r_reg[3] = {x[0],x[1],x[2]};
          int r = eval(r_lis,r_reg);
          switch (frt) {
-         case FRT_EQ: return l == r; 
-         case FRT_NQ: return l != r; 
-         case FRT_LE: return l < r; 
-         case FRT_GR: return l > r; 
-         case FRT_LQ: return l <= r; 
-         case FRT_GQ: return l >= r; 
+         case FRT_EQ: return l == r;
+         case FRT_NQ: return l != r;
+         case FRT_LE: return l < r;
+         case FRT_GR: return l > r;
+         case FRT_LQ: return l <= r;
+         case FRT_GQ: return l >= r;
          default: GECODE_NEVER;
          }
          return false;

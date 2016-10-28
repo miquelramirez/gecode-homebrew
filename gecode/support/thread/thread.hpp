@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2013-07-01 14:38:48 +1000 (Mon, 01 Jul 2013) $ by $Author: tack $
- *     $Revision: 13740 $
+ *     $Date: 2015-09-27 19:00:38 +0200 (Sun, 27 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14762 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -40,6 +40,17 @@ namespace Gecode { namespace Support {
   /*
    * Runnable objects
    */
+  forceinline
+  Runnable::Runnable(bool d0)
+    : d(d0) {}
+  forceinline void
+  Runnable::todelete(bool d0) {
+    d=d0;
+  }
+  forceinline bool
+  Runnable::todelete(void) const {
+    return d;
+  }
   forceinline void
   Runnable::operator delete(void* p) {
     heap.rfree(p);

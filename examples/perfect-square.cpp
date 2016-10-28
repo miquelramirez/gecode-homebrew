@@ -9,8 +9,8 @@
  *     Mikael Lagerkvist, 2005
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -200,7 +200,7 @@ public:
   };
   /// Actual model
   PerfectSquare(const SizeOptions& opt)
-    : Script(opt), 
+    : Script(opt),
       x(*this,specs[opt.size()][0],0,specs[opt.size()][1]-1),
       y(*this,specs[opt.size()][0],0,specs[opt.size()][1]-1) {
 

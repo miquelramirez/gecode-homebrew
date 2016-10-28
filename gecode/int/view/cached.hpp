@@ -7,8 +7,8 @@
  *     Guido Tack, 2011
  *
  *  Last modified:
- *     $Date: 2013-02-15 02:29:11 +1100 (Fri, 15 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13292 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -47,7 +47,7 @@ namespace Gecode { namespace Int {
   template<class View>
   forceinline
   CachedView<View>::CachedView(const View& y)
-    : DerivedView<View>(y), _firstRange(NULL), _lastRange(NULL), 
+    : DerivedView<View>(y), _firstRange(NULL), _lastRange(NULL),
       _size(0) {}
 
 
@@ -272,7 +272,7 @@ namespace Gecode { namespace Int {
       _firstRange = new (home) RangeList(y._firstRange->min(),
                                          y._firstRange->max(),NULL);
       RangeList* cur = _firstRange;
-      
+
       for (RangeList* y_cur = y._firstRange->next(); y_cur != NULL;
            y_cur = y_cur->next()) {
         RangeList* next =

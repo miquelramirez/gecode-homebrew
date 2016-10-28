@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2013-07-15 10:49:56 +1000 (Mon, 15 Jul 2013) $ by $Author: tack $
- *     $Revision: 13879 $
+ *     $Date: 2016-04-19 14:28:31 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14964 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,7 +39,6 @@
 
 namespace Gecode {
 
-  forceinline
   Heap::Heap(void)
 #ifdef GECODE_PEAKHEAP
   : _peak(0), _cur(0)

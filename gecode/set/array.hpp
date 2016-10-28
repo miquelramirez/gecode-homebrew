@@ -13,8 +13,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2010-04-19 04:43:13 +1000 (Mon, 19 Apr 2010) $ by $Author: tack $
- *     $Revision: 10771 $
+ *     $Date: 2016-06-27 14:37:04 +0200 (Mon, 27 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15129 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -47,6 +47,31 @@ namespace Gecode {
    * Implementation
    *
    */
+
+  forceinline
+  SetVarArgs::SetVarArgs(void) {}
+
+  forceinline
+  SetVarArgs::SetVarArgs(int n)
+    : VarArgArray<SetVar>(n) {}
+
+  forceinline
+  SetVarArgs::SetVarArgs(const SetVarArgs& a)
+    : VarArgArray<SetVar>(a) {}
+
+  forceinline
+  SetVarArgs::SetVarArgs(const VarArray<SetVar>& a)
+    : VarArgArray<SetVar>(a) {}
+
+  forceinline
+  SetVarArgs::SetVarArgs(const std::vector<SetVar>& a)
+    : VarArgArray<SetVar>(a) {}
+
+  template<class InputIterator>
+  forceinline
+  SetVarArgs::SetVarArgs(InputIterator first, InputIterator last)
+    : VarArgArray<SetVar>(first,last) {}
+
 
   forceinline
   SetVarArray::SetVarArray(void) {}

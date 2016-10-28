@@ -10,8 +10,8 @@
  *     Christopher Mears <chris.mears@monash.edu>
  *
  *  Last modified:
- *     $Date: 2013-03-07 12:18:29 +1100 (Thu, 07 Mar 2013) $ by $Author: mears $
- *     $Revision: 13455 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -83,15 +83,15 @@ namespace Gecode { namespace Iter { namespace Values {
 
   template<class BS>
   forceinline
-  BitSetOffset<BS>::BitSetOffset(const BS& bs0) 
+  BitSetOffset<BS>::BitSetOffset(const BS& bs0)
     : bs(bs0), cur(bs.next(bs0.offset())), limit(bs.offset()+bs.size()) {
   }
 
   template<class BS>
   forceinline
-  BitSetOffset<BS>::BitSetOffset(const BS& bs0, int n, int m) 
-    : bs(bs0), 
-      cur(bs.next(n)), 
+  BitSetOffset<BS>::BitSetOffset(const BS& bs0, int n, int m)
+    : bs(bs0),
+      cur(bs.next(n)),
       limit(std::min(bs.offset()+bs.size(),m+1)) {
   }
 

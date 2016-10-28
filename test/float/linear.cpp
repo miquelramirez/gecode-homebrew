@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-30 03:43:05 +1100 (Wed, 30 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13241 $
+ *     $Date: 2016-06-27 15:33:01 +0200 (Mon, 27 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15130 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -203,7 +203,8 @@ namespace Test { namespace Float {
            FloatVal f2(-3,-1);
            FloatVal f3(3,8);
 
-           FloatValArgs a1(1, 0.0);
+           FloatValArgs a1(1);
+           a1[0] = 0.0;
 
            for (FloatRelTypes frts; frts(); ++frts) {
              (void) new FloatFloat("11",f1,a1,frts.frt(),0.0,step);

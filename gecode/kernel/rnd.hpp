@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2012-09-07 19:29:57 +1000 (Fri, 07 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13061 $
+ *     $Date: 2016-06-19 22:08:39 +0200 (Sun, 19 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15119 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -58,19 +58,32 @@ namespace Gecode {
       GECODE_KERNEL_EXPORT
       virtual SharedHandle::Object* copy(void) const;
     };
+    /// Set the current seed to \a s (initializes if needed)
+    void _seed(unsigned int s);
   public:
     /// Default constructor that does not initialize the generator
+    GECODE_KERNEL_EXPORT
     Rnd(void);
-    /// Initialize with seed \a s
-    GECODE_KERNEL_EXPORT Rnd(unsigned int s);
     /// Initialize from generator \a r
+    GECODE_KERNEL_EXPORT
     Rnd(const Rnd& r);
+    /// Assignment operator
+    GECODE_KERNEL_EXPORT
+    Rnd& operator =(const Rnd& r);
+    /// Destructor
+    GECODE_KERNEL_EXPORT
+    ~Rnd(void);
+    /// Initialize with seed \a s
+    GECODE_KERNEL_EXPORT
+    Rnd(unsigned int s);
     /// Set the current seed to \a s (initializes if needed)
     GECODE_KERNEL_EXPORT
     void seed(unsigned int s);
     /// Set current seed based on time (initializes if needed)
+    GECODE_KERNEL_EXPORT
     void time(void);
     /// Set current seed to hardware-based random number (initializes if needed)
+    GECODE_KERNEL_EXPORT
     void hw(void);
     /// Return current seed
     unsigned int seed(void) const;
@@ -80,26 +93,6 @@ namespace Gecode {
     bool initialized(void) const;
   };
 
-  forceinline
-  Rnd::IMP::IMP(unsigned int s)
-    : rg(s) {}
-
-  forceinline
-  Rnd::IMP::~IMP(void) {}
-
-  forceinline
-  Rnd::Rnd(void) {}
-  forceinline
-  Rnd::Rnd(const Rnd& r)
-    : SharedHandle(r) {}
-  inline void
-  Rnd::time(void) {
-    seed(static_cast<unsigned int>(::time(NULL)));
-  }
-  inline void
-  Rnd::hw(void) {
-    seed(Support::hwrnd());
-  }
   forceinline unsigned int
   Rnd::seed(void) const {
     const IMP* i = static_cast<const IMP*>(object());

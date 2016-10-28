@@ -7,8 +7,8 @@
  *     Guido Tack, 2005
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-10-24 01:28:34 +0200 (Mon, 24 Oct 2016) $ by $Author: tack $
+ *     $Revision: 15224 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -186,7 +186,8 @@ namespace Test { namespace Set {
                   "::C"+str(withConst0 ? 1 : 0),
                   shared0 == 0 ? n0+1 : (shared0 <= 2 ? 3 : 2),ds_12,false)
         , sot(sot0), n(n0), shared(shared0), withConst(withConst0)
-        , is(0,1) {}
+        , is(0,1) {
+      }
       /// %Test whether \a x is solution
       bool solution(const SetAssignment& x) const {
         int realN = shared == 0 ? n : 3;
@@ -378,7 +379,8 @@ namespace Test { namespace Set {
                   "::C"+str(withConst0 ? 1 : 0),
                   1,ds_12,false,n0)
         , sot(sot0), n(n0), withConst(withConst0)
-        , is(0,1) {}
+        , is(0,1) {
+      }
       /// %Test whether \a x is solution
       bool solution(const SetAssignment& x) const {
         int* isrs = new int[n];

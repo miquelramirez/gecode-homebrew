@@ -11,8 +11,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2015-01-17 00:10:48 +1100 (Sat, 17 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14362 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -137,6 +137,14 @@ namespace Gecode { namespace Int { namespace Element {
     // above constructor, but this is then the only time this
     // virtual function is ever used!
     return PropCost::linear(PropCost::LO,iv.size()+2);
+  }
+
+  template<class VA, class VB, class VC, PropCond pc_ac>
+  void
+  View<VA,VB,VC,pc_ac>::reschedule(Space& home) {
+    x0.reschedule(home,*this,PC_INT_DOM);
+    x1.reschedule(home,*this,pc_ac);
+    iv.reschedule(home,*this,pc_ac);
   }
 
   template<class VA, class VB, class VC, PropCond pc_ac>
@@ -312,7 +320,7 @@ namespace Gecode { namespace Int { namespace Element {
                      (home,iv,x0,x1,*this,rt)));
     if (iv.size() == 1) {
       ExecStatus es = home.ES_SUBSUMED(*this);
-      (void) new (home) Rel::EqBnd<VA,VC>(home,iv[0].view,x1);
+      (void) new (home) Rel::EqBnd<VA,VC>(home(*this),iv[0].view,x1);
       return es;
     }
     assert(iv.size() > 1);
@@ -403,7 +411,7 @@ namespace Gecode { namespace Int { namespace Element {
                        (home,iv,x0,x1,*this,rt)));
       if (iv.size() == 1) {
         ExecStatus es = home.ES_SUBSUMED(*this);
-        (void) new (home) Rel::EqDom<VA,VC>(home,iv[0].view,x1);
+        (void) new (home) Rel::EqDom<VA,VC>(home(*this),iv[0].view,x1);
         return es;
       }
       // Compute new result
@@ -424,11 +432,11 @@ namespace Gecode { namespace Int { namespace Element {
                      (home,iv,x0,x1,*this,rt)));
     if (iv.size() == 1) {
       ExecStatus es = home.ES_SUBSUMED(*this);
-      (void) new (home) Rel::EqDom<VA,VC>(home,iv[0].view,x1);
+      (void) new (home) Rel::EqDom<VA,VC>(home(*this),iv[0].view,x1);
       return es;
     }
     assert(iv.size() > 1);
-    
+
     if (x1.assigned()) {
       for (int i = iv.size(); i--; )
         if (iv[i].view.in(x1.val()))

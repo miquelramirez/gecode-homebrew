@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-06-24 02:58:11 +1000 (Mon, 24 Jun 2013) $ by $Author: schulte $
- *     $Revision: 13729 $
+ *     $Date: 2016-06-19 22:08:39 +0200 (Sun, 19 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15119 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -37,19 +37,19 @@
 
 namespace Gecode {
 
-  forceinline 
+  forceinline
   IntValBranch::IntValBranch(Select s0)
     : s(s0) {}
 
-  forceinline 
+  forceinline
   IntValBranch::IntValBranch(Rnd r)
     : ValBranch(r), s(SEL_RND) {}
 
-  forceinline 
+  forceinline
   IntValBranch::IntValBranch(VoidFunction v, VoidFunction c)
     : ValBranch(v,c), s(SEL_VAL_COMMIT) {}
 
-  forceinline 
+  forceinline
   IntValBranch::IntValBranch(Select s0, IntSharedArray n0)
     : n(n0), s(s0) {}
 
@@ -58,7 +58,7 @@ namespace Gecode {
     return s;
   }
 
-  forceinline IntSharedArray
+  inline IntSharedArray
   IntValBranch::values(void) const {
     return n;
   }

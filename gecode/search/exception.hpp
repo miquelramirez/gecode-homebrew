@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2013-02-21 03:53:42 +1100 (Thu, 21 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13342 $
+ *     $Date: 2015-10-29 14:09:11 +0100 (Thu, 29 Oct 2015) $ by $Author: schulte $
+ *     $Revision: 14818 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -37,10 +37,36 @@
 
 namespace Gecode { namespace Search {
 
-  inline
-  UninitializedCutoff::UninitializedCutoff(const char* l)
-    : Exception(l,"Cutoff for restart-based search is missing") {}
-
+  /**
+   * \defgroup FuncThrowSearch %Search exceptions
+   * \ingroup FuncThrow
+   */
+  //@{
+  /// %Exception: Uninitialized cutoff for restart-based search
+  class GECODE_SEARCH_EXPORT UninitializedCutoff : public Exception {
+  public:
+    /// Initialize with location \a l
+    UninitializedCutoff(const char* l);
+  };
+  /// %Exception: No assets requested for portfolio-based search
+  class GECODE_SEARCH_EXPORT NoAssets : public Exception {
+  public:
+    /// Initialize with location \a l
+    NoAssets(const char* l);
+  };
+  /// %Exception: Mixed non-best and best solution search requested
+  class GECODE_SEARCH_EXPORT MixedBest : public Exception {
+  public:
+    /// Initialize with location \a l
+    MixedBest(const char* l);
+  };
+  /// %Exception: Best solution search is not supported
+  class GECODE_SEARCH_EXPORT NoBest : public Exception {
+  public:
+    /// Initialize with location \a l
+    NoBest(const char* l);
+  };
+  //@}
 }}
 
 // STATISTICS: search-other

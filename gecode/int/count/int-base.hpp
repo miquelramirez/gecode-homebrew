@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2011-08-29 22:59:24 +1000 (Mon, 29 Aug 2011) $ by $Author: schulte $
- *     $Revision: 12359 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,7 +42,7 @@ namespace Gecode { namespace Int { namespace Count {
   IntBase<VX,VY>::IntBase(Home home,
                           ViewArray<VX>& x0, int n_s0, VY y0, int c0)
     : Propagator(home), x(x0), n_s(n_s0), y(y0), c(c0) {
-    if (vtd(y) == VTD_INTSET)
+    if (isintset(y))
       home.notice(*this,AP_DISPOSE);
     for (int i=n_s; i--; )
       x[i].subscribe(home,*this,PC_INT_DOM);
@@ -52,7 +52,7 @@ namespace Gecode { namespace Int { namespace Count {
   template<class VX, class VY>
   forceinline size_t
   IntBase<VX,VY>::dispose(Space& home) {
-    if (vtd(y) == VTD_INTSET)
+    if (isintset(y))
       home.ignore(*this,AP_DISPOSE);
     for (int i=n_s; i--; )
       x[i].cancel(home,*this,PC_INT_DOM);
@@ -73,6 +73,14 @@ namespace Gecode { namespace Int { namespace Count {
   PropCost
   IntBase<VX,VY>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::linear(PropCost::LO,x.size());
+  }
+
+  template<class VX, class VY>
+  void
+  IntBase<VX,VY>::reschedule(Space& home) {
+    for (int i=n_s; i--; )
+      x[i].reschedule(home,*this,PC_INT_DOM);
+    Gecode::Int::Count::reschedule(home,*this,y);
   }
 
 }}}

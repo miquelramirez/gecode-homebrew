@@ -7,8 +7,8 @@
  *     Christian Schulte, 2002
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -44,21 +44,21 @@ namespace Gecode {
   void
   linear(Home home,
          const IntVarArgs& x, IntRelType irt, int c,
-         IntConLevel icl) {
-    if (home.failed()) return;
+         IntPropLevel ipl) {
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size());
     for (int i = x.size(); i--; ) {
       t[i].a=1; t[i].x=x[i];
     }
-    Linear::post(home,t,x.size(),irt,c,icl);
+    Linear::post(home,t,x.size(),irt,c,ipl);
   }
 
   void
   linear(Home home,
          const IntVarArgs& x, IntRelType irt, int c, Reify r,
-         IntConLevel) {
-    if (home.failed()) return;
+         IntPropLevel) {
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size());
     for (int i = x.size(); i--; ) {
@@ -70,25 +70,25 @@ namespace Gecode {
   void
   linear(Home home,
          const IntArgs& a, const IntVarArgs& x, IntRelType irt, int c,
-         IntConLevel icl) {
+         IntPropLevel ipl) {
     if (a.size() != x.size())
       throw ArgumentSizeMismatch("Int::linear");
-    if (home.failed()) return;
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size());
     for (int i = x.size(); i--; ) {
       t[i].a=a[i]; t[i].x=x[i];
     }
-    Linear::post(home,t,x.size(),irt,c,icl);
+    Linear::post(home,t,x.size(),irt,c,ipl);
   }
 
   void
   linear(Home home,
-         const IntArgs& a, const IntVarArgs& x, IntRelType irt, int c, 
-         Reify r, IntConLevel) {
+         const IntArgs& a, const IntVarArgs& x, IntRelType irt, int c,
+         Reify r, IntPropLevel) {
     if (a.size() != x.size())
       throw ArgumentSizeMismatch("Int::linear");
-    if (home.failed()) return;
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size());
     for (int i = x.size(); i--; ) {
@@ -100,8 +100,8 @@ namespace Gecode {
   void
   linear(Home home,
          const IntVarArgs& x, IntRelType irt, IntVar y,
-         IntConLevel icl) {
-    if (home.failed()) return;
+         IntPropLevel ipl) {
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size()+1);
     for (int i = x.size(); i--; ) {
@@ -124,14 +124,14 @@ namespace Gecode {
     }
     if (home.failed()) return;
     t[x.size()].a=-1; t[x.size()].x=y;
-    Linear::post(home,t,x.size()+1,irt,0,icl);
+    Linear::post(home,t,x.size()+1,irt,0,ipl);
   }
 
   void
   linear(Home home,
          const IntVarArgs& x, IntRelType irt, IntVar y, Reify r,
-         IntConLevel) {
-    if (home.failed()) return;
+         IntPropLevel) {
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size()+1);
     for (int i = x.size(); i--; ) {
@@ -144,10 +144,10 @@ namespace Gecode {
   void
   linear(Home home,
          const IntArgs& a, const IntVarArgs& x, IntRelType irt, IntVar y,
-         IntConLevel icl) {
+         IntPropLevel ipl) {
     if (a.size() != x.size())
       throw ArgumentSizeMismatch("Int::linear");
-    if (home.failed()) return;
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size()+1);
     for (int i = x.size(); i--; ) {
@@ -170,16 +170,16 @@ namespace Gecode {
     }
     if (home.failed()) return;
     t[x.size()].a=-1; t[x.size()].x=y;
-    Linear::post(home,t,x.size()+1,irt,0,icl);
+    Linear::post(home,t,x.size()+1,irt,0,ipl);
   }
 
   void
   linear(Home home,
          const IntArgs& a, const IntVarArgs& x, IntRelType irt, IntVar y,
-         Reify r, IntConLevel) {
+         Reify r, IntPropLevel) {
     if (a.size() != x.size())
       throw ArgumentSizeMismatch("Int::linear");
-    if (home.failed()) return;
+    GECODE_POST;
     Region re(home);
     Linear::Term<IntView>* t = re.alloc<Linear::Term<IntView> >(x.size()+1);
     for (int i = x.size(); i--; ) {

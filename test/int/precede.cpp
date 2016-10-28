@@ -11,8 +11,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-07-12 20:49:06 +1000 (Tue, 12 Jul 2011) $ by $Author: tack $
- *     $Revision: 12172 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -45,7 +45,7 @@ namespace Test { namespace Int {
 
    /// %Tests for value precedence constraints
    namespace Precede {
-            
+
      /// %Test for single value precedence constraint
      class Single : public Test {
      private:
@@ -72,7 +72,7 @@ namespace Test { namespace Int {
          Gecode::precede(home, x, s, t);
        }
      };
-     
+
      /// %Test for multiple value precedence constraint
      class Multi : public Test {
      private:
@@ -100,7 +100,7 @@ namespace Test { namespace Int {
          Gecode::precede(home, x, c);
        }
      };
-     
+
      Single _a(2, 3);
      Single _b(1, 4);
 

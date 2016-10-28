@@ -6,8 +6,8 @@
 #     Victor Zverovich, 2013
 #
 #  Last modified:
-#     $Date: 2015-04-12 20:37:35 +1000 (Sun, 12 Apr 2015) $ by $Author: tack $
-#     $Revision: 14497 $
+#     $Date: 2016-09-06 17:50:13 +0200 (Tue, 06 Sep 2016) $ by $Author: tack $
+#     $Revision: 15165 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -190,6 +190,7 @@ set(GECODE_HAS_INT_VARS "/**/")
 set(GECODE_HAS_SET_VARS "/**/")
 set(GECODE_HAS_FLOAT_VARS "/**/")
 set(GECODE_STATIC_LIBS 1)
+set(GECODE_ALLOCATOR "/**/")
 
 check_cxx_compiler_flag(-fvisibility=hidden HAVE_VISIBILITY_HIDDEN_FLAG)
 if (HAVE_VISIBILITY_HIDDEN_FLAG)

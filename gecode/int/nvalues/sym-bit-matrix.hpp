@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-08-18 17:41:50 +1000 (Thu, 18 Aug 2011) $ by $Author: tack $
- *     $Revision: 12311 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -50,7 +50,7 @@ namespace Gecode { namespace Int { namespace NValues {
     : Support::BitSet<Region>(r,static_cast<unsigned int>((n0*n0-n0)/2)),
       n(n0) {}
 
-  forceinline bool 
+  forceinline bool
   SymBitMatrix::get(int x, int y) const {
     assert(x != y);
     if (x > y) std::swap(x,y);

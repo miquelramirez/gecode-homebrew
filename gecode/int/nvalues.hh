@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-09-07 16:15:16 +0200 (Wed, 07 Sep 2011) $ by $Author: schulte $
- *     $Revision: 12394 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -133,7 +133,7 @@ namespace Gecode { namespace Int { namespace NValues {
    * \ingroup FuncIntProp
    */
   template<class VY>
-  class IntBase 
+  class IntBase
     : public MixNaryOnePropagator<IntView,PC_INT_DOM,VY,PC_INT_BND> {
   protected:
     using MixNaryOnePropagator<IntView,PC_INT_DOM,VY,PC_INT_BND>::x;
@@ -147,7 +147,7 @@ namespace Gecode { namespace Int { namespace NValues {
     /// Add values of assigned views to value set
     void add(Space& home);
     /**
-     * Compute position of disjoint views in \a dis (with length \a n_dis) 
+     * Compute position of disjoint views in \a dis (with length \a n_dis)
      * and eliminate subsumed views (all values included in the value set
      * \a vs).
      */
@@ -296,7 +296,7 @@ namespace Gecode { namespace Int { namespace NValues {
    * \ingroup FuncIntProp
    */
   template<class VY>
-  class BoolBase : public Propagator { 
+  class BoolBase : public Propagator {
   protected:
     /// View status: a zero has already been encountered
     static const int VS_ZERO = 1 << 0;
@@ -317,6 +317,8 @@ namespace Gecode { namespace Int { namespace NValues {
     virtual ExecStatus advise(Space& home, Advisor& a, const Delta& d);
     /// Cost function (defined as low unary)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
   };

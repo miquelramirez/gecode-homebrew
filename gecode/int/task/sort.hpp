@@ -9,8 +9,8 @@
  *     Guido Tack, 2010
  *
  *  Last modified:
- *     $Date: 2011-05-26 00:56:41 +1000 (Thu, 26 May 2011) $ by $Author: schulte $
- *     $Revision: 12022 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -94,7 +94,7 @@ namespace Gecode { namespace Int {
       (t1.est() < t2.est() || (t1.est()==t2.est() && t1.lct() < t2.lct()))
     : (t2.est() < t1.est() || (t2.est()==t1.est() && t2.lct() < t1.lct()));
   }
-  
+
   template<class TaskView, bool inc>
   forceinline bool
   StoEct<TaskView,inc>::operator ()
@@ -103,7 +103,7 @@ namespace Gecode { namespace Int {
       (t1.ect() < t2.ect() || (t1.ect()==t2.ect() && t1.lst() < t2.lst()))
     : (t2.ect() < t1.ect() || (t2.ect()==t1.ect() && t2.lst() < t1.lst()));
   }
-  
+
   template<class TaskView, bool inc>
   forceinline bool
   StoLst<TaskView,inc>::operator ()
@@ -112,7 +112,7 @@ namespace Gecode { namespace Int {
       (t1.lst() < t2.lst() || (t1.lst()==t2.lst() && t1.ect() < t2.ect()))
     : (t2.lst() < t1.lst() || (t2.lst()==t1.lst() && t2.ect() < t1.ect()));
   }
-  
+
   template<class TaskView, bool inc>
   forceinline bool
   StoLct<TaskView,inc>::operator ()
@@ -124,16 +124,16 @@ namespace Gecode { namespace Int {
 
   template<class TaskView, template<class,bool> class STO, bool inc>
   forceinline
-  SortMap<TaskView,STO,inc>::SortMap(const TaskViewArray<TaskView>& t) 
+  SortMap<TaskView,STO,inc>::SortMap(const TaskViewArray<TaskView>& t)
     : tasks(t) {}
   template<class TaskView, template<class,bool> class STO, bool inc>
-  forceinline bool 
+  forceinline bool
   SortMap<TaskView,STO,inc>::operator ()(int& i, int& j) const {
     return sto(tasks[i],tasks[j]);
   }
 
   template<class TaskView, SortTaskOrder sto, bool inc>
-  forceinline void 
+  forceinline void
   sort(TaskViewArray<TaskView>& t) {
     switch (sto) {
     case STO_EST:
@@ -169,25 +169,25 @@ namespace Gecode { namespace Int {
     switch (sto) {
     case STO_EST:
       {
-        SortMap<TaskView,StoEst,inc> o(t); 
+        SortMap<TaskView,StoEst,inc> o(t);
         Support::quicksort(map, t.size(), o);
       }
       break;
     case STO_ECT:
       {
-        SortMap<TaskView,StoEct,inc> o(t); 
+        SortMap<TaskView,StoEct,inc> o(t);
         Support::quicksort(map, t.size(), o);
       }
       break;
     case STO_LST:
       {
-        SortMap<TaskView,StoLst,inc> o(t); 
+        SortMap<TaskView,StoLst,inc> o(t);
         Support::quicksort(map, t.size(), o);
       }
       break;
     case STO_LCT:
       {
-        SortMap<TaskView,StoLct,inc> o(t); 
+        SortMap<TaskView,StoLct,inc> o(t);
         Support::quicksort(map, t.size(), o);
       }
       break;
@@ -202,25 +202,25 @@ namespace Gecode { namespace Int {
     switch (sto) {
     case STO_EST:
       {
-        SortMap<TaskView,StoEst,inc> o(t); 
+        SortMap<TaskView,StoEst,inc> o(t);
         Support::quicksort(map, n, o);
       }
       break;
     case STO_ECT:
       {
-        SortMap<TaskView,StoEct,inc> o(t); 
+        SortMap<TaskView,StoEct,inc> o(t);
         Support::quicksort(map, n, o);
       }
       break;
     case STO_LST:
       {
-        SortMap<TaskView,StoLst,inc> o(t); 
+        SortMap<TaskView,StoLst,inc> o(t);
         Support::quicksort(map, n, o);
       }
       break;
     case STO_LCT:
       {
-        SortMap<TaskView,StoLct,inc> o(t); 
+        SortMap<TaskView,StoLct,inc> o(t);
         Support::quicksort(map, n, o);
       }
       break;

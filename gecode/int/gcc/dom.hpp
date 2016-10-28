@@ -13,8 +13,8 @@
  *     Guido Tack, 2009
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -106,6 +106,13 @@ namespace Gecode { namespace Int { namespace GCC {
   PropCost
   Dom<Card>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::cubic(PropCost::LO, x.size());
+  }
+
+  template<class Card>
+  void
+  Dom<Card>::reschedule(Space& home) {
+    x.reschedule(home, *this, PC_INT_DOM);
+    k.reschedule(home, *this, PC_INT_DOM);
   }
 
   template<class Card>
@@ -217,11 +224,11 @@ namespace Gecode { namespace Int { namespace GCC {
         GECODE_ES_CHECK(prop_card<Card>(home, y, k));
         card_assigned = k.assigned();
       }
-      
+
       if (card_assigned) {
         if (x.size() == 0) {
           for (int j=k.size(); j--; )
-            if ((k[j].min() > k[j].counter()) || 
+            if ((k[j].min() > k[j].counter()) ||
                 (k[j].max() < k[j].counter()))
               return ES_FAILED;
           return home.ES_SUBSUMED(*this);
@@ -230,9 +237,9 @@ namespace Gecode { namespace Int { namespace GCC {
           if (!lookupValue(k,x[0].val(),idx))
             return ES_FAILED;
           GECODE_ME_CHECK(k[idx].inc());
-          
+
           for (int j = k.size(); j--; )
-            if ((k[j].min() > k[j].counter()) || 
+            if ((k[j].min() > k[j].counter()) ||
                 (k[j].max() < k[j].counter()))
               return ES_FAILED;
           return home.ES_SUBSUMED(*this);
@@ -293,7 +300,7 @@ namespace Gecode { namespace Int { namespace GCC {
 
   template<class Card>
   inline ExecStatus
-  Dom<Card>::post(Home home, 
+  Dom<Card>::post(Home home,
                   ViewArray<IntView>& x, ViewArray<Card>& k) {
     GECODE_ES_CHECK((postSideConstraints<Card>(home,x,k)));
 

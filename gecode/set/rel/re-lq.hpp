@@ -7,8 +7,8 @@
  *     Guido Tack, 2011
  *
  *  Last modified:
- *     $Date: 2012-10-19 14:58:26 +1100 (Fri, 19 Oct 2012) $ by $Author: tack $
- *     $Revision: 13156 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -58,9 +58,17 @@ namespace Gecode { namespace Set { namespace Rel {
 
   template<class View0, class View1, ReifyMode rm, bool strict>
   PropCost
-  ReLq<View0,View1,rm,strict>::cost(const Space&, const ModEventDelta&) const 
+  ReLq<View0,View1,rm,strict>::cost(const Space&, const ModEventDelta&) const
   {
     return PropCost::ternary(PropCost::LO);
+  }
+
+  template<class View0, class View1, ReifyMode rm, bool strict>
+  void
+  ReLq<View0,View1,rm,strict>::reschedule(Space& home) {
+    b.reschedule(home,*this, Gecode::Int::PC_INT_VAL);
+    x0.reschedule(home,*this, PC_SET_ANY);
+    x1.reschedule(home,*this, PC_SET_ANY);
   }
 
   template<class View0, class View1, ReifyMode rm, bool strict>

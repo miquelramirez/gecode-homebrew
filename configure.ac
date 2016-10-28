@@ -10,9 +10,9 @@ dnl Copyright:
 dnl   Guido Tack, 2004, 2005
 dnl
 dnl Last modified:
-dnl   $Date: 2015-03-19 10:26:53 +0100 (Thu, 19 Mar 2015) $
+dnl   $Date: 2016-04-19 14:28:31 +0200 (Tue, 19 Apr 2016) $
 dnl   by $Author: schulte $
-dnl   $Revision: 14459 $
+dnl   $Revision: 14964 $
 dnl
 dnl This file is part of Gecode, the generic constraint
 dnl development environment:
@@ -39,13 +39,13 @@ dnl WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 dnl
 dnl
 
-AC_REVISION([$Id: configure.ac 14459 2015-03-19 09:26:53Z schulte $])
+AC_REVISION([$Id: configure.ac 14964 2016-04-19 12:28:31Z schulte $])
 AC_PREREQ(2.53)
-AC_INIT(GECODE, 4.4.0, users@gecode.org)
+AC_INIT(GECODE, 5.0.0, users@gecode.org)
 AC_CONFIG_HEADERS([gecode/support/config.hpp])
 AC_CONFIG_SRCDIR(gecode/kernel.hh)
 
-ac_gecode_soversion=41
+ac_gecode_soversion=43
 AC_SUBST(GECODE_SOVERSION, ${ac_gecode_soversion})
 ac_gecode_flatzincversion=1.6
 AC_SUBST(GECODE_FLATZINC_VERSION, ${ac_gecode_flatzincversion})
@@ -138,6 +138,9 @@ AC_GECODE_CODESIZE
 
 dnl check whether we want to have support for finding memory leaks
 AC_GECODE_LEAK_DEBUG
+
+dnl check whether we want to use default memory allocator
+AC_GECODE_ALLOCATOR
 
 dnl check whether we want audit code in our build
 AC_GECODE_AUDIT

@@ -13,8 +13,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2009-10-12 17:36:53 +0200 (Mon, 12 Oct 2009) $ by $Author: schulte $
- *     $Revision: 9878 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -183,7 +183,7 @@ namespace Gecode { namespace Set { namespace RelOp {
     * \ingroup FuncSetProp
     */
   template<class View0, class View1>
-  class IntersectionN : 
+  class IntersectionN :
     public MixNaryOnePropagator<View0,PC_SET_ANY,View1,PC_SET_ANY> {
   protected:
     using MixNaryOnePropagator<View0,PC_SET_ANY,View1,PC_SET_ANY>::x;

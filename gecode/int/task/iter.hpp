@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2011-05-26 00:56:41 +1000 (Thu, 26 May 2011) $ by $Author: schulte $
- *     $Revision: 12022 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -82,7 +82,7 @@ namespace Gecode { namespace Int {
     for (int j=t.size(); j--; )
       if (t[j].mandatory())
         map[i++]=j;
-    sort<OptTaskView,sto,!inc>(map,i,t); 
+    sort<OptTaskView,sto,!inc>(map,i,t);
     i--;
   }
 

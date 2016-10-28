@@ -7,8 +7,8 @@
  *     Guido Tack, 2009
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -132,7 +132,7 @@ protected:
       for (int j=spec.n; j--;)
         new (&tasks[k++]) Task(j,i,dur(i,j));
     int* t0_tasks = re.alloc<int>(spec.n*spec.m); // Earliest possible tasks
-    
+
     bool stopCROSH = false;
 
     int maxIterations;
@@ -185,7 +185,7 @@ protected:
         if (cmax > maxmakespan)
           break;
       }
-      
+
       maxmakespan = std::min(maxmakespan,cmax);
       if (iteration++ > maxIterations)
         stopCROSH = true; // Iterate a couple of times
@@ -220,7 +220,7 @@ public:
           rel(*this,
               b[k++] == (start(m,j1) + dur(m,j1) > start(m,j0)));
         }
-    
+
     for (int j=0; j<spec.n; j++)
       for (int m0=0; m0<spec.m-1; m0++)
         for (int m1=m0+1; m1<spec.m; m1++) {
@@ -298,7 +298,7 @@ public:
     }
     os << "Makespan: " << makespan << std::endl;
   }
-  
+
 };
 
 /** \brief Main-function

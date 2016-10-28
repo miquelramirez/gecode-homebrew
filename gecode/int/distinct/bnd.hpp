@@ -7,8 +7,8 @@
  *     Christian Schulte, 2003
  *
  *  Last modified:
- *     $Date: 2013-11-16 00:53:16 +1100 (Sat, 16 Nov 2013) $ by $Author: schulte $
- *     $Revision: 14077 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -86,6 +86,12 @@ namespace Gecode { namespace Int { namespace Distinct {
       return PropCost::quadratic(PropCost::LO, x.size());
   }
 
+  template<class View>
+  void
+  Bnd<View>::reschedule(Space& home) {
+    y.reschedule(home,*this,PC_INT_BND);
+  }
+
 
   /// %Rank information
   class Rank {
@@ -113,7 +119,7 @@ namespace Gecode { namespace Int { namespace Distinct {
   protected:
     ViewArray<View> x;
   public:
-    forceinline 
+    forceinline
     MinIncIdx(const ViewArray<View>& x0) : x(x0) {}
     forceinline bool
     operator ()(const int i, const int j) {
@@ -140,7 +146,7 @@ namespace Gecode { namespace Int { namespace Distinct {
 
   template<class IntType>
   forceinline void
-  pathset_t(HallInfo<IntType> hall[], 
+  pathset_t(HallInfo<IntType> hall[],
             IntType start, IntType end, IntType to) {
     IntType k, l;
     for (l=start; (k=l) != end; hall[k].t=to) {
@@ -150,7 +156,7 @@ namespace Gecode { namespace Int { namespace Distinct {
 
   template<class IntType>
   forceinline void
-  pathset_h(HallInfo<IntType> hall[], 
+  pathset_h(HallInfo<IntType> hall[],
             IntType start, IntType end, IntType to) {
     IntType k, l;
     for (l=start; (k=l) != end; hall[k].h=to) {
@@ -192,8 +198,8 @@ namespace Gecode { namespace Int { namespace Distinct {
 
   template<class View, class IntType>
   forceinline ExecStatus
-  prop_bnd(Space& home, ViewArray<View>& x, 
-            int* minsorted, int* maxsorted) {
+  prop_bnd(Space& home, ViewArray<View>& x,
+           int* minsorted, int* maxsorted) {
     const int n = x.size();
 
     Region r(home);

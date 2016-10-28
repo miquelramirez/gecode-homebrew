@@ -11,8 +11,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-05-29 21:53:43 +1000 (Wed, 29 May 2013) $ by $Author: schulte $
- *     $Revision: 13672 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -310,7 +310,7 @@ namespace Test { namespace Assign {
       case 7: sa = SET_ASSIGN_RND_EXC(r); break;
       case 8: sa = SET_ASSIGN(&set_val); break;
       }
-          
+
       assign(*clone, clone->x, sa);
       Gecode::DFS<SetTestSpace> e_s(clone, o);
       delete clone;
@@ -352,7 +352,7 @@ namespace Test { namespace Assign {
   const int n_float_assign =
     sizeof(float_assign_name)/sizeof(const char*);
   /// Test function for branch value function
-  Gecode::FloatNumBranch float_val(const Gecode::Space&, 
+  Gecode::FloatNumBranch float_val(const Gecode::Space&,
                                    Gecode::FloatVar x, int) {
     Gecode::FloatNumBranch nl; nl.n=x.med(); nl.l=true;
     return nl;
@@ -385,7 +385,7 @@ namespace Test { namespace Assign {
       case 2: fa = FLOAT_ASSIGN_RND(r); break;
       case 3: fa = FLOAT_ASSIGN(&float_val); break;
       }
-          
+
       assign(*clone, clone->x, fa);
       Gecode::DFS<FloatTestSpace> e_s(clone, o);
       delete clone;

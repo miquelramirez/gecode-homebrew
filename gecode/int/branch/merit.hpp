@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-19 23:26:08 +1100 (Tue, 19 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13313 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -89,7 +89,7 @@ namespace Gecode { namespace Int { namespace Branch {
     : MeritBase<View,double>(home,vb) {}
   template<class View>
   forceinline
-  MeritDegreeSize<View>::MeritDegreeSize(Space& home, bool shared, 
+  MeritDegreeSize<View>::MeritDegreeSize(Space& home, bool shared,
                                          MeritDegreeSize& m)
     : MeritBase<View,double>(home,shared,m) {}
   template<class View>
@@ -133,7 +133,7 @@ namespace Gecode { namespace Int { namespace Branch {
     : MeritBase<View,double>(home,vb), activity(vb.activity()) {}
   template<class View>
   forceinline
-  MeritActivitySize<View>::MeritActivitySize(Space& home, bool shared, 
+  MeritActivitySize<View>::MeritActivitySize(Space& home, bool shared,
                                              MeritActivitySize& m)
     : MeritBase<View,double>(home,shared,m) {
     activity.update(home, shared, m.activity);

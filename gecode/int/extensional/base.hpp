@@ -11,8 +11,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2012-07-19 16:53:57 +1000 (Thu, 19 Jul 2012) $ by $Author: tack $
- *     $Revision: 12963 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -84,6 +84,13 @@ namespace Gecode { namespace Int { namespace Extensional {
   forceinline TupleSet::TupleSetI*
   Base<View,subscribe>::ts(void) {
     return tupleSet.implementation();
+  }
+
+  template<class View, bool subscribe>
+  void
+  Base<View,subscribe>::reschedule(Space& home) {
+    if (subscribe)
+      x.reschedule(home, *this, PC_INT_DOM);
   }
 
   template<class View, bool subscribe>

@@ -9,8 +9,8 @@
  *     Mikael Lagerkvist, 2008
  *
  *  Last modified:
- *     $Date: 2013-11-15 00:35:45 +1100 (Fri, 15 Nov 2013) $ by $Author: schulte $
- *     $Revision: 14073 $
+ *     $Date: 2016-05-26 13:44:53 +0200 (Thu, 26 May 2016) $ by $Author: schulte $
+ *     $Revision: 15087 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -81,7 +81,7 @@ namespace Gecode {
       return new Description(*this,1);
     }
     /// Perform commit
-    virtual ExecStatus 
+    virtual ExecStatus
     commit(Space& home, const Choice&, unsigned int) {
       done = true;
       f(home);
@@ -89,7 +89,7 @@ namespace Gecode {
     }
     /// Print explanation
     virtual void
-    print(const Space&, const Choice&, unsigned int, 
+    print(const Space&, const Choice&, unsigned int,
           std::ostream& o) const {
       o << "FunctionBranch(" << f << ")";
     }
@@ -98,17 +98,15 @@ namespace Gecode {
       return new (home) FunctionBranch(home,share,*this);
     }
     /// Post brancher
-    static BrancherHandle post(Home home, void (*f)(Space&)) {
-      return *new (home) FunctionBranch(home,f);
+    static void post(Home home, void (*f)(Space&)) {
+      (void) new (home) FunctionBranch(home,f);
     }
   };
 
 
-  BrancherHandle
+  void
   branch(Home home, void (*f)(Space& home)) {
-    if (home.failed())
-      return BrancherHandle();
-    return FunctionBranch::post(home,f);
+    FunctionBranch::post(home,f);
   }
 
 }

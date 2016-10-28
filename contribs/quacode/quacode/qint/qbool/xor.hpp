@@ -7,7 +7,7 @@
  *     Vincent Barichard, 2013
  *
  *  Last modified:
- *     $Date: 2014-09-30 18:03:16 +1000 (Tue, 30 Sep 2014) $ by $Author: vbarichard $
+ *     $Date: 2014-09-30 10:03:16 +0200 (Tue, 30 Sep 2014) $ by $Author: vbarichard $
  *     $Revision: 14233 $
  *
  *  This file is part of Quacode:

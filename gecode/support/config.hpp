@@ -7,8 +7,8 @@
  *     Guido Tack, 2008
  *
  *  Last modified:
- *     $Date: 2014-11-26 23:29:51 +0100 (Wed, 26 Nov 2014) $ by $Author: tack $
- *     $Revision: 14327 $
+ *     $Date: 2016-04-19 14:28:31 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14964 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -84,10 +84,13 @@
 /* #undef GECODE_HAS_UNORDERED_MAP */
 
 /* Gecode version */
-#define GECODE_LIBRARY_VERSION "4-4-0"
+#define GECODE_LIBRARY_VERSION "5-0-0"
 
 /* Heap memory alignment */
 /* #undef GECODE_MEMORY_ALIGNMENT */
+
+/* Whether to use default memory allocator */
+#define GECODE_ALLOCATOR /**/
 
 /* How to check allocation size */
 /* #undef GECODE_MSIZE */
@@ -123,10 +126,10 @@
 #define GECODE_USE_GETTIMEOFDAY 1
 
 /* Gecode version */
-#define GECODE_VERSION "4.4.0"
+#define GECODE_VERSION "5.0.0"
 
 /* Gecode version */
-#define GECODE_VERSION_NUMBER 400400
+#define GECODE_VERSION_NUMBER 500000
 
 /* How to tell the compiler to really, really inline */
 #define forceinline inline __attribute__ ((__always_inline__))

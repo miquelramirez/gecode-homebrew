@@ -9,8 +9,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2015-01-16 14:10:48 +0100 (Fri, 16 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14362 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -52,7 +52,7 @@ namespace Gecode { namespace Int {
   class IdxView {
   public:
     /// The index
-    int idx; 
+    int idx;
     /// Thhe view
     View view;
     /// Allocate memory for \a n index-view pairs
@@ -104,6 +104,8 @@ namespace Gecode { namespace Int {
      * for all elements of the array.
      */
     void cancel(Space& home, Propagator& p, PropCond pc);
+    /// Schedule propagator \a p
+    void reschedule(Space& home, Propagator& p, PropCond pc);
 
     /// Cloning
     void update(Space& home, bool share, IdxViewArray<View>& x);

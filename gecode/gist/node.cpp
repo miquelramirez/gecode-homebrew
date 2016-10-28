@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2010-08-11 20:41:24 +1000 (Wed, 11 Aug 2010) $ by $Author: tack $
- *     $Revision: 11340 $
+ *     $Date: 2016-04-25 10:30:39 +0200 (Mon, 25 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14980 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -50,8 +50,9 @@ namespace Gecode { namespace Gist {
       setTag(LEAF);
       break;
     case 1:
-      childrenOrFirstChild = 
-        reinterpret_cast<void*>(na.allocate(getIndex(na)) << 2);
+      childrenOrFirstChild =
+        reinterpret_cast<void*>(
+          static_cast<ptrdiff_t>(na.allocate(getIndex(na)) << 2));
       noOfChildren = 1;
       setTag(TWO_CHILDREN);
       break;
@@ -59,7 +60,8 @@ namespace Gecode { namespace Gist {
       {
         int idx = getIndex(na);
         childrenOrFirstChild =
-          reinterpret_cast<void*>(na.allocate(idx) << 2);
+          reinterpret_cast<void*>(
+            static_cast<ptrdiff_t>(na.allocate(idx) << 2));
         noOfChildren = -na.allocate(idx);
         setTag(TWO_CHILDREN);
       }

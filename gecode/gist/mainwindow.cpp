@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 17:02:17 +1000 (Mon, 06 May 2013) $ by $Author: tack $
- *     $Revision: 13613 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -108,7 +108,7 @@ namespace Gecode { namespace Gist {
     connect(prefAction, SIGNAL(triggered()), this, SLOT(preferences()));
 
     QMenu* nodeMenu = menuBar->addMenu(tr("&Node"));
-    
+
     inspectNodeMenu = new QMenu("Inspect");
     inspectNodeMenu->addAction(c->inspect);
     connect(inspectNodeMenu, SIGNAL(aboutToShow()),
@@ -119,7 +119,7 @@ namespace Gecode { namespace Gist {
     connect(inspectNodeBeforeFPMenu, SIGNAL(aboutToShow()),
             this, SLOT(populateInspectors()));
     populateInspectors();
-    
+
     nodeMenu->addMenu(inspectNodeMenu);
     nodeMenu->addMenu(inspectNodeBeforeFPMenu);
     nodeMenu->addAction(c->compareNode);

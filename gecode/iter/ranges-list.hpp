@@ -7,8 +7,8 @@
  *     Christian Schulte, 2010
  *
  *  Last modified:
- *     $Date: 2013-07-12 03:23:04 +1000 (Fri, 12 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13866 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -124,16 +124,16 @@ namespace Gecode { namespace Iter { namespace Ranges {
 
 
   forceinline
-  RangeListIter::RLIO::RLIO(Region& r) 
+  RangeListIter::RLIO::RLIO(Region& r)
     : Support::BlockAllocator<RangeList,Region>(r), use_cnt(1) {}
 
 
   forceinline
-  RangeListIter::RangeListIter(void) 
+  RangeListIter::RangeListIter(void)
     : rlio(NULL), h(NULL), c(NULL) {}
 
   forceinline
-  RangeListIter::RangeListIter(Region& r) 
+  RangeListIter::RangeListIter(Region& r)
     : rlio(new (r.ralloc(sizeof(RLIO))) RLIO(r)), h(NULL), c(NULL) {}
 
   forceinline void
@@ -143,7 +143,7 @@ namespace Gecode { namespace Iter { namespace Ranges {
   }
 
   forceinline
-  RangeListIter::RangeListIter(const RangeListIter& i) 
+  RangeListIter::RangeListIter(const RangeListIter& i)
     : rlio(i.rlio), h(i.h), c(i.c)  {
     if (rlio != NULL)
       rlio->use_cnt++;
@@ -221,7 +221,7 @@ namespace Gecode { namespace Iter { namespace Ranges {
   inline RangeListIter::RangeList*
   RangeListIter::copy(I& i) {
     RangeList*  h;
-    RangeList** c = &h; 
+    RangeList** c = &h;
     for ( ; i(); ++i) {
       RangeList* t = range(i);
       *c = t; c = &t->next;

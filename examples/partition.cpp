@@ -7,8 +7,8 @@
  *     Christian Schulte, 2003
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -55,7 +55,7 @@ protected:
 public:
   /// Actual model
   Partition(const SizeOptions& opt)
-    : Script(opt), 
+    : Script(opt),
       x(*this,opt.size(),1,2*opt.size()),
       y(*this,opt.size(),1,2*opt.size()) {
     const int n = opt.size();
@@ -70,7 +70,7 @@ public:
     for (int i = n; i--; ) {
       xy[i] = x[i]; xy[n+i] = y[i];
     }
-    distinct(*this, xy, opt.icl());
+    distinct(*this, xy, opt.ipl());
 
     IntArgs c(2*n);
     for (int i = n; i--; ) {
@@ -136,7 +136,7 @@ int
 main(int argc, char* argv[]) {
   SizeOptions opt("Partition");
   opt.size(32);
-  opt.icl(ICL_BND);
+  opt.ipl(IPL_BND);
   opt.parse(argc,argv);
   Script::run<Partition,DFS,SizeOptions>(opt);
   return 0;

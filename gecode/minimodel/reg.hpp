@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2008-12-08 22:54:44 +1100 (Mon, 08 Dec 2008) $ by $Author: schulte $
- *     $Revision: 7995 $
+ *     $Date: 2015-11-10 23:25:02 +0100 (Tue, 10 Nov 2015) $ by $Author: tack $
+ *     $Revision: 14825 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -38,48 +38,9 @@
 namespace Gecode {
 
   template<class Char, class Traits>
-  std::basic_ostream<Char,Traits>&
-  REG::Exp::print(std::basic_ostream<Char,Traits>& os) const {
-    if (this == NULL)
-      return os << "[]";
-    switch (type) {
-    case ET_SYMBOL:
-      return os << "[" << data.symbol << "]";
-    case ET_STAR:
-      {
-        bool par = ((data.kids[0] != NULL) &&
-                    ((data.kids[0]->type == ET_CONC) ||
-                     (data.kids[0]->type == ET_OR)));
-        return data.kids[0]->print(os << (par ? "*(" : "*"))
-                                      << (par ? ")" : "");
-      }
-    case ET_CONC:
-      {
-        bool par0 = ((data.kids[0] != NULL) &&
-                     (data.kids[0]->type == ET_OR));
-        std::ostream& os1 = data.kids[0]->print(os << (par0 ? "(" : ""))
-                                                   << (par0 ? ")+" : "+");
-        bool par1 = ((data.kids[1] != NULL) &&
-                     (data.kids[1]->type == ET_OR));
-        return data.kids[1]->print(os1 << (par1 ? "(" : "") )
-                                       << (par1 ? ")" : "");
-      }
-    case ET_OR:
-      return data.kids[1]->print(data.kids[0]->print(os) << "|");
-    default: GECODE_NEVER;
-    }
-    GECODE_NEVER;
-    return os;
-  }
-
-
-  template<class Char, class Traits>
   inline std::basic_ostream<Char,Traits>&
   REG::print(std::basic_ostream<Char,Traits>& os) const {
-    std::basic_ostringstream<Char,Traits> s;
-    s.copyfmt(os); s.width(0);
-    e->print(s);
-    return os << s.str();
+    return os << toString();
   }
 
   template<class Char, class Traits>

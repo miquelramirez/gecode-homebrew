@@ -7,8 +7,8 @@
  *     Christian Schulte, 2007
  *
  *  Last modified:
- *     $Date: 2011-09-06 22:19:49 +1000 (Tue, 06 Sep 2011) $ by $Author: schulte $
- *     $Revision: 12393 $
+ *     $Date: 2016-08-26 11:14:49 +0200 (Fri, 26 Aug 2016) $ by $Author: schulte $
+ *     $Revision: 15156 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -64,6 +64,17 @@ namespace Gecode { namespace Int { namespace Circuit {
       return PropCost::linear(PropCost::LO, x.size());
     else
       return PropCost::quadratic(PropCost::HI, x.size());
+  }
+
+  template<class View, class Offset>
+  void
+  Dom<View,Offset>::reschedule(Space& home) {
+    for (int i=y.size(); i--; )
+      if (y[i].assigned()) {
+        View::schedule(home, *this, ME_INT_VAL);
+        return;
+      }
+    View::schedule(home, *this, ME_INT_DOM);
   }
 
   template<class View, class Offset>

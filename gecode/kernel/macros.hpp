@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:40:32 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10365 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -36,6 +36,17 @@
  */
 
 /**
+ * \brief Check for failure in a constraint post function
+ *
+ * Also sets group information for posting.
+ * \ingroup TaskActor
+ */
+#define GECODE_POST \
+  if (home.failed()) return;             \
+  ::Gecode::PostInfo __gecode__pi(home);
+
+
+/**
  * \brief Check whether modification event \a me is failed, and forward failure.
  *
  * To be used inside the propagate member function of a propagator
@@ -55,7 +66,7 @@
  * \ingroup TaskActor
  */
 #define GECODE_ME_CHECK_MODIFIED(modified, me) do {        \
-    ModEvent __me__ ## __LINE__ = (me);                    \
+    ::Gecode::ModEvent __me__ ## __LINE__ = (me);          \
     if (::Gecode::me_failed(__me__ ## __LINE__))           \
       return ::Gecode::ES_FAILED;                          \
     modified |= ::Gecode::me_modified(__me__ ## __LINE__); \
@@ -107,9 +118,9 @@
  * \ingroup TaskActor
  */
 #define GECODE_REWRITE(prop,post) do {                                   \
-  Propagator& __p__ ## __LINE__ = (prop);                                \
-  size_t     __s__ ## __LINE__  = __p__ ## __LINE__.dispose(home);       \
-  ExecStatus __es__ ## __LINE__ = (post);                                \
+  ::Gecode::Propagator& __p__ ## __LINE__ = (prop);                      \
+  size_t __s__ ## __LINE__  = __p__ ## __LINE__.dispose(home);           \
+  ::Gecode::ExecStatus __es__ ## __LINE__ = (post);                      \
   if (__es__ ## __LINE__ != ::Gecode::ES_OK)                             \
     return ::Gecode::ES_FAILED;                                          \
   return home.ES_SUBSUMED_DISPOSED(__p__ ## __LINE__,__s__ ## __LINE__); \

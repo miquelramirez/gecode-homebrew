@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2011-10-07 20:28:27 +1100 (Fri, 07 Oct 2011) $ by $Author: schulte $
- *     $Revision: 12427 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -160,7 +160,7 @@ namespace Gecode { namespace Int { namespace Bool {
 
   forceinline
   NaryEqv::NaryEqv(Home home, ViewArray<BoolView>& x0, int pm20)
-    : BinaryPropagator<BoolView,PC_BOOL_VAL>(home,x0[0],x0[1]), 
+    : BinaryPropagator<BoolView,PC_BOOL_VAL>(home,x0[0],x0[1]),
       x(x0), pm2(pm20) {
     assert(x.size() >= 2);
     x.drop_fst(2);

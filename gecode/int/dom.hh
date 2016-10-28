@@ -9,8 +9,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2011-11-14 19:23:54 +0100 (Mon, 14 Nov 2011) $ by $Author: schulte $
- *     $Revision: 12464 $
+ *     $Date: 2016-10-17 21:23:15 +0200 (Mon, 17 Oct 2016) $ by $Author: schulte $
+ *     $Revision: 15215 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -57,10 +57,10 @@ namespace Gecode { namespace Int { namespace Dom {
    * \ingroup FuncIntProp
    */
   template<class View, ReifyMode rm>
-  class ReRange : public ReUnaryPropagator<View,PC_INT_BND,BoolView> {
+  class ReRange : public ReUnaryPropagator<View,PC_INT_DOM,BoolView> {
   protected:
-    using ReUnaryPropagator<View,PC_INT_BND,BoolView>::x0;
-    using ReUnaryPropagator<View,PC_INT_BND,BoolView>::b;
+    using ReUnaryPropagator<View,PC_INT_DOM,BoolView>::x0;
+    using ReUnaryPropagator<View,PC_INT_DOM,BoolView>::b;
     /// Minimum of range
     int min;
     /// Maximum of range

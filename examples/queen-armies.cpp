@@ -7,8 +7,8 @@
  *     Mikael Lagerkvist, 2006
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-05-26 13:44:53 +0200 (Thu, 26 May 2016) $ by $Author: schulte $
+ *     $Revision: 15087 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -170,7 +170,7 @@ public:
       int pos;
       /// Value of variable
       bool val;
-      /** Initialize choice for brancher \a b, position \a pos0, 
+      /** Initialize choice for brancher \a b, position \a pos0,
        *  and value \a val0.
        */
       Choice(const Brancher& b, int pos0, bool val0)
@@ -245,7 +245,7 @@ public:
         : ES_OK;
     }
     /// Print explanation
-    virtual void print(const Space&, const Gecode::Choice& _c, 
+    virtual void print(const Space&, const Gecode::Choice& _c,
                        unsigned int a,
                        std::ostream& o) const {
       const Choice& c = static_cast<const Choice&>(_c);
@@ -257,8 +257,8 @@ public:
       return new (home) QueenBranch(home, share, *this);
     }
     /// Post brancher
-    static BrancherHandle post(QueenArmies& home) {
-      return *new (home) QueenBranch(home);
+    static void post(QueenArmies& home) {
+      (void) new (home) QueenBranch(home);
     }
     /// Delete brancher and return its size
     virtual size_t dispose(Space&) {

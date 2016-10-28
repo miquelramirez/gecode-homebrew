@@ -11,8 +11,8 @@
  *     Stefano Gualandi, 2013
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -356,7 +356,7 @@ public:
       IntVarArgs x(n); c++;
       for (int i = n; i--; c++)
         x[i] = v[*c];
-      distinct(*this, x, opt.icl());
+      distinct(*this, x, opt.ipl());
       if (opt.model() == MODEL_CLIQUE)
         rel(*this, m, IRT_GQ, n-1);
     }
@@ -446,7 +446,7 @@ public:
 int
 main(int argc, char* argv[]) {
   SizeOptions opt("GraphColor");
-  opt.icl(ICL_DOM);
+  opt.ipl(IPL_DOM);
   opt.iterations(20);
   opt.solutions(0);
   opt.model(GraphColor::MODEL_NONE);

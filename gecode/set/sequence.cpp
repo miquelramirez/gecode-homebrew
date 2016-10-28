@@ -9,8 +9,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:40:32 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10365 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -47,14 +47,14 @@ namespace Gecode {
   sequence(Home home, const SetVarArgs& xa) {
     if (xa.size()==0)
       throw TooFewArguments("Set::seq");
-    if (home.failed()) return;
+    GECODE_POST;
     ViewArray<SetView> x(home,xa);
     GECODE_ES_FAIL(Sequence::Seq::post(home, x));
   }
 
   void
   sequence(Home home, const SetVarArgs& xa, SetVar y) {
-    if (home.failed()) return;
+    GECODE_POST;
     ViewArray<SetView> x(home,xa);
     GECODE_ES_FAIL(Sequence::SeqU::post(home, x,y));
   }

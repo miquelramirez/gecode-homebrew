@@ -7,8 +7,8 @@
  *     Christian Schulte, 2013
  *
  *  Last modified:
- *     $Date: 2013-11-08 19:45:57 +1100 (Fri, 08 Nov 2013) $ by $Author: schulte $
- *     $Revision: 14069 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -55,7 +55,7 @@ namespace Gecode { namespace Int { namespace Branch {
   EqNGL<View>::status(const Space&) const {
     if (x.assigned())
       return (x.val() == n) ? NGL::SUBSUMED : NGL::FAILED;
-    else 
+    else
       return x.in(n) ? NGL::NONE : NGL::FAILED;
   }
   template<class View>
@@ -83,7 +83,7 @@ namespace Gecode { namespace Int { namespace Branch {
   NqNGL<View>::status(const Space&) const {
     if (x.assigned())
       return (x.val() == n) ? NGL::FAILED : NGL::SUBSUMED;
-    else 
+    else
       return x.in(n) ? NGL::NONE : NGL::SUBSUMED;
   }
   template<class View>

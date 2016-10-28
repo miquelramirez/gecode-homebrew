@@ -7,8 +7,8 @@
  *    Vincent Barichard, 2013
  *
  *  Last modified:
- *     $Date: 2014-09-26 16:25:13 +0200 (Fri, 26 Sep 2014) $ by $Author: vbarichard $
- *     $Revision: 14229 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Quacode:
  *     http://quacode.barichard.com
@@ -189,7 +189,7 @@ namespace Gecode {
     QuantArgs(int n, const TQuantifier* e)  : PrimArgArray<TQuantifier>(n, e) {}
     /// Initialize from primitive argument array \a a (copy elements)
     QuantArgs(const PrimArgArray<TQuantifier>& a) : PrimArgArray<TQuantifier>(a) {}
-    //@}    
+    //@}
   };
 
   /** \brief Post domain consistent propagator for Quantified Boolean operation on \a x0 and \a x1
@@ -241,13 +241,15 @@ namespace Gecode {
    * \ingroup TaskModelSearch
    */
   template<class T>
-  class QDFS : public EngineBase {
+  class QDFS : public Search::Base<T> {
   private:
     /// The actual search engine
     Search::Engine* e;
   public:
     /// Initialize search engine for space \a s with options \a o
     QDFS(T* s, const Search::Options& o=Search::Options::def);
+    /// Whether engine does best solution search
+    static const bool best = false;
     /// Return next solution (NULL, if none exists or search has been stopped)
     T* next(void);
     /// Return statistics

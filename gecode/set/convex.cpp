@@ -9,8 +9,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:40:32 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10365 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -44,14 +44,14 @@ namespace Gecode {
   void
   convex(Home home, SetVar x) {
     using namespace Gecode::Set;
-    if (home.failed()) return;
+    GECODE_POST;
     GECODE_ES_FAIL(Convex::Convex::post(home, x));
   }
 
   void
   convex(Home home, SetVar x, SetVar y) {
     using namespace Gecode::Set;
-    if (home.failed()) return;
+    GECODE_POST;
     GECODE_ES_FAIL(Convex::ConvexHull::post(home, x,y));
   }
 

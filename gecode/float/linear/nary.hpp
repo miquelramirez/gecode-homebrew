@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-02-14 02:01:33 +1100 (Thu, 14 Feb 2013) $ by $Author: vbarichard $
- *     $Revision: 13289 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -63,6 +63,13 @@ namespace Gecode { namespace Float { namespace Linear {
   PropCost
   Lin<P,N,pc>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::linear(PropCost::LO, x.size()+y.size());
+  }
+
+  template<class P, class N, PropCond pc>
+  void
+  Lin<P,N,pc>::reschedule(Space& home) {
+    x.reschedule(home,*this,pc);
+    y.reschedule(home,*this,pc);
   }
 
   template<class P, class N, PropCond pc>
@@ -148,9 +155,9 @@ namespace Gecode { namespace Float { namespace Linear {
     }
   }
 
-  forceinline bool 
+  forceinline bool
   infty(const FloatNum& n) {
-    return ((n == std::numeric_limits<FloatNum>::infinity()) || 
+    return ((n == std::numeric_limits<FloatNum>::infinity()) ||
             (n == -std::numeric_limits<FloatNum>::infinity()));
   }
 
@@ -242,7 +249,7 @@ namespace Gecode { namespace Float { namespace Linear {
       if (me_modified(me))
         es = ES_NOFIX;
     }
-   
+
     // Propagate min bound for positive variables
     for (int i = x.size(); i--; ) {
       // Compute bound

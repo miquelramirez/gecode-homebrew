@@ -9,8 +9,8 @@
  *     Mikael Lagerkvist, 2006
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -90,7 +90,7 @@ public:
 
   /// Actual model
   Domino(const SizeOptions& opt)
-    : Script(opt), 
+    : Script(opt),
       spec(specs[opt.size()]),
       width(spec[0]), height(spec[1]),
       x(*this, (width+1)*height, 0, 28) {
@@ -130,7 +130,7 @@ public:
           // in the next row.
           IntVar diff(*this, possibleDiffs);
           abs(*this, expr(*this, p1[dominoCount]-p2[dominoCount]),
-              diff, ICL_DOM);
+              diff, IPL_DOM);
 
           // If the piece is symmetrical, order the locations
           if (i == j)

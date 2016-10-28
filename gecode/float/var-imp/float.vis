@@ -11,8 +11,8 @@
 #     Vincent Barichard, 2012
 #
 #  Last modified:
-#     $Date: 2012-03-27 22:23:23 +1100 (Tue, 27 Mar 2012) $ by $Author: schulte $
-#     $Revision: 12634 $
+#     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#     $Revision: 15073 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -63,7 +63,7 @@ Combine:        VAL=VAL, BND=VAL
 [ModEvent]
 Name:           BND=SUBSCRIBE
 Combine:        VAL=VAL, BND=BND
-  /** 
+  /**
    * \brief Domain operation has changed the minimum or maximum of the domain
    *
    * Note that this implies that the domain has not resulted in a value.

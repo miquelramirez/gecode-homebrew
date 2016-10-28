@@ -7,8 +7,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -123,7 +123,7 @@ public:
         rel(*this, y2 < y3);
         rel(*this, y1 < y3);
 
-        linear(*this, IntArgs(6,(n+1)*(n+1),n+1,1,-(n+1)*(n+1),-(n+1),-1), 
+        linear(*this, IntArgs(6,(n+1)*(n+1),n+1,1,-(n+1)*(n+1),-(n+1),-1),
                IntVarArgs()<<x1<<x2<<x3<<y1<<y2<<y3, IRT_LE, 0);
       }
     }

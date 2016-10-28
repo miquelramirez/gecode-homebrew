@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2012-09-19 02:07:37 +1000 (Wed, 19 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13101 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,7 +39,7 @@
 
 namespace Gecode { namespace Set { namespace Branch {
 
-  ValSelCommitBase<SetView,int>* 
+  ValSelCommitBase<SetView,int>*
   valselcommit(Space& home, const SetValBranch& svb) {
     switch (svb.select()) {
     case SetValBranch::SEL_MIN_INC:
@@ -60,10 +60,10 @@ namespace Gecode { namespace Set { namespace Branch {
       return new (home) ValSelCommit<ValSelRnd,ValCommitExc>(home,svb);
     case SetValBranch::SEL_VAL_COMMIT:
       if (svb.commit() == NULL) {
-        return new (home) 
+        return new (home)
           ValSelCommit<ValSelFunction<SetView>,ValCommitInc>(home,svb);
       } else {
-        return new (home) 
+        return new (home)
           ValSelCommit<ValSelFunction<SetView>,ValCommitFunction<SetView> >(home,svb);
       }
     default:
@@ -71,7 +71,7 @@ namespace Gecode { namespace Set { namespace Branch {
     }
   }
 
-  ValSelCommitBase<SetView,int>* 
+  ValSelCommitBase<SetView,int>*
   valselcommit(Space& home, const SetAssign& sa) {
     switch (sa.select()) {
     case SetAssign::SEL_MIN_INC:
@@ -92,10 +92,10 @@ namespace Gecode { namespace Set { namespace Branch {
       return new (home) ValSelCommit<ValSelRnd,ValCommitExc>(home,sa);
     case SetAssign::SEL_VAL_COMMIT:
       if (sa.commit() == NULL) {
-        return new (home) 
+        return new (home)
           ValSelCommit<ValSelFunction<SetView>,ValCommitInc>(home,sa);
       } else {
-        return new (home) 
+        return new (home)
           ValSelCommit<ValSelFunction<SetView>,ValCommitFunction<SetView> >(home,sa);
       }
     default:

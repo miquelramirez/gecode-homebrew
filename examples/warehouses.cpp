@@ -7,8 +7,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -129,7 +129,7 @@ public:
       IntSetArgs c(n_warehouses);
       for (int w=0; w<n_warehouses; w++)
         c[w] = IntSet(0,capacity[w]);
-      count(*this, supplier, c, ICL_DOM);
+      count(*this, supplier, c, IPL_DOM);
     }
 
     // Compute total cost

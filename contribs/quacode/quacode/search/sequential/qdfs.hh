@@ -7,8 +7,8 @@
  *     Vincent Barichard, 2013
  *
  *  Last modified:
- *     $Date: 2015-02-17 05:17:22 +0100 (Tue, 17 Feb 2015) $ by $Author: tack $
- *     $Revision: 14396 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Quacode:
  *     http://quacode.barichard.com
@@ -76,6 +76,8 @@ namespace Gecode { namespace Search { namespace Sequential {
     Space* next(void);
     /// Return statistics
     Statistics statistics(void) const;
+    /// Constrain future solutions to be better than \a b (should never be called)
+    void constrain(const Space& b);
     /// Reset engine to restart at space \a s
     void reset(Space* s);
     /// Return no-goods
@@ -84,12 +86,13 @@ namespace Gecode { namespace Search { namespace Sequential {
     ~QDFS(void);
   };
 
-  forceinline 
+  forceinline
   QDFS::QDFS(Space* s, const Options& o)
     : opt(o), path(static_cast<int>(opt.nogoods_limit)), d(0) {
     if ((s == NULL) || (s->status(*this) == SS_FAILED)) {
       fail++;
       cur = NULL;
+      if (s) dynamic_cast<QSpaceInfo*>(s)->strategyFailed();
       if (!opt.clone)
         delete s;
     } else {
@@ -104,8 +107,8 @@ namespace Gecode { namespace Search { namespace Sequential {
     path.reset();
     d = 0;
     if ((s == NULL) || (s->status(*this) == SS_FAILED)) {
-      delete s;
       cur = NULL;
+      if (s) dynamic_cast<QSpaceInfo*>(s)->strategyFailed();
     } else {
       cur = s;
       dynamic_cast<QSpaceInfo*>(cur)->strategyReset();
@@ -121,6 +124,7 @@ namespace Gecode { namespace Search { namespace Sequential {
   forceinline Space*
   QDFS::next(void) {
     Space * solvedSpace = NULL;
+    Space * failedSpace = NULL;
     TQuantifier bckQuant = EXISTS;
     start();
     while (true) {
@@ -141,7 +145,7 @@ namespace Gecode { namespace Search { namespace Sequential {
           // On devra dépiler jusqu'au dernier existentiel
           bckQuant = EXISTS;
           fail++;
-          delete cur;
+          failedSpace = cur;
           cur = NULL;
           break;
         case SS_SOLVED:
@@ -181,10 +185,15 @@ namespace Gecode { namespace Search { namespace Sequential {
           cur = NULL;
           if (solvedSpace)
           {
-            dynamic_cast<QSpaceInfo*>(cur)->strategySuccess();
+            dynamic_cast<QSpaceInfo*>(solvedSpace)->strategySuccess();
             return solvedSpace;
           } else {
-            dynamic_cast<QSpaceInfo*>(cur)->strategyFailed();
+            if (failedSpace)
+            {
+              // Can be NULL if failed space on construction
+              dynamic_cast<QSpaceInfo*>(failedSpace)->strategyFailed();
+              delete failedSpace;
+            }
             return NULL;
           }
         }
@@ -194,6 +203,11 @@ namespace Gecode { namespace Search { namespace Sequential {
       {
         delete solvedSpace;
         solvedSpace = NULL;
+      }
+      if (failedSpace)
+      {
+        delete failedSpace;
+        failedSpace = NULL;
       }
     }
     GECODE_NEVER;
@@ -205,7 +219,13 @@ namespace Gecode { namespace Search { namespace Sequential {
     return *this;
   }
 
-  forceinline 
+  forceinline void
+  QDFS::constrain(const Space& b) {
+    (void) b;
+    assert(false);
+  }
+
+  forceinline
   QDFS::~QDFS(void) {
     delete cur;
     path.reset();

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:32:21 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10364 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,6 +42,7 @@ namespace Gecode { namespace Int { namespace Linear {
    *
    */
   template<class XV, class YV>
+  forceinline
   LinBoolView<XV,YV>::LinBoolView(Home home,
                                   ViewArray<XV>& x0, YV y0, int c0)
     :  Propagator(home), x(x0), y(y0), c(c0) {
@@ -70,6 +71,13 @@ namespace Gecode { namespace Int { namespace Linear {
   PropCost
   LinBoolView<XV,YV>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::linear(PropCost::LO, x.size());
+  }
+
+  template<class XV, class YV>
+  void
+  LinBoolView<XV,YV>::reschedule(Space& home) {
+    x.reschedule(home,*this,PC_INT_VAL);
+    y.reschedule(home,*this,PC_INT_BND);
   }
 
 

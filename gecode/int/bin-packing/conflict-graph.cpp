@@ -7,8 +7,8 @@
  *     Christian Schulte, 2014
  *
  *  Last modified:
- *     $Date: 2014-08-28 22:29:11 +1000 (Thu, 28 Aug 2014) $ by $Author: schulte $
- *     $Revision: 14203 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -44,7 +44,7 @@ namespace Gecode { namespace Int { namespace BinPacking {
     assert(!(p.none(nodes()) && x.none(nodes())));
     // Iterate over neighbors of pivot node
     Nodes n(node[pivot(p,x)].n);
-    // Iterate over elements of p 
+    // Iterate over elements of p
     Nodes i(p);
     // The loop iterates over elements in i - n
     while (i() < nodes()) {
@@ -59,7 +59,7 @@ namespace Gecode { namespace Int { namespace BinPacking {
         Region reg(home);
 
         // Found i.val() to be in i - n
-       
+
         NodeSet np, nx;
         np.allocate(reg,nodes());
         nx.allocate(reg,nodes());
@@ -84,7 +84,7 @@ namespace Gecode { namespace Int { namespace BinPacking {
     }
     return ES_OK;
   }
-  
+
 }}}
 
 // STATISTICS: int-prop

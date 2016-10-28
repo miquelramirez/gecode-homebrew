@@ -7,8 +7,8 @@
  *     Christian Schulte, 2015
  *
  *  Last modified:
- *     $Date: 2015-03-12 02:24:08 +1100 (Thu, 12 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14436 $
+ *     $Date: 2015-10-06 20:58:06 +0200 (Tue, 06 Oct 2015) $ by $Author: schulte $
+ *     $Revision: 14776 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,6 +39,11 @@
 
 namespace Gecode { namespace Search {
 
+  void
+  Engine::constrain(const Space& b) {
+    (void) b;
+    throw NoBest("Engine::constrain");
+  }
   void
   Engine::reset(Space* s) {
     (void) s;

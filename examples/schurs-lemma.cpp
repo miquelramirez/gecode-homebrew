@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -73,9 +73,9 @@ public:
 /**
  * \brief %Example: Schur's lemma
  *
- * Put \f$n\f$ balls labeled \f${1,\ldots,n}\f$ into \f$c\f$ boxes such 
+ * Put \f$n\f$ balls labeled \f${1,\ldots,n}\f$ into \f$c\f$ boxes such
  * that for any triple of balls \f$\langle x, y, z\rangle\f$ with
- * \f$x+y = z\f$, not all are in the same box. 
+ * \f$x+y = z\f$, not all are in the same box.
  *
  * This problem has a solution for \f$c=3\f$ if \f$n < 14\f$.
  *
@@ -90,7 +90,7 @@ protected:
   IntVarArray box;
 public:
   /// Actual model
-  Schur(const SchurOptions& opt) 
+  Schur(const SchurOptions& opt)
     : Script(opt), box(*this,opt.n,1,opt.c) {
     int n = opt.n;
 

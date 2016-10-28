@@ -11,8 +11,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2011-11-03 11:52:07 +0100 (Thu, 03 Nov 2011) $ by $Author: tack $
- *     $Revision: 12452 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -77,6 +77,8 @@ namespace Gecode { namespace Set { namespace Channel {
     virtual Actor* copy(Space& home,bool);
     /// Cost function (defined as PC_LINEAR_LO)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete Propagator
     virtual size_t dispose(Space& home);
     /// Perform propagation
@@ -119,9 +121,11 @@ namespace Gecode { namespace Set { namespace Channel {
                ViewArray<CachedView<View> >&);
   public:
     /// Copy propagator during cloning
-    virtual Actor*   copy(Space& home,bool);
+    virtual Actor* copy(Space& home, bool share);
     /// Cost function (defined as PC_QUADRATIC_LO)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation
@@ -196,6 +200,8 @@ namespace Gecode { namespace Set { namespace Channel {
     virtual Actor*   copy(Space& home,bool);
     /// Cost function (defined as PC_QUADRATIC_LO)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation
@@ -239,6 +245,8 @@ namespace Gecode { namespace Set { namespace Channel {
     virtual Actor* copy(Space& home, bool);
     /// Cost function (defined as PC_QUADRATIC_HI)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation

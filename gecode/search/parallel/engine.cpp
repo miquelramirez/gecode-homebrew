@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2013-07-08 23:03:36 +1000 (Mon, 08 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13823 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -46,7 +46,7 @@ namespace Gecode { namespace Search { namespace Parallel {
   /*
    * Engine: search control
    */
-  Space* 
+  Space*
   Engine::next(void) {
     // Invariant: the worker holds the wait mutex
     m_search.acquire();
@@ -95,11 +95,6 @@ namespace Gecode { namespace Search { namespace Parallel {
     }
     GECODE_NEVER;
     return NULL;
-  }
-
-  bool 
-  Engine::stopped(void) const {
-    return has_stopped;
   }
 
   /*

@@ -12,8 +12,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2012-10-19 14:58:26 +1100 (Fri, 19 Oct 2012) $ by $Author: tack $
- *     $Revision: 13156 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -298,7 +298,7 @@ namespace Gecode { namespace Set { namespace Int {
     }
     if (b.zero()) {
       if (rm == RM_IMP)
-        return home.ES_SUBSUMED(*this);        
+        return home.ES_SUBSUMED(*this);
       GECODE_REWRITE(*this, (NotMinElement<View>::post(home(*this),x0,x1)));
     }
     // cheap tests for => b=0

@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 17:02:17 +1000 (Mon, 06 May 2013) $ by $Author: tack $
- *     $Revision: 13613 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -41,7 +41,7 @@ namespace Gecode { namespace Gist {
   forceinline
   NodeCursor<Node>::NodeCursor(Node* theNode,
                                const typename Node::NodeAllocator& na0)
-   : _startNode(theNode), _node(theNode), 
+   : _startNode(theNode), _node(theNode),
      _alternative(theNode->getAlternative(na0)),
      na(na0) {}
 
@@ -111,7 +111,7 @@ namespace Gecode { namespace Gist {
   template<class Node>
   forceinline void
   NodeCursor<Node>::moveSidewards(void) {
-    _node = 
+    _node =
       static_cast<Node*>(_node->getParent(na)->getChild(na,++_alternative));
   }
 
@@ -246,7 +246,7 @@ namespace Gecode { namespace Gist {
   forceinline void
   StatCursor::moveDownwards(void) {
     curDepth++;
-    depth = std::max(depth,curDepth); 
+    depth = std::max(depth,curDepth);
     NodeCursor<VisualNode>::moveDownwards();
   }
 

@@ -9,8 +9,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2013-01-29 21:09:15 +0100 (Tue, 29 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13247 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -280,6 +280,8 @@ namespace Gecode { namespace Set { namespace Int {
     virtual Actor* copy(Space& home,bool);
     /// Cost function (defined as PC_LINEAR_LO)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Perform propagation

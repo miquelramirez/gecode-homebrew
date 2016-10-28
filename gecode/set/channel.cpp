@@ -11,8 +11,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2011-11-03 21:52:07 +1100 (Thu, 03 Nov 2011) $ by $Author: tack $
- *     $Revision: 12452 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -47,14 +47,14 @@ namespace Gecode {
 
   void
   channelSorted(Home home, const IntVarArgs& x, SetVar y) {
-    if (home.failed()) return;
+    GECODE_POST;
     ViewArray<Int::IntView> xa(home,x);
     GECODE_ES_FAIL(Set::Channel::ChannelSorted<Set::SetView>::post(home,y,xa));
   }
 
   void
   channel(Home home, const IntVarArgs& x, const SetVarArgs& y) {
-    if (home.failed()) return;
+    GECODE_POST;
     ViewArray<Int::CachedView<Int::IntView> > xa(home,x.size());
     for (int i=x.size(); i--;)
       new (&xa[i]) Int::CachedView<Int::IntView>(x[i]);
@@ -66,7 +66,7 @@ namespace Gecode {
 
   void
   channel(Home home, const BoolVarArgs& x, SetVar y) {
-    if (home.failed()) return;
+    GECODE_POST;
     ViewArray<Int::BoolView> xv(home,x);
     GECODE_ES_FAIL((Set::Channel::ChannelBool<Set::SetView>
                          ::post(home,xv,y)));
@@ -75,7 +75,7 @@ namespace Gecode {
   void
   channel(Home home, const SetVarArgs& x, const SetVarArgs& y)
   {
-    if (home.failed()) return;
+    GECODE_POST;
     ViewArray<Set::CachedView<Set::SetView> > xa(home, x.size());
     for (int i=x.size(); i--;)
       new (&xa[i]) Int::CachedView<Set::SetView>(x[i]);

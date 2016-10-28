@@ -7,8 +7,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:30:12 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14448 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -54,11 +54,11 @@ using namespace Gecode;
  * \f]
  *
  * By setting \f$p=0.5\f$ and \f$q=2\f$, it yields to the equation:
- * 
+ *
  * \f[
  * x^2+2\left(y-\frac{\operatorname{abs}(x)^{\frac{1}{2}}}{2}\right)^2 = 1
  * \f]
- * 
+ *
  * To get reasonable interval starting sizes, \f$x\f$ and \f$y\f$
  * are restricted to \f$[-20;20]\f$.
  *
@@ -72,7 +72,7 @@ protected:
   FloatNum step;
 public:
   /// Actual model
-  CartesianHeart(const Options& opt) 
+  CartesianHeart(const Options& opt)
     : Script(opt), f(*this,2,-20,20), step(opt.step()) {
     int q = 2;
     FloatNum p = 0.5;
@@ -82,20 +82,20 @@ public:
     branch(*this, f[1], FLOAT_VAL_SPLIT_MIN());
   }
   /// Constructor for cloning \a p
-  CartesianHeart(bool share, CartesianHeart& p) 
+  CartesianHeart(bool share, CartesianHeart& p)
     : Script(share,p), step(p.step) {
     f.update(*this,share,p.f);
   }
   /// Copy during cloning
-  virtual Space* copy(bool share) { 
-    return new CartesianHeart(share,*this); 
+  virtual Space* copy(bool share) {
+    return new CartesianHeart(share,*this);
   }
   /// Add constraints to current model to get next solution (not too close)
   virtual void constrain(const Space& _b) {
     const CartesianHeart& b = static_cast<const CartesianHeart&>(_b);
-    rel(*this, 
-        (f[0] >= (b.f[0].max()+step)) || 
-        (f[1] >= (b.f[1].max()+step)) || 
+    rel(*this,
+        (f[0] >= (b.f[0].max()+step)) ||
+        (f[1] >= (b.f[1].max()+step)) ||
         (f[1] <= (b.f[1].min()-step)));
   }
   /// Print solution coordinates

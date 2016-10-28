@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2009-10-13 05:40:58 +1100 (Tue, 13 Oct 2009) $ by $Author: schulte $
- *     $Revision: 9882 $
+ *     $Date: 2015-08-18 09:57:34 +0200 (Tue, 18 Aug 2015) $ by $Author: schulte $
+ *     $Revision: 14653 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -81,10 +81,14 @@ namespace Gecode { namespace Support {
     if (WaitForSingleObject(w_h,INFINITE) != 0)
       throw OperatingSystemError("Event::wait[Windows::WaitForSingleObject]");
   }
+
   forceinline
   Event::~Event(void) {
-    if (CloseHandle(w_h) == 0)
-      throw OperatingSystemError("Event::~Event[Windows::CloseHandle]");
+    if (CloseHandle(w_h) == 0) {
+      std::cerr << "Operating system error: "
+                << "Event::~Event[Windows::CloseHandle]";
+      std::terminate();
+    }
   }
 
 

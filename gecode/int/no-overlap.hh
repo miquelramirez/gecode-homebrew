@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2012-09-10 19:36:08 +0200 (Mon, 10 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13072 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -87,6 +87,8 @@ namespace Gecode { namespace Int { namespace NoOverlap {
     void subscribe(Space& home, Propagator& p);
     /// Cancel propagator \a p from dimension
     void cancel(Space& home, Propagator& p);
+    /// Schedule propagator \a p
+    void reschedule(Space& home, Propagator& p);
   };
 
   /**
@@ -131,6 +133,8 @@ namespace Gecode { namespace Int { namespace NoOverlap {
     void subscribe(Space& home, Propagator& p);
     /// Cancel propagator \a p from dimension
     void cancel(Space& home, Propagator& p);
+    /// Schedule propagator \a p
+    void reschedule(Space& home, Propagator& p);
   };
 
 }}}
@@ -180,6 +184,8 @@ namespace Gecode { namespace Int { namespace NoOverlap {
     void subscribe(Space& home, Propagator& p);
     /// Cancel propagator \a p from box
     void cancel(Space& home, Propagator& p);
+    /// Schedule propagator \a p
+    void reschedule(Space& home, Propagator& p);
   };
 
   /**
@@ -211,6 +217,8 @@ namespace Gecode { namespace Int { namespace NoOverlap {
     void subscribe(Space& home, Propagator& p);
     /// Cancel propagator \a p from box
     void cancel(Space& home, Propagator& p);
+    /// Schedule propagator \a p
+    void reschedule(Space& home, Propagator& p);
   };
 
 }}}
@@ -246,6 +254,8 @@ namespace Gecode { namespace Int { namespace NoOverlap {
   public:
     /// Cost function
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Destructor
     virtual size_t dispose(Space& home);
   };

@@ -7,8 +7,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:40:32 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10365 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -44,7 +44,7 @@ namespace Gecode {
   void
   atmostOne(Home home, const SetVarArgs& xa, unsigned int c) {
     Set::Limits::check(c, "Set::atmostOne");
-    if (home.failed()) return;
+    GECODE_POST;
     if (xa.size() < 2)
       return;
     ViewArray<SetView> x(home,xa);

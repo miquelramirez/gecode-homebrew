@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-08-23 05:43:31 +1000 (Tue, 23 Aug 2011) $ by $Author: schulte $
- *     $Revision: 12335 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -55,7 +55,7 @@ namespace Gecode { namespace Int {
           c->min(v); n++;
           return;
         } else {
-          *p = new (home) RangeList(v,v,c); n++; 
+          *p = new (home) RangeList(v,v,c); n++;
           return;
         }
       } else if (v <= c->max()) {
@@ -134,7 +134,7 @@ namespace Gecode { namespace Int {
   }
 
   forceinline
-  ValSet::Ranges::Ranges(const ValSet& vs) 
+  ValSet::Ranges::Ranges(const ValSet& vs)
     : c(vs.fst) {}
 
   forceinline bool

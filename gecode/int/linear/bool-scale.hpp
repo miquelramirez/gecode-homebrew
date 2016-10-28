@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:32:21 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10364 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -61,6 +61,11 @@ namespace Gecode { namespace Int { namespace Linear {
   ScaleBoolArray::cancel(Space& home, Propagator& p) {
     for (ScaleBool* f = _fst; f < _lst; f++)
       f->x.cancel(home,p,PC_BOOL_VAL);
+  }
+  forceinline void
+  ScaleBoolArray::reschedule(Space& home, Propagator& p) {
+    for (ScaleBool* f = _fst; f < _lst; f++)
+      f->x.reschedule(home,p,PC_BOOL_VAL);
   }
   forceinline void
   ScaleBoolArray::update(Space& home, bool share, ScaleBoolArray& sba) {
@@ -126,6 +131,8 @@ namespace Gecode { namespace Int { namespace Linear {
   forceinline void
   EmptyScaleBoolArray::cancel(Space&, Propagator&) {}
   forceinline void
+  EmptyScaleBoolArray::reschedule(Space&, Propagator&) {}
+  forceinline void
   EmptyScaleBoolArray::update(Space&, bool, EmptyScaleBoolArray&) {}
   forceinline ScaleBool*
   EmptyScaleBoolArray::fst(void) const { return NULL; }
@@ -164,6 +171,14 @@ namespace Gecode { namespace Int { namespace Linear {
   LinBoolScale<SBAP,SBAN,VX,pcx>::cost(const Space&,
                                        const ModEventDelta&) const {
     return PropCost::linear(PropCost::LO, p.size() + n.size());
+  }
+
+  template<class SBAP, class SBAN, class VX, PropCond pcx>
+  void
+  LinBoolScale<SBAP,SBAN,VX,pcx>::reschedule(Space& home) {
+    x.reschedule(home,*this,pcx);
+    p.reschedule(home,*this);
+    n.reschedule(home,*this);
   }
 
   template<class SBAP, class SBAN, class VX, PropCond pcx>

@@ -11,8 +11,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2015-01-17 00:10:48 +1100 (Sat, 17 Jan 2015) $ by $Author: schulte $
- *     $Revision: 14362 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -137,6 +137,13 @@ namespace Gecode { namespace Int {
   IdxViewArray<View>::cancel(Space& home, Propagator& p, PropCond pc) {
     for (int i = n; i--; )
       xs[i].view.cancel(home,p,pc);
+  }
+
+  template<class View>
+  forceinline void
+  IdxViewArray<View>::reschedule(Space& home, Propagator& p, PropCond pc) {
+    for (int i = n; i--; )
+      xs[i].view.reschedule(home,p,pc);
   }
 
   template<class View>

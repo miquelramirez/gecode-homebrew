@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2010-07-15 01:46:18 +1000 (Thu, 15 Jul 2010) $
- *     $Revision: 11192 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -75,7 +75,7 @@ namespace Gecode { namespace Int { namespace Sequence {
     fst = next(fst);
     return fst >= size();
   }
-  
+
   forceinline void
   Violations::update(Space& home, bool, Violations& v) {
     assert(v.empty());
@@ -86,7 +86,7 @@ namespace Gecode { namespace Int { namespace Sequence {
   Violations::add(unsigned int i) {
     set(i); if (i < fst) fst = i;
   }
-  
+
   forceinline unsigned int
   Violations::get(void) {
     assert(!empty());
@@ -95,7 +95,7 @@ namespace Gecode { namespace Int { namespace Sequence {
     clear(fst); fst++;
     return fst-1;
   }
-  
+
 }}}
 
 // STATISTICS: int-prop

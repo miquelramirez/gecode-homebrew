@@ -6,9 +6,9 @@ dnl Copyright:
 dnl   Guido Tack, 2004, 2005
 dnl
 dnl Last modified:
-dnl   $Date: 2014-08-03 10:09:21 +0200 (Sun, 03 Aug 2014) $
-dnl   by $Author: tack $
-dnl   $Revision: 14186 $
+dnl   $Date: 2016-04-19 14:28:31 +0200 (Tue, 19 Apr 2016) $
+dnl   by $Author: schulte $
+dnl   $Revision: 14964 $
 dnl
 dnl This file is part of Gecode, the generic constraint
 dnl development environment:
@@ -555,6 +555,20 @@ AC_DEFUN([AC_GECODE_PEAKHEAP],
         AC_MSG_CHECKING(whether to build with peak heap size tracking)
         AC_MSG_RESULT(no)
      fi])
+
+AC_DEFUN([AC_GECODE_ALLOCATOR],
+    [AC_ARG_ENABLE([allocator],
+       AC_HELP_STRING([--enable-allocator],
+         [build with default memory allocator @<:@default=yes@:>@]))
+     AC_MSG_CHECKING(whether to build with default memory allocator)
+     if test "${enable_allocator:-yes}" = "yes"; then
+        AC_DEFINE([GECODE_ALLOCATOR],[],
+                  [Whether to build with default memory allocator])
+        AC_MSG_RESULT(yes)
+     else
+        AC_MSG_RESULT(no)
+     fi])
+
 
 AC_DEFUN([AC_GECODE_AUDIT],
     [AC_ARG_ENABLE([audit],
@@ -1458,8 +1472,8 @@ AC_DEFUN([AC_GECODE_FLEXBISON],
           AC_MSG_RESULT(no)
           AC_SUBST(HAVE_FLEXBISON, "no")
         else
-          if bison --version | \
-            grep -e ' 2\.[[3-9]][[0-9]]*' >/dev/null 2>&1
+          if bison --version | grep -e ' 2\.[[3-9]][[0-9]]*' >/dev/null 2>&1 ||
+             bison --version | grep -e ' 3\.*' >/dev/null 2>&1
           then
             AC_MSG_RESULT(yes)
             AC_SUBST(HAVE_FLEXBISON, "yes")

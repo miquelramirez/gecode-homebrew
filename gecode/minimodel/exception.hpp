@@ -9,8 +9,8 @@
  *     Mikael Lagerkvist, 2005
  *
  *  Last modified:
- *     $Date: 2008-08-22 19:36:11 +1000 (Fri, 22 Aug 2008) $ by $Author: tack $
- *     $Revision: 7678 $
+ *     $Date: 2015-10-29 14:09:11 +0100 (Thu, 29 Oct 2015) $ by $Author: schulte $
+ *     $Revision: 14818 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -46,38 +46,26 @@ namespace Gecode { namespace MiniModel {
 
   //@{
   /// %Exception: Too few arguments available in argument array
-  class GECODE_VTABLE_EXPORT TooFewArguments : public Exception  {
+  class GECODE_MINIMODEL_EXPORT TooFewArguments : public Exception  {
   public:
     /// Initialize with location \a l
     TooFewArguments(const char* l);
   };
 
   /// %Exception: Sizes of arguments does not match
-  class GECODE_VTABLE_EXPORT ArgumentSizeMismatch : public Exception  {
+  class GECODE_MINIMODEL_EXPORT ArgumentSizeMismatch : public Exception  {
   public:
     /// Initialize with location \a l
     ArgumentSizeMismatch(const char* l);
   };
 
   /// %Exception: Argument out of range
-  class GECODE_VTABLE_EXPORT ArgumentOutOfRange : public Exception  {
+  class GECODE_MINIMODEL_EXPORT ArgumentOutOfRange : public Exception  {
   public:
     /// Initialize with location \a l
     ArgumentOutOfRange(const char* l);
   };
   //@}
-
-  inline
-  TooFewArguments::TooFewArguments(const char* l)
-    : Exception(l,"Passed argument array has too few elements") {}
-
-  inline
-  ArgumentSizeMismatch::ArgumentSizeMismatch(const char* l)
-    : Exception(l,"Sizes of argument arrays mismatch") {}
-
-  inline
-  ArgumentOutOfRange::ArgumentOutOfRange(const char* l)
-    : Exception(l,"Argument out of range") {}
 
 }}
 

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2013-04-18 01:43:48 +1000 (Thu, 18 Apr 2013) $ by $Author: schulte $
- *     $Revision: 13581 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -445,8 +445,8 @@ namespace Test { namespace Int {
      class ITE : public Test {
      public:
        /// Construct and register test
-       ITE(Gecode::IntConLevel icl)
-         : Test("ITE::"+str(icl),4,-4,4,false,icl) {}
+       ITE(Gecode::IntPropLevel ipl)
+         : Test("ITE::"+str(ipl),4,-4,4,false,ipl) {}
        /// Check whether \a x is solution
        virtual bool solution(const Assignment& x) const {
          if ((x[0] < 0) || (x[0] > 1))
@@ -516,8 +516,8 @@ namespace Test { namespace Int {
      };
 
      Create c;
-     ITE itebnd(Gecode::ICL_BND);
-     ITE itedom(Gecode::ICL_DOM);
+     ITE itebnd(Gecode::IPL_BND);
+     ITE itedom(Gecode::IPL_DOM);
 
      //@}
 

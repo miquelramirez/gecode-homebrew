@@ -7,8 +7,8 @@
  *     Christian Schulte, 2007
  *
  *  Last modified:
- *     $Date: 2011-10-31 23:02:28 +1100 (Mon, 31 Oct 2011) $ by $Author: schulte $
- *     $Revision: 12450 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -43,6 +43,14 @@ namespace Gecode { namespace Int { namespace Channel {
   (home,x,y), c(home), status(S_NONE), o(o0) {
     x.subscribe(home,*new (home) Advisor(home,*this,c));
     // Propagator is scheduled because of the dependency subscription
+  }
+
+  forceinline
+  LinkMulti::LinkMulti(Space& home, bool share, LinkMulti& p)
+    : MixNaryOnePropagator<BoolView,PC_BOOL_NONE,IntView,PC_INT_DOM>
+  (home,share,p), status(S_NONE), o(p.o) {
+    assert(p.status == S_NONE);
+    c.update(home,share,p.c);
   }
 
   forceinline ExecStatus

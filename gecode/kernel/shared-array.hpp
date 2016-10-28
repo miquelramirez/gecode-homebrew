@@ -13,8 +13,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2013-03-13 16:01:49 +1100 (Wed, 13 Mar 2013) $ by $Author: tack $
- *     $Revision: 13521 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -79,7 +79,7 @@ namespace Gecode {
 
       /// Return number of elements
       int size(void) const;
-      
+
       /// Return beginning of array (for iterators)
       T* begin(void);
       /// Return beginning of array (for iterators)

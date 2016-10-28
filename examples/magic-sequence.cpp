@@ -9,8 +9,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -82,7 +82,7 @@ public:
       linear(*this, s, IRT_EQ, n);
       break;
     case PROP_GCC:
-      count(*this, s, s, opt.icl());
+      count(*this, s, s, opt.ipl());
       break;
     }
     linear(*this, IntArgs::create(n,-1,1), s, IRT_EQ, 0);

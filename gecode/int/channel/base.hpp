@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2011-04-02 00:26:13 +1100 (Sat, 02 Apr 2011) $ by $Author: tack $
- *     $Revision: 11858 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -61,6 +61,13 @@ namespace Gecode { namespace Int { namespace Channel {
   PropCost
   Base<Info,Offset,pc>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::quadratic(PropCost::LO, 2*n);
+  }
+
+  template<class Info, class Offset, PropCond pc>
+  void
+  Base<Info,Offset,pc>::reschedule(Space& home) {
+    for (int i=2*n; i--; )
+      xy[i].view.reschedule(home,*this,pc);
   }
 
   template<class Info, class Offset, PropCond pc>

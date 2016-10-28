@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2013-05-29 21:53:43 +1000 (Wed, 29 May 2013) $ by $Author: schulte $
- *     $Revision: 13672 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -39,7 +39,7 @@
 
 namespace Gecode { namespace Float { namespace Branch {
 
-  ValSelCommitBase<FloatView,FloatNumBranch>* 
+  ValSelCommitBase<FloatView,FloatNumBranch>*
   valselcommit(Space& home, const FloatValBranch& fvb) {
     switch (fvb.select()) {
     case FloatValBranch::SEL_SPLIT_MIN:
@@ -61,7 +61,7 @@ namespace Gecode { namespace Float { namespace Branch {
     }
   }
 
-  ValSelCommitBase<FloatView,FloatNumBranch>* 
+  ValSelCommitBase<FloatView,FloatNumBranch>*
   valselcommit(Space& home, const FloatAssign& fa) {
     switch (fa.select()) {
     case FloatAssign::SEL_MIN:

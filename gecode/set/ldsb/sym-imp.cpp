@@ -7,8 +7,8 @@
  *     Christopher Mears, 2012
  *
  *  Last modified:
- *     $Date: 2013-03-08 03:39:13 +1100 (Fri, 08 Mar 2013) $ by $Author: schulte $
- *     $Revision: 13458 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -128,10 +128,10 @@ namespace Gecode { namespace Int { namespace LDSB {
             break;
           }
         }
-        
+
         if (active) {
           s.push(Literal(secondSeq[seqPos], l._value));
-        } 
+        }
       }
     }
     return dynamicStackToArgArray(s);

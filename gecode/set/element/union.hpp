@@ -9,8 +9,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -65,6 +65,14 @@ namespace Gecode { namespace Set { namespace Element {
   ElementUnion<View,View0,View1>::cost(const Space&,
                                        const ModEventDelta&) const {
     return PropCost::linear(PropCost::HI, iv.size()+2);
+  }
+
+  template<class View, class View0, class View1>
+  void
+  ElementUnion<View,View0,View1>::reschedule(Space& home) {
+    x0.reschedule(home,*this, PC_SET_ANY);
+    x1.reschedule(home,*this, PC_SET_ANY);
+    iv.reschedule(home,*this, PC_SET_ANY);
   }
 
   template<class View, class View0, class View1>

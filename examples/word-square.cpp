@@ -11,8 +11,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -81,7 +81,7 @@ public:
     for (int i=0; i<w_l; i++)
       for (int j=i; j<w_l; j++)
         ml(i,j) = ml(j,i) = IntVar(*this, 'a','z');
-    
+
     // Number of words with that length
     const int n_w = dict.words(w_l);
 
@@ -116,7 +116,7 @@ public:
     }
   }
   /// Constructor for cloning \a s
-  WordSquare(bool share, WordSquare& s) 
+  WordSquare(bool share, WordSquare& s)
     : Script(share,s), w_l(s.w_l) {
     letters.update(*this, share, s.letters);
   }

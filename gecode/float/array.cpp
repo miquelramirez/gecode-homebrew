@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-30 03:43:05 +1100 (Wed, 30 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13241 $
+ *     $Date: 2016-06-27 13:33:30 +0200 (Mon, 27 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15126 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -41,15 +41,14 @@
 
 namespace Gecode {
 
-  FloatValArgs::FloatValArgs(int n, int e0, ...) : PrimArgArray<FloatVal>(n) {
-    va_list args;
-    va_start(args, e0);
-    a[0] = e0;
-    for (int i = 1; i < n; i++)
-      a[i] = va_arg(args,FloatNum);
-    va_end(args);
+  FloatValArgs
+  FloatValArgs::create(int n, FloatVal start, int inc) {
+    FloatValArgs r(n);
+    for (int i=0; i<n; i++, start+=inc)
+      r[i] = start;
+    return r;
   }
-  
+
   FloatVarArray::FloatVarArray(Space& home, int n, FloatNum min, FloatNum max)
     : VarArray<FloatVar>(home,n) {
     Float::Limits::check(min,"FloatVarArray::FloatVarArray");

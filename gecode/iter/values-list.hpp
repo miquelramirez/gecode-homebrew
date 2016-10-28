@@ -7,8 +7,8 @@
  *     Christian Schulte, 2010
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:42:21 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13069 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -105,17 +105,17 @@ namespace Gecode { namespace Iter { namespace Values {
 
 
   forceinline
-  ValueListIter::VLIO::VLIO(Region& r) 
+  ValueListIter::VLIO::VLIO(Region& r)
     : Support::BlockAllocator<ValueList,Region>(r), use_cnt(1) {}
 
 
   forceinline
-  ValueListIter::ValueListIter(void) 
+  ValueListIter::ValueListIter(void)
     : vlio(NULL) {}
 
   forceinline
-  ValueListIter::ValueListIter(Region& r) 
-    : vlio(new (r.ralloc(sizeof(VLIO))) VLIO(r)), 
+  ValueListIter::ValueListIter(Region& r)
+    : vlio(new (r.ralloc(sizeof(VLIO))) VLIO(r)),
       h(NULL), c(NULL) {}
 
   forceinline void
@@ -125,7 +125,7 @@ namespace Gecode { namespace Iter { namespace Values {
   }
 
   forceinline
-  ValueListIter::ValueListIter(const ValueListIter& i) 
+  ValueListIter::ValueListIter(const ValueListIter& i)
     : vlio(i.vlio), h(i.h), c(i.c)  {
     vlio->use_cnt++;
   }

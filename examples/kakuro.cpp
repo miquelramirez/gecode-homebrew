@@ -11,8 +11,8 @@
  *     Mikael Lagerkivst, 2007
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -497,10 +497,10 @@ public:
     int n=x.size();
     if (opt.model() == MODEL_DECOMPOSE) {
       if (n < 8)
-        linear(*this, x, IRT_EQ, c, opt.icl());
+        linear(*this, x, IRT_EQ, c, opt.ipl());
       else if (n == 8)
         rel(*this, x, IRT_NQ, 9*(9+1)/2 - c);
-      distinct(*this, x, opt.icl());
+      distinct(*this, x, opt.ipl());
     } else {
       switch (n) {
       case 0:
@@ -534,7 +534,7 @@ public:
           return;
         }
       }
-      distinct(*this, x, opt.icl());
+      distinct(*this, x, opt.ipl());
     }
   }
   /// The actual problem
@@ -614,7 +614,7 @@ main(int argc, char* argv[]) {
                   "decompose","decompose distinct and linear constraints");
   opt.model(Kakuro::MODEL_COMBINE,
                   "combine","combine distinct and linear constraints");
-  opt.icl(ICL_DOM);
+  opt.ipl(IPL_DOM);
   opt.parse(argc,argv);
   if (opt.size() >= n_examples) {
     std::cerr << "Error: size must be between 0 and "

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2008
  *
  *  Last modified:
- *     $Date: 2013-02-21 04:27:38 +1100 (Thu, 21 Feb 2013) $ by $Author: schulte $
- *     $Revision: 13347 $
+ *     $Date: 2016-08-12 15:03:01 +0200 (Fri, 12 Aug 2016) $ by $Author: schulte $
+ *     $Revision: 15150 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -60,6 +60,7 @@ namespace Gecode {
         n->n = h->n;
         memcpy(&n->blocks[0], &h->blocks[0], h->n*sizeof(void*));
         hi = Support::mark(n);
+        heap.rfree(h);
         h = n;
       }
       h->blocks[h->n++] = p;

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2002
  *
  *  Last modified:
- *     $Date: 2009-09-09 05:10:29 +1000 (Wed, 09 Sep 2009) $ by $Author: schulte $
- *     $Revision: 9692 $
+ *     $Date: 2016-06-18 14:20:49 +0200 (Sat, 18 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15118 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -58,6 +58,8 @@ namespace Gecode { namespace Support {
   public:
     /// Initialize with size \a n
     DynamicArray(A& a0, int n = 32);
+    /// Initialize with size \a n
+    DynamicArray(A& a0, unsigned int n);
     /// Copy elements from array \a da
     DynamicArray(const DynamicArray<T,A>& da);
     /// Release memory
@@ -68,8 +70,12 @@ namespace Gecode { namespace Support {
 
     /// Return element at position \a i (possibly resize)
     T& operator [](int i);
+    /// Return element at position \a i (possibly resize)
+    T& operator [](unsigned int i);
     /// Return element at position \a i
-    const T& operator [](int) const;
+    const T& operator [](int i) const;
+    /// Return element at position \a i
+    const T& operator [](unsigned int i) const;
 
     /// Cast in to pointer of type \a T
     operator T*(void);
@@ -80,6 +86,11 @@ namespace Gecode { namespace Support {
   forceinline
   DynamicArray<T,A>::DynamicArray(A& a0, int n0)
     : a(a0), n(n0), x(a.template alloc<T>(n)) {}
+
+  template<class T, class A>
+  forceinline
+  DynamicArray<T,A>::DynamicArray(A& a0, unsigned int n0)
+    : a(a0), n(static_cast<int>(n0)), x(a.template alloc<T>(n)) {}
 
   template<class T, class A>
   forceinline
@@ -123,10 +134,22 @@ namespace Gecode { namespace Support {
   }
 
   template<class T, class A>
+  forceinline T&
+  DynamicArray<T,A>::operator [](unsigned int i) {
+    return operator [](static_cast<int>(i));
+  }
+
+  template<class T, class A>
   forceinline const T&
   DynamicArray<T,A>::operator [](int i) const {
     assert(n > i);
     return x[i];
+  }
+
+  template<class T, class A>
+  forceinline const T&
+  DynamicArray<T,A>::operator [](unsigned int i) const {
+    return operator [](static_cast<int>(i));
   }
 
   template<class T, class A>

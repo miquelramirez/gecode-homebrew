@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2009-10-12 17:36:53 +0200 (Mon, 12 Oct 2009) $ by $Author: schulte $
- *     $Revision: 9878 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -66,13 +66,13 @@ namespace Gecode { namespace Int { namespace Exec {
     When(Home home, BoolView x, void (*t0)(Space&), void (*e0)(Space&));
   public:
     /// Copy propagator during cloning
-    GECODE_INT_EXPORT 
+    GECODE_INT_EXPORT
     virtual Actor* copy(Space& home, bool share);
     /// Perform propagation
-    GECODE_INT_EXPORT 
+    GECODE_INT_EXPORT
     virtual ExecStatus propagate(Space& home, const ModEventDelta& med);
     /// Post propagator
-    GECODE_INT_EXPORT 
+    GECODE_INT_EXPORT
     static ExecStatus post(Home home, BoolView x,
                            void (*t)(Space&), void (*e)(Space&));
   };

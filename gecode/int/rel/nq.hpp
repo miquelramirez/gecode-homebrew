@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -184,7 +184,7 @@ namespace Gecode { namespace Int { namespace Rel {
       return ES_FAILED;
     if (n == 2) {
       GECODE_ME_CHECK(x[1].nq(home,v));
-      return home.ES_SUBSUMED(*this);        
+      return home.ES_SUBSUMED(*this);
     }
     return ES_FIX;
   }

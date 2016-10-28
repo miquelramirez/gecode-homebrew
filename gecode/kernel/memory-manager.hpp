@@ -14,8 +14,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2013-07-11 20:30:18 +1000 (Thu, 11 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13840 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -384,7 +384,7 @@ namespace Gecode {
   }
 
   forceinline
-  MemoryManager::MemoryManager(SharedMemory* sm, MemoryManager& mm, 
+  MemoryManager::MemoryManager(SharedMemory* sm, MemoryManager& mm,
                                size_t s_sub)
     : cur_hcsz(mm.cur_hcsz), requested(0), slack(NULL) {
     MemoryConfig::align(s_sub);

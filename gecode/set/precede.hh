@@ -13,8 +13,8 @@
  *     Guido Tack, 2011
  *
  *  Last modified:
- *     $Date: 2011-07-12 12:49:06 +0200 (Tue, 12 Jul 2011) $ by $Author: tack $
- *     $Revision: 12172 $
+ *     $Date: 2016-08-17 16:31:52 +0200 (Wed, 17 Aug 2016) $ by $Author: schulte $
+ *     $Revision: 15152 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -52,7 +52,7 @@
  */
 
 namespace Gecode { namespace Set { namespace Precede {
-    
+
   /**
    * \brief Single value precedence propagator
    *
@@ -96,6 +96,8 @@ namespace Gecode { namespace Set { namespace Precede {
     virtual Propagator* copy(Space& home, bool share);
     /// Cost function
     virtual PropCost cost(const Space&, const ModEventDelta&) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
     /// Give advice to propagator

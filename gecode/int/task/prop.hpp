@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2011-05-26 00:56:41 +1000 (Thu, 26 May 2011) $ by $Author: schulte $
- *     $Revision: 12022 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -37,30 +37,36 @@
 
 namespace Gecode { namespace Int {
 
-  template<class Task, PropCond pc>  
+  template<class Task, class PL>
   forceinline
-  TaskProp<Task,pc>::TaskProp(Home home, TaskArray<Task>& t0)
+  TaskProp<Task,PL>::TaskProp(Home home, TaskArray<Task>& t0)
     : Propagator(home), t(t0) {
-    t.subscribe(home,*this,pc);
+    t.subscribe(home,*this,PL::pc);
   }
 
-  template<class Task, PropCond pc>  
+  template<class Task, class PL>
   forceinline
-  TaskProp<Task,pc>::TaskProp(Space& home, bool shared, TaskProp<Task,pc>& p) 
+  TaskProp<Task,PL>::TaskProp(Space& home, bool shared, TaskProp<Task,PL>& p)
     : Propagator(home,shared,p) {
     t.update(home,shared,p.t);
   }
 
-  template<class Task, PropCond pc>  
-  PropCost 
-  TaskProp<Task,pc>::cost(const Space&, const ModEventDelta&) const {
+  template<class Task, class PL>
+  PropCost
+  TaskProp<Task,PL>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::linear(PropCost::HI,t.size());
   }
 
-  template<class Task, PropCond pc>  
-  forceinline size_t 
-  TaskProp<Task,pc>::dispose(Space& home) {
-    t.cancel(home,*this,pc);
+  template<class Task, class PL>
+  void
+  TaskProp<Task,PL>::reschedule(Space& home) {
+    t.reschedule(home,*this,PL::pc);
+  }
+
+  template<class Task, class PL>
+  forceinline size_t
+  TaskProp<Task,PL>::dispose(Space& home) {
+    t.cancel(home,*this,PL::pc);
     (void) Propagator::dispose(home);
     return sizeof(*this);
   }

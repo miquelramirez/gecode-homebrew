@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2010-08-12 19:02:06 +1000 (Thu, 12 Aug 2010) $ by $Author: tack $
- *     $Revision: 11347 $
+ *     $Date: 2016-06-20 16:44:21 +0200 (Mon, 20 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15120 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -83,7 +83,7 @@ namespace Gecode { namespace Gist {
     nstatus &= ~( DISTANCEMASK );
     nstatus |= d;
   }
-  
+
   forceinline unsigned int
   SpaceNode::getDistance(void) const {
     return nstatus & DISTANCEMASK;
@@ -174,7 +174,7 @@ namespace Gecode { namespace Gist {
     SpaceNode* p = getParent(na);
     if (p == NULL)
       return -1;
-    for (int i=p->getNumberOfChildren(); i--;)
+    for (int i=static_cast<int>(p->getNumberOfChildren()); i--;)
       if (p->getChild(na,i) == this)
         return i;
     GECODE_NEVER;

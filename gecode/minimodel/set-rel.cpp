@@ -7,8 +7,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2010-07-16 18:51:05 +1000 (Fri, 16 Jul 2010) $ by $Author: tack $
- *     $Revision: 11208 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -73,7 +73,7 @@ namespace Gecode {
   operator ||(const SetExpr& e0, const SetExpr& e1) {
     return SetRel(e0, SRT_DISJ, e1);
   }
-  
+
 }
 
 #endif

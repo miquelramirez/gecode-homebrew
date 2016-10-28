@@ -13,8 +13,8 @@
  *     Guido Tack, 2004
  *
  *  Last modified:
- *     $Date: 2013-07-01 17:17:01 +1000 (Mon, 01 Jul 2013) $ by $Author: tack $
- *     $Revision: 13742 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -88,12 +88,12 @@ namespace Gecode { namespace Set { namespace Branch {
   MeritDegreeSize::MeritDegreeSize(Space& home, const VarBranch& vb)
     : MeritBase<SetView,double>(home,vb) {}
   forceinline
-  MeritDegreeSize::MeritDegreeSize(Space& home, bool shared, 
+  MeritDegreeSize::MeritDegreeSize(Space& home, bool shared,
                                    MeritDegreeSize& m)
     : MeritBase<SetView,double>(home,shared,m) {}
   forceinline double
   MeritDegreeSize::operator ()(const Space&, SetView x, int) {
-    return static_cast<double>(x.unknownSize()) / 
+    return static_cast<double>(x.unknownSize()) /
       static_cast<double>(x.degree());
   }
 
@@ -125,7 +125,7 @@ namespace Gecode { namespace Set { namespace Branch {
                                        const VarBranch& vb)
     : MeritBase<SetView,double>(home,vb), activity(vb.activity()) {}
   forceinline
-  MeritActivitySize::MeritActivitySize(Space& home, bool shared, 
+  MeritActivitySize::MeritActivitySize(Space& home, bool shared,
                                        MeritActivitySize& m)
     : MeritBase<SetView,double>(home,shared,m) {
     activity.update(home, shared, m.activity);

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2003
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-06-17 15:43:08 +0200 (Fri, 17 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15116 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -127,26 +127,26 @@ namespace Gecode { namespace Int { namespace Distinct {
           e->unlink();
         view[i] = view[--n_view];
       } else if (x->changed()) {
-        ViewRanges<View> r(x->view());
+        ViewRanges<View> rx(x->view());
         Edge<View>*  m = x->edge_fst();      // Matching edge
         Edge<View>** p = x->val_edges_ref();
         Edge<View>*  e = *p;
         do {
-          while (e->val(x)->val() < r.min()) {
+          while (e->val(x)->val() < rx.min()) {
             // Skip edge
             e->unlink(); e->mark();
             e = e->next_edge();
           }
           *p = e;
-          assert(r.min() == e->val(x)->val());
+          assert(rx.min() == e->val(x)->val());
           // This edges must be kept
-          for (unsigned int j=r.width(); j--; ) {
+          for (unsigned int j=rx.width(); j--; ) {
             e->free();
             p = e->next_edge_ref();
             e = e->next_edge();
           }
-          ++r;
-        } while (r());
+          ++rx;
+        } while (rx());
         *p = NULL;
         while (e != NULL) {
           e->unlink(); e->mark();
@@ -185,7 +185,7 @@ namespace Gecode { namespace Int { namespace Distinct {
       // Marks all edges as used that are on simple paths in the graph
       // that start from a free (unmatched node) by depth-first-search
       Support::StaticStack<ValNode<View>*,Region> visit(r,n_val);
-      
+
       // Insert all free nodes: they can be only value nodes as we
       // have a maximum matching covering all view nodes
       count++;
@@ -205,7 +205,7 @@ namespace Gecode { namespace Int { namespace Distinct {
             v = (*v)->next_val_ref();
           }
       }
-      
+
       // Invariant: only value nodes are on the stack!
       while (!visit.empty()) {
         ValNode<View>* n = visit.pop();

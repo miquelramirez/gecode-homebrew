@@ -7,8 +7,8 @@
  *     Christian Schulte, 2003
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -148,11 +148,11 @@ namespace Gecode { namespace Int { namespace ViewValGraph {
 
     Support::StaticStack<Node<View>*,Region> scc(r,n_val+n_view);
     Support::StaticStack<Node<View>*,Region> visit(r,n_val+n_view);
-      
+
     count++;
     unsigned int cnt0 = count;
     unsigned int cnt1 = count;
-    
+
     for (int i = n_view; i--; )
       /*
        * The following test is subtle: for scc, the test should be:
@@ -160,7 +160,7 @@ namespace Gecode { namespace Int { namespace ViewValGraph {
        * However, if view[i] < count-1, then the node has already been
        * reached on a path and all edges connected to the node have been
        * marked anyway! So just ignore this node altogether for scc.
-       */ 
+       */
       if (view[i]->min < count-1) {
         Node<View>* w = view[i];
       start:

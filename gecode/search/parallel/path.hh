@@ -7,8 +7,8 @@
  *     Christian Schulte, 2003
  *
  *  Last modified:
- *     $Date: 2015-03-20 15:37:34 +0100 (Fri, 20 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14471 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -77,15 +77,15 @@ namespace Gecode { namespace Search { namespace Parallel {
       Edge(void);
       /// Edge for space \a s with clone \a c (possibly NULL)
       Edge(Space* s, Space* c);
-      
+
       /// Return space for edge
       Space* space(void) const;
       /// Set space to \a s
       void space(Space* s);
-      
+
       /// Return choice
       const Choice* choice(void) const;
-      
+
       /// Return number for alternatives
       unsigned int alt(void) const;
       /// Return true number for alternatives (excluding lao optimization)
@@ -100,7 +100,7 @@ namespace Gecode { namespace Search { namespace Parallel {
       void next(void);
       /// Steal rightmost alternative and return its number
       unsigned int steal(void);
-      
+
       /// Free memory for edge
       void dispose(void);
     };
@@ -132,7 +132,7 @@ namespace Gecode { namespace Search { namespace Parallel {
     void unwind(int l);
     /// Commit space \a s as described by stack entry at position \a i
     void commit(Space* s, int i) const;
-    /// Recompute space according to path 
+    /// Recompute space according to path
     Space* recompute(unsigned int& d, unsigned int a_d, Worker& s);
     /// Recompute space according to path
     Space* recompute(unsigned int& d, unsigned int a_d, Worker& s,
@@ -222,7 +222,7 @@ namespace Gecode { namespace Search { namespace Parallel {
    */
 
   forceinline
-  Path::Path(unsigned int l) 
+  Path::Path(unsigned int l)
     : ds(heap), _ngdl(l), n_work(0) {}
 
   forceinline unsigned int

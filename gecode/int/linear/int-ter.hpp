@@ -7,8 +7,8 @@
  *     Christian Schulte, 2003
  *
  *  Last modified:
- *     $Date: 2010-03-04 03:32:21 +1100 (Thu, 04 Mar 2010) $ by $Author: schulte $
- *     $Revision: 10364 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -74,6 +74,14 @@ namespace Gecode { namespace Int { namespace Linear {
   PropCost
   LinTer<Val,A,B,C,pc>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::ternary(PropCost::LO);
+  }
+
+  template<class Val, class A, class B, class C, PropCond pc>
+  void
+  LinTer<Val,A,B,C,pc>::reschedule(Space& home) {
+    x0.reschedule(home,*this,pc);
+    x1.reschedule(home,*this,pc);
+    x2.reschedule(home,*this,pc);
   }
 
   template<class Val, class A, class B, class C, PropCond pc>

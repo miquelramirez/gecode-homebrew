@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 17:04:26 +1000 (Mon, 06 May 2013) $ by $Author: tack $
- *     $Revision: 13614 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -460,7 +460,7 @@ namespace Gecode { namespace Gist {
     moveInspectorMenu->clear();
     moveInspectorMenu->addActions(
       moveInspectorGroup->actions());
-    
+
     QAction* ia = new QAction(i0->name().c_str(), this);
     inspectGroup->addAction(ia);
     QAction* ibfpa = new QAction(i0->name().c_str(), this);
@@ -586,10 +586,10 @@ namespace Gecode { namespace Gist {
       unhideAll->setEnabled(false);
       labelBranches->setEnabled(false);
       labelPath->setEnabled(false);
-      
+
       toggleStop->setEnabled(false);
       unstopAll->setEnabled(false);
-      
+
       center->setEnabled(false);
       exportPDF->setEnabled(false);
       exportWholeTreePDF->setEnabled(false);
@@ -623,7 +623,7 @@ namespace Gecode { namespace Gist {
         unhideAll->setEnabled(false);
         unstopAll->setEnabled(false);
       }
-      
+
       toggleStop->setEnabled(n->getStatus() == STOP ||
         n->getStatus() == UNSTOP);
 
@@ -753,7 +753,7 @@ namespace Gecode { namespace Gist {
       bookmarksGroup->addAction(nullBookmark);
     }
   }
-  
+
   void
   Gist::populateBookmarksMenu(void) {
     bookmarksMenu->clear();
@@ -773,7 +773,7 @@ namespace Gecode { namespace Gist {
     inspectNodeBeforeFPMenu->addSeparator();
     inspectNodeBeforeFPMenu->addActions(inspectBeforeFPGroup->actions());
   }
-  
+
   void
   Gist::setAutoHideFailed(bool b) { canvas->setAutoHideFailed(b); }
   void

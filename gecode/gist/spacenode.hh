@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2010-08-11 15:13:48 +0200 (Wed, 11 Aug 2010) $ by $Author: tack $
- *     $Revision: 11343 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -111,7 +111,7 @@ namespace Gecode { namespace Gist {
 
     /// Set distance from copy
     void setDistance(unsigned int d);
-    
+
     /// Return distance from copy
     unsigned int getDistance(void) const;
 

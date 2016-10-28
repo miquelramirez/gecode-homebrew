@@ -7,8 +7,8 @@
  *     Mikael Lagerkvist, 2006
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -134,7 +134,7 @@ public:
     rel(*this, x[0], IRT_EQ, 0);
 
     // x is order and y is placement
-    channel(*this, x, y, opt.icl());
+    channel(*this, x, y, opt.ipl());
 
     // The placement rules: the absolute value of the difference
     // between two consecutive cards is 1 or 12.
@@ -150,7 +150,7 @@ public:
         element(*this, modtable, x[i+1], x2);
         const int dr[2] = {1, 12};
         IntVar diff(*this, IntSet(dr, 2));
-        rel(*this, abs(x1-x2) == diff, ICL_DOM);
+        rel(*this, abs(x1-x2) == diff, IPL_DOM);
       }
     } else if (opt.propagation() == PROPAGATION_DFA) {
       // Build table for allowed tuples
@@ -247,7 +247,7 @@ public:
     for (IntVarValues vals(x); vals(); ++vals)
       if (layer[vals.val()] < w) {
         v = vals.val();
-        if ((w = layer[vals.val()]) == 0) 
+        if ((w = layer[vals.val()]) == 0)
           break;
       }
     assert(v >= 1 && v < 52);
@@ -310,7 +310,7 @@ main(int argc, char* argv[]) {
                   "dfa", "use DFA-based extensional propagation");
   opt.propagation(BlackHole::PROPAGATION_TUPLE_SET,
                   "tuple-set", "use TupleSet-based extensional propagation");
-  opt.icl(ICL_DOM);
+  opt.ipl(IPL_DOM);
   opt.parse(argc,argv);
   // Generates the new board
   generate(opt.size());

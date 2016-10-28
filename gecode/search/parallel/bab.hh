@@ -7,8 +7,8 @@
  *     Christian Schulte, 2009
  *
  *  Last modified:
- *     $Date: 2015-03-20 15:37:34 +0100 (Fri, 20 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14471 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -90,6 +90,9 @@ namespace Gecode { namespace Search { namespace Parallel {
     virtual Statistics statistics(void) const;
     /// Reset engine to restart at space \a s
     virtual void reset(Space* s);
+    /// Constrain future solutions to be better than \a b
+    virtual void constrain(const Space& b);
+    /// Constrain
     /// Return no-goods
     virtual NoGoods& nogoods(void);
     /// Destructor
@@ -169,7 +172,7 @@ namespace Gecode { namespace Search { namespace Parallel {
       cur->constrain(*best);
     m.release();
   }
-  forceinline void 
+  forceinline void
   BAB::solution(Space* s) {
     m_search.acquire();
     if (best != NULL) {
@@ -194,7 +197,7 @@ namespace Gecode { namespace Search { namespace Parallel {
       e_search.signal();
     m_search.release();
   }
-  
+
 
   /*
    * Worker: finding and stealing working

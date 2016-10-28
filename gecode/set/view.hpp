@@ -11,8 +11,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2011-08-20 00:47:28 +1000 (Sat, 20 Aug 2011) $ by $Author: tack $
- *     $Revision: 12318 $
+ *     $Date: 2016-09-02 15:36:56 +0200 (Fri, 02 Sep 2016) $ by $Author: schulte $
+ *     $Revision: 15162 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -706,6 +706,8 @@ namespace Gecode { namespace Set {
     void subscribe(Space& home, Propagator& p, PropCond pc, bool schedule=true);
     /// Cancel subscription of propagator \a p with propagation condition \a pc to view
     void cancel(Space& home, Propagator& p, PropCond pc);
+    /// Re-schedule propagator \a p with propagation condition \a pc
+    void reschedule(Space& home, Propagator& p, PropCond pc);
     /// Subscribe advisor \a a to view
     void subscribe(Space& home, Advisor& a);
     /// Cancel subscription of advisor \a a
@@ -913,7 +915,7 @@ namespace Gecode { namespace Set {
    * for cacheing the current domain of \f$t\f$ and comparing the current
    * domain to the cached domain. Cached views make it easy to implement
    * incremental propagation algorithms.
-   * 
+   *
    * \ingroup TaskActorSetView
    */
 

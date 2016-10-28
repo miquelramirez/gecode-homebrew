@@ -11,8 +11,8 @@
  *     Christian Schulte, 2007
  *
  *  Last modified:
- *     $Date: 2014-08-28 22:29:11 +1000 (Thu, 28 Aug 2014) $ by $Author: schulte $
- *     $Revision: 14203 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -75,7 +75,7 @@ namespace Gecode { namespace Support {
     /// The bits
     Base bits;
     /// Bits per base
-    static const unsigned int bpb = 
+    static const unsigned int bpb =
       static_cast<unsigned int>(CHAR_BIT * sizeof(Base));
   public:
     /// Initialize with all bits set if \a setbits
@@ -381,7 +381,7 @@ namespace Gecode { namespace Support {
   forceinline
   RawBitSetBase::RawBitSetBase(A& a, unsigned int sz, bool setbits)
     : data(a.template alloc<BitSetData>(BitSetData::data(sz+1))) {
-    for (unsigned int i = BitSetData::data(sz+1); i--; ) 
+    for (unsigned int i = BitSetData::data(sz+1); i--; )
       data[i].init(setbits);
     // Set a bit at position sz as sentinel (for efficient next)
     set(sz);
@@ -391,7 +391,7 @@ namespace Gecode { namespace Support {
   forceinline
   RawBitSetBase::RawBitSetBase(A& a, unsigned int sz, const RawBitSetBase& bs)
     : data(a.template alloc<BitSetData>(BitSetData::data(sz+1))) {
-    for (unsigned int i = BitSetData::data(sz+1); i--; ) 
+    for (unsigned int i = BitSetData::data(sz+1); i--; )
       data[i] = bs.data[i];
     // Set a bit at position sz as sentinel (for efficient next)
     set(sz);
@@ -434,8 +434,8 @@ namespace Gecode { namespace Support {
     if (data[pos](bit))
       return pos * bpb + data[pos].next(bit);
     // The sentinel bit guarantees that this loop always terminates
-    do { 
-      pos++; 
+    do {
+      pos++;
     } while (!data[pos]());
     return pos * bpb + data[pos].next();
   }
@@ -506,7 +506,7 @@ namespace Gecode { namespace Support {
   template<class A>
   forceinline void
   BitSetBase::init(A& a, unsigned int s, bool setbits) {
-    assert(sz == 0); 
+    assert(sz == 0);
     RawBitSetBase::init(a,s,setbits); sz=s;
   }
 

@@ -7,8 +7,8 @@
  *     Christian Schulte, 2006
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -79,10 +79,10 @@ public:
 
     // Set up variables for distance
     for (int i=0; i<n-1; i++)
-      rel(*this, d[i] == abs(x[i+1]-x[i]), opt.icl());
+      rel(*this, d[i] == abs(x[i+1]-x[i]), opt.ipl());
 
-    distinct(*this, x, opt.icl());
-    distinct(*this, d, opt.icl());
+    distinct(*this, x, opt.ipl());
+    distinct(*this, d, opt.ipl());
 
     // Break mirror symmetry
     rel(*this, x[0], IRT_LE, x[1]);
@@ -122,7 +122,7 @@ main(int argc, char* argv[]){
   SizeOptions opt("AllInterval");
   opt.size(1000);
   opt.iterations(5);
-  opt.icl(ICL_BND);
+  opt.ipl(IPL_BND);
   opt.parse(argc, argv);
   if (opt.size() < 2) {
     std::cerr << "size must be at least 2!" << std::endl;

@@ -10,8 +10,8 @@
  *     Geoffrey Chu
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2015-09-21 12:08:31 +0200 (Mon, 21 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14703 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -248,6 +248,7 @@ public:
     // Cost matrix
     IntArgs c(n*n, p.d());
 
+    // Disallow disconnected nodes
     for (int i=n; i--; )
       for (int j=n; j--; )
         if (p.d(i,j) == 0)
@@ -257,7 +258,7 @@ public:
     IntVarArgs costs(*this, n, Int::Limits::min, Int::Limits::max);
 
     // Enforce that the succesors yield a tour with appropriate costs
-    circuit(*this, c, succ, costs, total, opt.icl());
+    circuit(*this, c, succ, costs, total, opt.ipl());
 
     // Just assume that the circle starts forwards
     {
@@ -267,7 +268,7 @@ public:
     }
 
     // First enumerate cost values, prefer those that maximize cost reduction
-    branch(*this, costs, INT_VAR_REGRET_MAX_MAX(), INT_VAL_SPLIT_MIN());
+    branch(*this, costs, INT_VAR_REGRET_MAX_MAX(), INT_VAL_MIN());
 
     // Then fix the remaining successors
     branch(*this, succ,  INT_VAR_MIN_MIN(), INT_VAL_MIN());
@@ -324,7 +325,7 @@ int
 main(int argc, char* argv[]) {
   SizeOptions opt("TSP");
   opt.solutions(0);
-  opt.icl(ICL_DOM);
+  opt.ipl(IPL_DOM);
   opt.parse(argc,argv);
 
   if (opt.size() >= ps_n) {

@@ -7,8 +7,8 @@
  *     Vincent Barichard, 2013
  *
  *  Last modified:
- *     $Date: 2014-09-26 16:25:13 +0200 (Fri, 26 Sep 2014) $ by $Author: vbarichard $
- *     $Revision: 14229 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Quacode:
  *     http://quacode.barichard.com
@@ -66,7 +66,7 @@ namespace Gecode {
           using BinaryPropagator<View,PC_INT_DOM>::x1;
 
           /// Initial size of x0
-          unsigned int x0Size; 
+          unsigned int x0Size;
           /// Constructor for cloning \a p
           Watch(Space& home, bool share, Watch& p);
           /// Constructor for posting

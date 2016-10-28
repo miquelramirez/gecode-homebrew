@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2010-07-29 00:13:53 +1000 (Thu, 29 Jul 2010) $ by $Author: schulte $
- *     $Revision: 11292 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -150,7 +150,7 @@ namespace Gecode { namespace Support {
 
   template<class T, class A, int blocksize>
   forceinline void
-  BlockClient<T,A,blocksize>::operator 
+  BlockClient<T,A,blocksize>::operator
   delete(void*,BlockAllocator<T,A,blocksize>&) {
   }
   template<class T, class A, int blocksize>

@@ -10,8 +10,8 @@
  *     Guido Tack, 2004, 2005
  *
  *  Last modified:
- *     $Date: 2013-03-06 00:40:46 +1100 (Wed, 06 Mar 2013) $ by $Author: schulte $
- *     $Revision: 13435 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -76,7 +76,7 @@ namespace Gecode {
   void
   dom(Home home, SetVar s, SetRelType r, const IntSet& is) {
     Set::Limits::check(is, "Set::dom");
-    if (home.failed()) return;
+    GECODE_POST;
 
     Set::SetView _s(s);
 
@@ -193,7 +193,7 @@ namespace Gecode {
   void
   dom(Home home, const SetVarArgs& s, SetRelType r, const IntSet& is) {
     Set::Limits::check(is, "Set::dom");
-    if (home.failed()) return;
+    GECODE_POST;
 
     switch (r) {
     case SRT_EQ:
@@ -361,7 +361,7 @@ namespace Gecode {
   void
   dom(Home home, SetVar s, SetRelType rt, const IntSet& is, Reify r) {
     Set::Limits::check(is, "Set::dom");
-    if (home.failed()) return;
+    GECODE_POST;
     switch (rt) {
     case SRT_EQ:
       {
@@ -623,8 +623,8 @@ namespace Gecode {
 
   void
   dom(Home home, SetVar x, SetVar d) {
-    using namespace Set;    
-    if (home.failed()) return;
+    using namespace Set;
+    GECODE_POST;
     SetView xv(x), dv(d);
     if (!same(xv,dv)) {
       GECODE_ME_FAIL(xv.cardMax(home,dv.cardMax()));
@@ -638,11 +638,11 @@ namespace Gecode {
 
   void
   dom(Home home, const SetVarArgs& x, const SetVarArgs& d) {
-    using namespace Set;    
+    using namespace Set;
     if (x.size() != d.size())
       throw ArgumentSizeMismatch("Set::dom");
     for (int i=x.size(); i--; ) {
-      if (home.failed()) return;
+      GECODE_POST;
       SetView xv(x[i]), dv(d[i]);
       if (!same(xv,dv)) {
         GECODE_ME_FAIL(xv.cardMax(home,dv.cardMax()));
@@ -654,7 +654,7 @@ namespace Gecode {
       }
     }
   }
-  
+
 }
 
 // STATISTICS: set-post

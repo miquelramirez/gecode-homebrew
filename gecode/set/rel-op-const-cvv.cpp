@@ -10,8 +10,8 @@
  *     Guido Tack, 2004, 2005
  *
  *  Last modified:
- *     $Date: 2010-06-07 22:18:14 +1000 (Mon, 07 Jun 2010) $ by $Author: tack $
- *     $Revision: 11048 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -52,7 +52,7 @@ namespace Gecode {
       SetVar z) {
     Set::Limits::check(x, "Set::rel");
     ConstSetView xv(home, x);
-    if (home.failed()) return;
+    GECODE_POST;
     if (r == SRT_CMPL) {
       post_compl(home, xv, op, y, z);
     } else {

@@ -7,8 +7,8 @@
  *     Patrick Pekczynski, 2004
  *
  *  Last modified:
- *     $Date: 2013-09-30 21:48:20 +1000 (Mon, 30 Sep 2013) $ by $Author: tack $
- *     $Revision: 14017 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -129,7 +129,7 @@ namespace Gecode { namespace Int { namespace Sorted {
           }
         }
       }
-      
+
       for (int i = n; i--; ) {
         // minimum reachable y-variable
         int minr = allbnd[i].min;
@@ -379,6 +379,15 @@ namespace Gecode { namespace Int { namespace Sorted {
   template<class View, bool Perm>
   PropCost Sorted<View,Perm>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::linear(PropCost::LO, x.size());
+  }
+
+  template<class View, bool Perm>
+  void
+  Sorted<View,Perm>::reschedule(Space& home) {
+    x.reschedule(home, *this, PC_INT_BND);
+    y.reschedule(home, *this, PC_INT_BND);
+    if (Perm)
+      z.reschedule(home, *this, PC_INT_BND);
   }
 
   template<class View, bool Perm>

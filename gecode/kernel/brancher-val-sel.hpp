@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2012-10-02 23:49:50 +1000 (Tue, 02 Oct 2012) $ by $Author: schulte $
- *     $Revision: 13123 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -64,7 +64,7 @@ namespace Gecode {
 
   /// User-defined value selection
   template<class View>
-  class ValSelFunction : 
+  class ValSelFunction :
     public ValSel<View,
                   typename BranchTraits<typename View::VarType>::ValType> {
   public:
@@ -115,8 +115,8 @@ namespace Gecode {
       v(function_cast<ValFunction>(vb.val())) {}
   template<class View>
   forceinline
-  ValSelFunction<View>::ValSelFunction(Space& home, bool shared, 
-                                       ValSelFunction<View>& vs) 
+  ValSelFunction<View>::ValSelFunction(Space& home, bool shared,
+                                       ValSelFunction<View>& vs)
     : ValSel<View,Val>(home,shared,vs), v(vs.v) {}
   template<class View>
   forceinline typename ValSelFunction<View>::Val

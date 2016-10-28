@@ -7,8 +7,8 @@
  *     Christian Schulte, 2013
  *
  *  Last modified:
- *     $Date: 2014-05-27 22:57:59 +1000 (Tue, 27 May 2014) $ by $Author: schulte $
- *     $Revision: 14124 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -81,7 +81,7 @@ namespace Gecode {
     /// Destructor
     ~AFC(void);
     //@}
-    
+
     /// \name Information access
     //@{
     /// Return number of AFC values
@@ -126,7 +126,7 @@ namespace Gecode {
 
   template<class Var>
   forceinline
-  AFC::AFC(Home home, const VarArgArray<Var>& x, double d) 
+  AFC::AFC(Home home, const VarArgArray<Var>& x, double d)
     : n(x.size()) {
     if ((d < 0.0) || (d > 1.0))
       throw IllegalDecay("AFC");
@@ -141,7 +141,7 @@ namespace Gecode {
     static_cast<Space&>(home).afc_decay(d);
   }
 
-  
+
   forceinline
   AFC::AFC(const AFC& a)
     : n(a.n) {}
@@ -183,7 +183,7 @@ namespace Gecode {
     (void)a;
     return os << "AFC(no information available)";
   }
-  
+
 }
 
 // STATISTICS: kernel-branch

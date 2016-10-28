@@ -11,8 +11,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-06-14 04:53:42 +1000 (Fri, 14 Jun 2013) $ by $Author: tack $
- *     $Revision: 13706 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -82,7 +82,7 @@ namespace Gecode { namespace Float { namespace Branch {
   MeritDegreeSize::MeritDegreeSize(Space& home, const VarBranch& vb)
     : MeritBase<FloatView,double>(home,vb) {}
   forceinline
-  MeritDegreeSize::MeritDegreeSize(Space& home, bool shared, 
+  MeritDegreeSize::MeritDegreeSize(Space& home, bool shared,
                                    MeritDegreeSize& m)
     : MeritBase<FloatView,double>(home,shared,m) {}
   forceinline double
@@ -118,7 +118,7 @@ namespace Gecode { namespace Float { namespace Branch {
                                        const VarBranch& vb)
     : MeritBase<FloatView,double>(home,vb), activity(vb.activity()) {}
   forceinline
-  MeritActivitySize::MeritActivitySize(Space& home, bool shared, 
+  MeritActivitySize::MeritActivitySize(Space& home, bool shared,
                                        MeritActivitySize& m)
     : MeritBase<FloatView,double>(home,shared,m) {
     activity.update(home, shared, m.activity);

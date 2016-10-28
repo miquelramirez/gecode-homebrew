@@ -9,8 +9,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-07-04 17:03:13 +0200 (Thu, 04 Jul 2013) $ by $Author: schulte $
- *     $Revision: 13801 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -56,7 +56,7 @@ namespace Gecode { namespace Float { namespace Branch {
    * views that can be used together with the generic view/value
    * brancher classes.
    *
-   * All merit-based float view selection classes require 
+   * All merit-based float view selection classes require
    * \code #include <gecode/float/branch.hh> \endcode
    * \ingroup Other
    */
@@ -192,7 +192,7 @@ namespace Gecode { namespace Float { namespace Branch {
    * views that can be used together with the generic view/value
    * branchers.
    *
-   * All value selection classes require 
+   * All value selection classes require
    * \code #include <gecode/float/branch.hh> \endcode
    * \ingroup Other
    */
@@ -265,7 +265,7 @@ namespace Gecode { namespace Float { namespace Branch {
    * views that can be used together with the generic view/value
    * branchers.
    *
-   * All value commit classes require 
+   * All value commit classes require
    * \code #include <gecode/float/branch.hh> \endcode
    * \ingroup Other
    */
@@ -283,12 +283,12 @@ namespace Gecode { namespace Float { namespace Branch {
     /// Constructor for cloning
     ValCommitLqGq(Space& home, bool shared, ValCommitLqGq& vc);
     /// Commit view \a x at position \a i to value \a n for alternative \a a
-    ModEvent commit(Space& home, unsigned int a, FloatView x, int i, 
+    ModEvent commit(Space& home, unsigned int a, FloatView x, int i,
                     FloatNumBranch n);
     /// Create no-good literal for alternative \a a
     NGL* ngl(Space& home, unsigned int a, FloatView x, FloatNumBranch n) const;
     /// Print on \a o the alternative \a with view \a x at position \a i and value \a n
-    void print(const Space& home, unsigned int a, FloatView x, int i, 
+    void print(const Space& home, unsigned int a, FloatView x, int i,
                FloatNumBranch n,
                std::ostream& o) const;
   };
@@ -301,12 +301,12 @@ namespace Gecode { namespace Float { namespace Branch {
 
   /// Return value and commit for float views
   GECODE_FLOAT_EXPORT
-  ValSelCommitBase<FloatView,FloatNumBranch>* 
+  ValSelCommitBase<FloatView,FloatNumBranch>*
   valselcommit(Space& home, const FloatValBranch& svb);
 
   /// Return value and commit for float views
   GECODE_FLOAT_EXPORT
-  ValSelCommitBase<FloatView,FloatNumBranch>* 
+  ValSelCommitBase<FloatView,FloatNumBranch>*
   valselcommit(Space& home, const FloatAssign& ia);
 
 }}}

@@ -7,8 +7,8 @@
 #     Christian Schulte, 2005
 #
 #  Last modified:
-#     $Date: 2015-03-19 14:02:56 +0100 (Thu, 19 Mar 2015) $ by $Author: schulte $
-#     $Revision: 14468 $
+#     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#     $Revision: 15073 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -135,10 +135,10 @@ print <<EOF
   \\page PageCodeStat Gecode code statistics
 
 The following approximate breakdown into the different parts of %Gecode
-gives some statistics about the amount of code and documentation 
-contained in the code (as comments) where blank lines are excluded. 
+gives some statistics about the amount of code and documentation
+contained in the code (as comments) where blank lines are excluded.
 
-The abbreviation "loc" means "lines of code" and "lod" means "lines of 
+The abbreviation "loc" means "lines of code" and "lod" means "lines of
 documentation".
 
 EOF
@@ -186,4 +186,4 @@ The grand total: $an_class classes, $an_code loc, $an_comment lod
 */
 EOF
 ;
-			 
+

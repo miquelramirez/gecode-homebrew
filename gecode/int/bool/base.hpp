@@ -7,8 +7,8 @@
  *     Christian Schulte, 2004
  *
  *  Last modified:
- *     $Date: 2009-10-13 02:36:53 +1100 (Tue, 13 Oct 2009) $ by $Author: schulte $
- *     $Revision: 9878 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -74,6 +74,13 @@ namespace Gecode { namespace Int { namespace Bool {
   }
 
   template<class BVA, class BVB>
+  void
+  BoolBinary<BVA,BVB>::reschedule(Space& home) {
+    x0.reschedule(home,*this,PC_BOOL_VAL);
+    x1.reschedule(home,*this,PC_BOOL_VAL);
+  }
+
+  template<class BVA, class BVB>
   forceinline size_t
   BoolBinary<BVA,BVB>::dispose(Space& home) {
     x0.cancel(home,*this,PC_BOOL_VAL);
@@ -120,6 +127,14 @@ namespace Gecode { namespace Int { namespace Bool {
   PropCost
   BoolTernary<BVA,BVB,BVC>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::binary(PropCost::LO);
+  }
+
+  template<class BVA, class BVB, class BVC>
+  void
+  BoolTernary<BVA,BVB,BVC>::reschedule(Space& home) {
+    x0.reschedule(home,*this,PC_BOOL_VAL);
+    x1.reschedule(home,*this,PC_BOOL_VAL);
+    x2.reschedule(home,*this,PC_BOOL_VAL);
   }
 
   template<class BVA, class BVB, class BVC>

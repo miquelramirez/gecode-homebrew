@@ -7,8 +7,8 @@
  *     Christian Schulte, 2001
  *
  *  Last modified:
- *     $Date: 2015-03-18 02:09:39 +1100 (Wed, 18 Mar 2015) $ by $Author: schulte $
- *     $Revision: 14447 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -86,12 +86,12 @@ public:
           rel(*this, q[i]+i != q[j]+j);
           rel(*this, q[i]-i != q[j]-j);
         }
-      distinct(*this, q, opt.icl());
+      distinct(*this, q, opt.ipl());
       break;
     case PROP_DISTINCT:
-      distinct(*this, IntArgs::create(n,0,1), q, opt.icl());
-      distinct(*this, IntArgs::create(n,0,-1), q, opt.icl());
-      distinct(*this, q, opt.icl());
+      distinct(*this, IntArgs::create(n,0,1), q, opt.ipl());
+      distinct(*this, IntArgs::create(n,0,-1), q, opt.ipl());
+      distinct(*this, q, opt.ipl());
       break;
     }
     branch(*this, q, INT_VAR_SIZE_MIN(), INT_VAL_MIN());
@@ -137,7 +137,7 @@ public:
   /// Inspect space \a s
   virtual void inspect(const Space& s) {
     const Queens& q = static_cast<const Queens&>(s);
-    
+
     if (!scene)
       initialize();
     QList <QGraphicsItem*> itemList = scene->items();
@@ -155,11 +155,11 @@ public:
       for (IntVarValues xv(q.q[i]); xv(); ++xv) {
         scene->addEllipse(QRectF(i*unit+unit/4,xv.val()*unit+unit/4,
                                  unit/2,unit/2), p, b);
-      } 
+      }
     }
-    mw->show();    
+    mw->show();
   }
-    
+
   /// Set up main window
   void initialize(void) {
     mw = new QMainWindow();
@@ -175,7 +175,7 @@ public:
                 mw, SLOT(close()));
     mw->addAction(closeWindow);
   }
-  
+
   /// Name of the inspector
   virtual std::string name(void) { return "Board"; }
   /// Finalize inspector

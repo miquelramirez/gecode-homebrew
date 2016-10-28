@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2012-03-30 14:58:02 +1100 (Fri, 30 Mar 2012) $ by $Author: tack $
- *     $Revision: 12665 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -65,7 +65,7 @@ namespace Gecode { namespace Gist {
   VarComparator<S>::finalize(void) {
     TextOutput::finalize();
   }
-  
+
   inline std::string
   Comparator::compare(std::string x_n, IntVar x, IntVar y) {
     IntVarRanges xr(x), yr(y);
@@ -90,7 +90,7 @@ namespace Gecode { namespace Gist {
   Comparator::compare(std::string x_n, SetVar x, SetVar y) {
     SetVarGlbRanges xglbr(x), yglbr(y);
     SetVarLubRanges xlubr(x), ylubr(y);
-    if (! (Iter::Ranges::equal(xglbr,yglbr) && 
+    if (! (Iter::Ranges::equal(xglbr,yglbr) &&
            Iter::Ranges::equal(xlubr,ylubr) &&
            x.cardMin() == y.cardMin() &&
            y.cardMax() == y.cardMax()) ) {
@@ -114,7 +114,7 @@ namespace Gecode { namespace Gist {
 #endif
   template<class Var>
   std::string
-  Comparator::compare(std::string x_n, const VarArgArray<Var>& x, 
+  Comparator::compare(std::string x_n, const VarArgArray<Var>& x,
     const VarArgArray<Var>& y) {
     if (x.size() != y.size())
       return "Error: array size mismatch";
@@ -128,14 +128,14 @@ namespace Gecode { namespace Gist {
         if (!first) {
           ret << ", ";
         } else {
-          first = false;          
+          first = false;
         }
         ret << cmp;
       }
     }
     return ret.str();
   }
-  
+
   template<class S>
   Print<S>::Print(const std::string& name)
     : TextOutput(name) {}
@@ -163,7 +163,7 @@ namespace Gecode { namespace Gist {
   }
 
   forceinline
-  Options::Options(void) {} 
+  Options::Options(void) {}
 
   forceinline
   Options::_I::_I(void) : _click(heap,1), n_click(0),

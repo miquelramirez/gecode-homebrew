@@ -11,8 +11,8 @@
  *     Gabor Szokoli, 2004
  *
  *  Last modified:
- *     $Date: 2011-04-05 23:56:09 +1000 (Tue, 05 Apr 2011) $ by $Author: tack $
- *     $Revision: 11894 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -61,9 +61,9 @@ namespace Gecode {
     Set::Limits::check(ubMin,"SetVarArray::SetVarArray");
     Set::Limits::check(ubMax,"SetVarArray::SetVarArray");
     Set::Limits::check(maxCard,"SetVarArray::SetVarArray");
-    unsigned int glbSize = 
+    unsigned int glbSize =
       (lbMin <= lbMax ? static_cast<unsigned int>(lbMax-lbMin+1) : 0U);
-    unsigned int lubSize = 
+    unsigned int lubSize =
       (ubMin <= ubMax ? static_cast<unsigned int>(ubMax-ubMin+1) : 0U);
     if (minCard > maxCard || minCard > lubSize || maxCard < glbSize ||
         lbMin < ubMin || lbMax > ubMax)
@@ -82,7 +82,7 @@ namespace Gecode {
     Set::Limits::check(maxCard,"SetVarArray::SetVarArray");
     IntSetRanges glbr(glb);
     unsigned int glbSize = Iter::Ranges::size(glbr);
-    unsigned int lubSize = 
+    unsigned int lubSize =
       (ubMin <= ubMax ? static_cast<unsigned int>(ubMax-ubMin+1) : 0U);
     if (minCard > maxCard || minCard > lubSize || maxCard < glbSize ||
         glb.min() < ubMin || glb.max() > ubMax)
@@ -102,7 +102,7 @@ namespace Gecode {
     Iter::Ranges::Singleton glbr(lbMin,lbMax);
     IntSetRanges lubr(lub);
     IntSetRanges lubr_s(lub);
-    unsigned int glbSize = 
+    unsigned int glbSize =
       (lbMin <= lbMax ? static_cast<unsigned int>(lbMax-lbMin+1) : 0U);
     unsigned int lubSize = Iter::Ranges::size(lubr_s);
     if (minCard > maxCard || minCard > lubSize || maxCard < glbSize ||
@@ -142,9 +142,9 @@ namespace Gecode {
     Set::Limits::check(ubMin,"SetVarArgs::SetVarArgs");
     Set::Limits::check(ubMax,"SetVarArgs::SetVarArgs");
     Set::Limits::check(maxCard,"SetVarArgs::SetVarArgs");
-    unsigned int glbSize = 
+    unsigned int glbSize =
       (lbMin <= lbMax ? static_cast<unsigned int>(lbMax-lbMin+1) : 0U);
-    unsigned int lubSize = 
+    unsigned int lubSize =
       (ubMin <= ubMax ? static_cast<unsigned int>(ubMax-ubMin+1) : 0U);
     if (minCard > maxCard || minCard > lubSize || maxCard < glbSize ||
         lbMin < ubMin || lbMax > ubMax)
@@ -163,7 +163,7 @@ namespace Gecode {
     Set::Limits::check(maxCard,"SetVarArgs::SetVarArgs");
     IntSetRanges glbr(glb);
     unsigned int glbSize = Iter::Ranges::size(glbr);
-    unsigned int lubSize = 
+    unsigned int lubSize =
       (ubMin <= ubMax ? static_cast<unsigned int>(ubMax-ubMin+1) : 0U);
     if (minCard > maxCard || minCard > lubSize || maxCard < glbSize ||
         glb.min() < ubMin || glb.max() > ubMax)
@@ -183,7 +183,7 @@ namespace Gecode {
     Iter::Ranges::Singleton glbr(lbMin,lbMax);
     IntSetRanges lubr(lub);
     IntSetRanges lubr_s(lub);
-    unsigned int glbSize = 
+    unsigned int glbSize =
       (lbMin <= lbMax ? static_cast<unsigned int>(lbMax-lbMin+1) : 0U);
     unsigned int lubSize = Iter::Ranges::size(lubr_s);
     if (minCard > maxCard || minCard > lubSize || maxCard < glbSize ||

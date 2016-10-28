@@ -7,8 +7,8 @@
  *     Christian Schulte, 2005
  *
  *  Last modified:
- *     $Date: 2013-01-22 23:48:12 +1100 (Tue, 22 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13227 $
+ *     $Date: 2015-09-11 16:29:45 +0200 (Fri, 11 Sep 2015) $ by $Author: schulte $
+ *     $Revision: 14672 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -71,13 +71,13 @@ namespace Gecode {
   }
 
   forceinline void
-  LinIntRel::post(Home home, bool t, IntConLevel icl) const {
-    e.post(home,t ? irt : neg(irt),icl);
+  LinIntRel::post(Home home, bool t, IntPropLevel ipl) const {
+    e.post(home,t ? irt : neg(irt),ipl);
   }
 
   forceinline void
-  LinIntRel::post(Home home, const BoolVar& b, bool t, IntConLevel icl) const {
-    e.post(home,t ? irt : neg(irt),b,icl);
+  LinIntRel::post(Home home, const BoolVar& b, bool t, IntPropLevel ipl) const {
+    e.post(home,t ? irt : neg(irt),b,ipl);
   }
 
 }

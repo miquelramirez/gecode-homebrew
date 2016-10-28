@@ -11,8 +11,8 @@
  *     Vincent Barichard, 2012
  *
  *  Last modified:
- *     $Date: 2013-01-24 19:28:06 +0100 (Thu, 24 Jan 2013) $ by $Author: schulte $
- *     $Revision: 13235 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -74,6 +74,8 @@ namespace Gecode { namespace Float { namespace Linear {
   public:
     /// Cost function (defined as low linear)
     virtual PropCost cost(const Space& home, const ModEventDelta& med) const;
+    /// Schedule function
+    virtual void reschedule(Space& home);
     /// Delete propagator and return its size
     virtual size_t dispose(Space& home);
   };
@@ -187,7 +189,7 @@ namespace Gecode { namespace Float { namespace Linear {
    * \param u upper bound
    *
    */
-  GECODE_FLOAT_EXPORT void 
+  GECODE_FLOAT_EXPORT void
   estimate(Term* t, int n, FloatVal c, FloatNum& l, FloatNum& u);
 
   /**

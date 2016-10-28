@@ -7,8 +7,8 @@
  *     Guido Tack, 2006
  *
  *  Last modified:
- *     $Date: 2013-05-06 17:02:17 +1000 (Mon, 06 May 2013) $ by $Author: tack $
- *     $Revision: 13613 $
+ *     $Date: 2016-06-27 14:37:04 +0200 (Mon, 27 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15129 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -112,7 +112,7 @@ namespace Gecode { namespace Gist {
     assert(i/NodeBlockSize < cur_b || i%NodeBlockSize <= cur_t);
     b[i/NodeBlockSize]->best[i%NodeBlockSize] = best;
   }
-  
+
   template<class T>
   forceinline bool
   NodeAllocatorBase<T>::bab(void) const {
@@ -130,7 +130,7 @@ namespace Gecode { namespace Gist {
   NodeAllocatorBase<T>::hasLabel(T* n) const {
     return labels.contains(n);
   }
-  
+
   template<class T>
   void
   NodeAllocatorBase<T>::setLabel(T* n, const QString& l) {
@@ -148,7 +148,7 @@ namespace Gecode { namespace Gist {
   NodeAllocatorBase<T>::getLabel(T* n) const {
     return labels.value(n);
   }
-  
+
   forceinline unsigned int
   Node::getTag(void) const {
     return static_cast<unsigned int>
@@ -217,14 +217,17 @@ namespace Gecode { namespace Gist {
   forceinline unsigned int
   Node::getNumberOfChildren(void) const {
     switch (getTag()) {
-    case UNDET: return 0;
-    case LEAF:  return 0;
-    case TWO_CHILDREN: return 1+(noOfChildren <= 0);
-    default: return noOfChildren;
+    case UNDET:
+    case LEAF:
+      return 0;
+    case TWO_CHILDREN:
+      return (noOfChildren <= 0) ? 2 : 1;
+    default:
+      return static_cast<unsigned int>(noOfChildren);
     }
   }
 
-  inline int
+  forceinline int
   Node::getIndex(const NodeAllocator& na) const {
     if (parent==-1)
       return 0;

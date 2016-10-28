@@ -7,8 +7,8 @@
  *     Mikael Lagerkvist, 2005
  *
  *  Last modified:
- *     $Date: 2012-09-08 01:31:22 +1000 (Sat, 08 Sep 2012) $ by $Author: schulte $
- *     $Revision: 13068 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -111,6 +111,16 @@ namespace Gecode { namespace Int { namespace Cumulatives {
   PropCost
   Val<ViewM,ViewP,ViewU,View>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::quadratic(PropCost::LO, s.size());
+  }
+
+  template<class ViewM, class ViewP, class ViewU, class View>
+  void
+  Val<ViewM,ViewP,ViewU,View>::reschedule(Space& home) {
+    m.reschedule(home,*this,Int::PC_INT_DOM);
+    s.reschedule(home,*this,Int::PC_INT_BND);
+    p.reschedule(home,*this,Int::PC_INT_BND);
+    e.reschedule(home,*this,Int::PC_INT_BND);
+    u.reschedule(home,*this,Int::PC_INT_BND);
   }
 
   template<class ViewM, class ViewP, class ViewU, class View>

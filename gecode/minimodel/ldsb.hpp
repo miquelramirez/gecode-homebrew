@@ -7,8 +7,8 @@
  *     Christopher Mears, 2012
  *
  *  Last modified:
- *     $Date: 2013-05-22 12:21:36 +1000 (Wed, 22 May 2013) $ by $Author: mears $
- *     $Revision: 13653 $
+ *     $Date: 2016-04-19 17:19:45 +0200 (Tue, 19 Apr 2016) $ by $Author: schulte $
+ *     $Revision: 14967 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -36,7 +36,7 @@
  */
 
 namespace Gecode {
-  
+
   /** \brief Interchangeable rows symmetry specification.
    */
   template<class A>
@@ -82,7 +82,7 @@ namespace Gecode {
     }
     return VariableSequenceSymmetry(xs, length);
   }
-  
+
   /** \brief Reflect columns symmetry specification.
    */
   template<class A>

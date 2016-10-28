@@ -7,8 +7,8 @@
  *     Christian Schulte, 2012
  *
  *  Last modified:
- *     $Date: 2012-04-06 21:29:12 +1000 (Fri, 06 Apr 2012) $ by $Author: schulte $
- *     $Revision: 12713 $
+ *     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+ *     $Revision: 15073 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -42,13 +42,13 @@ namespace Gecode {
 
   void
   wait(Home home, FloatVar x, void (*c)(Space& home)) {
-    if (home.failed()) return;
+    GECODE_POST;
     GECODE_ES_FAIL(Kernel::UnaryWait<Float::FloatView>::post(home,x,c));
   }
 
   void
   wait(Home home, const FloatVarArgs& x, void (*c)(Space& home)) {
-    if (home.failed()) return;
+    GECODE_POST;
     ViewArray<Float::FloatView> xv(home,x);
     GECODE_ES_FAIL(Kernel::NaryWait<Float::FloatView>::post(home,xv,c));
   }

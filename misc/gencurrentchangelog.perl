@@ -9,8 +9,8 @@
 #     Guido Tack, 2006
 #
 #  Last modified:
-#     $Date: 2011-01-18 12:14:44 +0100 (Tue, 18 Jan 2011) $ by $Author: tack $
-#     $Revision: 11547 $
+#     $Date: 2016-05-23 22:18:23 +0200 (Mon, 23 May 2016) $ by $Author: schulte $
+#     $Revision: 15073 $
 #
 #  This file is part of Gecode, the generic constraint
 #  development environment:
@@ -37,7 +37,7 @@
 #
 #
 
-# 
+#
 # Compile changelog
 #
 
@@ -152,8 +152,8 @@ while ($l = <STDIN>) {
     $thanks  = $1;
       }
     }
-    
-    while (($l = <STDIN>) && 
+
+    while (($l = <STDIN>) &&
        !(($l =~ /\[ENTRY\]/) || ($l =~ /\[RELEASE\]/))) {
        $l =~ s/%Gecode/Gecode/g;
 #      chop $l;
@@ -176,7 +176,7 @@ while ($l = <STDIN>) {
     if (!($thanks eq "")) {
       $rb = $rb . ", thanks to $thanks";
     }
-    $text{"$mod-$what"} = 
+    $text{"$mod-$what"} =
       ($text{"$mod-$what"} . "    <li> $desc(" . $rb . ")</li>\n");
     goto LINE;
   }

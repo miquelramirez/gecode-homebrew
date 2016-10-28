@@ -7,8 +7,8 @@
  *     Christian Schulte, 2011
  *
  *  Last modified:
- *     $Date: 2011-07-09 00:08:27 +1000 (Sat, 09 Jul 2011) $ by $Author: schulte $
- *     $Revision: 12168 $
+ *     $Date: 2016-06-29 17:28:17 +0200 (Wed, 29 Jun 2016) $ by $Author: schulte $
+ *     $Revision: 15137 $
  *
  *  This file is part of Gecode, the generic constraint
  *  development environment:
@@ -59,7 +59,7 @@ namespace Gecode { namespace Int { namespace NoOverlap {
   }
 
   template<class Box>
-  forceinline size_t 
+  forceinline size_t
   Base<Box>::dispose(Space& home) {
     for (int i=n; i--; )
       b[i].cancel(home,*this);
@@ -70,16 +70,23 @@ namespace Gecode { namespace Int { namespace NoOverlap {
 
   template<class Box>
   forceinline
-  Base<Box>::Base(Space& home, bool shared, Base<Box>& p, int m) 
+  Base<Box>::Base(Space& home, bool shared, Base<Box>& p, int m)
     : Propagator(home,shared,p), b(home.alloc<Box>(m)), n(p.n) {
     for (int i=m; i--; )
       b[i].update(home,shared,p.b[i]);
   }
 
   template<class Box>
-  PropCost 
+  PropCost
   Base<Box>::cost(const Space&, const ModEventDelta&) const {
     return PropCost::quadratic(PropCost::HI,Box::dim()*n);
+  }
+
+  template<class Box>
+  void
+  Base<Box>::reschedule(Space& home) {
+    for (int i=n; i--; )
+      b[i].reschedule(home,*this);
   }
 
 }}}
